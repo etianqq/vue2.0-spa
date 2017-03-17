@@ -5,7 +5,7 @@
         <img src="../assets/images/top_logo.png" alt="销冠科技">
       </el-col>
       <el-col class="operate">
-        <el-dropdown class="drop-down" :trigger="click">
+        <el-dropdown class="drop-down" :trigger="'click'">
           <span class="el-dropdown-link">
             郭大明<i class="el-icon-caret-bottom el-icon--right"></i>
           </span>
@@ -158,10 +158,16 @@
       overflow: auto;
       position: relative;
 
+      ul{
+        background-color: #fff;
+      }
+
     }
 
     .route-wrapper{
       flex: 1;
+      padding-left: 20px;
+      background-color: #f0f0f0;
     }
 
   }
