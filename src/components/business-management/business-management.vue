@@ -33,7 +33,7 @@
                 <el-button><i class="fa fa-circle"></i>即将到期（4）</el-button>
             </el-col>
             <el-col :span="5" :offset="7" class="text-right">
-                <el-button class="add-developer" type="primary"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></el-button>
+                <router-link to="/home/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
             </el-col>
         </el-row>
         <div class="developer">
@@ -129,6 +129,9 @@
         font-style: normal;
         font-weight: bold;
     }
+    i{
+        font-style: normal;
+    }
     ul,ol,li{
         padding: 0;
         margin: 0;
@@ -160,7 +163,8 @@
     .businessList{
         padding-top: 10px;
         padding-right: 20px;
-        
+        min-width: 950px;
+        overflow-x: auto;
         .total-info{
             width: 100%;
             height: 60px;
@@ -219,7 +223,7 @@
                     padding-right: 5px;
                 }
             }
-
+    
             .expire-tips{
                 .fa-circle{
                     font-size: 12px;
@@ -231,11 +235,29 @@
                     transform:scale(.6);
                 }
             }
-
-            .add-developer{
-                border-radius: 36px;
-                width: 180px;
+            
+            .btn-link{
+                display: inline-block;
+                line-height: 1;
+                white-space: nowrap;
+                cursor: pointer;
+                background: #fff;
+                border: 1px solid #bfcbd9;
+                color: #1f2d3d;
+                -webkit-appearance: none;
+                text-align: center;
+                box-sizing: border-box;
+                outline: 0;
+                padding: 10px 15px;
+                font-size: 14px;
+                border-radius: 20px;
+                color: #fff;
+                background-color: #20a0ff;
+                border-color: #20a0ff;
+                text-decoration: none;
+                font-style: normal;
                 margin-right: 50px;
+                width: 160px;
                 .el-icon-circle-cross{
                     -moz-transform:rotate(45deg);
                     -webkit-transform:rotate(45deg);

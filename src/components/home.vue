@@ -168,6 +168,7 @@
       flex: 1;
       padding-left: 20px;
       background-color: #f0f0f0;
+      overflow-x: auto;
     }
 
   }
