@@ -33,7 +33,7 @@
                 <el-button><i class="fa fa-circle"></i>即将到期（4）</el-button>
             </el-col>
             <el-col :span="5" :offset="7" class="text-right">
-                <router-link to="/home/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
+                <router-link to="/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
             </el-col>
         </el-row>
         <div class="developer">
@@ -110,15 +110,22 @@
         <!-- 续费dialog -->
         <el-dialog :title="reNewDialog.title" v-model="reNewDialog.visible" size="tiny">
             <div class="renew-content">
-                <span>新增销冠服务</span>
+                <el-row>
+                    <el-col :span="6" :offset="3" class="el-col-height">新增销冠服务</el-col>
+                    <el-col :span="10">
+                        <el-input class="input-reset"></el-input>
+                    </el-col>
+                    <el-col :span="2" class="el-col-height">个月</el-col>  
+                </el-row>
+                <!-- <span>新增销冠服务</span>
                 <span>
-                    <el-input placeholder="请输入月份"></el-input>
+                    <el-input placeholder="请输入月份" class="input-reset"></el-input>
                 </span>
-                <span>个月</span>
+                <span>个月</span> -->
             </div>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="reNewDialog.visible = false">取 消</el-button>
-                <el-button type="primary" @click="reNewDialog.visible = false">确 定</el-button>
+                <el-button @click="reNewDialog.visible = false" class="mr20">取 消</el-button>
+                <el-button type="primary" @click="reNewDialog.visible = false" class="ml20">确 定</el-button>
             </span>
         </el-dialog>
     </div>
@@ -163,8 +170,6 @@
     .businessList{
         padding-top: 10px;
         padding-right: 20px;
-        min-width: 950px;
-        overflow-x: auto;
 
         .total-info{
             width: 100%;
@@ -402,12 +407,20 @@
             background-color: #e5e5e5;
         }
     }
-
+    .mr20{
+        margin-right: 20px;
+    }
+    .ml20{
+        margin-left: 20px;
+    }
     .renew-content{
-        display: table;
-        width: 100%;
-        >span{
-            display: table-cell;
+        .el-col-height{
+            height: 37px;
+            line-height: 37px;
+            display: inline-block;
+        }
+        .el-col{
+            border-bottom: 1px dashed #ccc;
         }
     }
 
@@ -469,13 +482,7 @@
             },
 
             handleCurrentChange(val) {
-                $(".el-pager li").css({
-                    'background': 'none',
-                    'border': 'none'
-                });
-                $(".el-pagination button").css('color', '#97a8be');
-                $(".el-pager li.active").css('background', '#20a0ff');
-                $('.el-pagination button.disabled').css('color', '#d1dbe5');
+                console.log("current page---" + val);
             },
 
             handleSearch(value) {
@@ -502,26 +509,7 @@
         },
 
         mounted() {
-//            $('.btn-prev').find('i').removeClass('el-icon-arrow-left').addClass('el-icon-d-arrow-left');
-//            $('.btn-next').find('i').removeClass('el-icon-arrow-right').addClass('el-icon-d-arrow-right');
-//            $('.el-pager li').css({
-//                'margin-left': '5px',
-//                'background': 'none',
-//                'border-radius': '14px',
-//                'border': 'none'
-//            });
-//            $('.el-pager li.active').css('background', '#20a0ff');
-//            $('.el-pagination button.disabled').css('color', '#d1dbe5');
-//            $('.el-pager li.el-icon-more').css('background', 'none');
-//            $('.el-pagination .btn-prev').css({
-//                'border': 'none',
-//                'background': 'none'
-//            });
-//            $('.el-pagination .btn-next').css({
-//                'border': 'none',
-//                'background': 'none'
-//            });
-//            $('.el-autocomplete-suggestion__wrap').css('background', 'none');
+            console.log("DOM");
         }
     }
 </script>

@@ -90,48 +90,57 @@
 
 .el-breadcrumb{
     font-size: 13px;
-    line-height: 1
+    line-height: 1;
 }
 
 .el-breadcrumb:before, .el-breadcrumb:after{
     display: table;
-    content: ""
+    content: "";
 }
 
 .el-breadcrumb:after{
-    clear: both
+    clear: both;
+}
+
+.el-breadcrumb .go-back>.el-breadcrumb__item__inner{
+    margin-right: 15px;
+}
+
+.el-breadcrumb .add-text>.el-breadcrumb__item__inner{
+    color: #333 !important;
+    font-weight: 700;
 }
 
 .el-breadcrumb__separator{
     margin: 0 8px;
-    color: rgb(191, 203, 217)
+    color: rgb(191, 203, 217);
 }
 
 .el-breadcrumb__item{
-    float: left
+    float: left;
 }
 
 .el-breadcrumb__item:last-child .el-breadcrumb__item__inner, .el-breadcrumb__item:last-child .el-breadcrumb__item__inner a{}
 
 .el-breadcrumb__item:last-child .el-breadcrumb__item__inner, .el-breadcrumb__item:last-child .el-breadcrumb__item__inner:hover, .el-breadcrumb__item:last-child .el-breadcrumb__item__inner a, .el-breadcrumb__item:last-child .el-breadcrumb__item__inner a:hover{
     color: rgb(151, 168, 190);
-    cursor: text
+    cursor: text;
 }
 
 .el-breadcrumb__item:last-child .el-breadcrumb__separator{
-    display: none
+    display: none;
 }
 
 .el-breadcrumb__item__inner{}
 
 .el-breadcrumb__item__inner, .el-breadcrumb__item__inner a{
     transition: color .15s linear;
-    color: rgb(72, 87, 106)
+    color: rgb(72, 87, 106);
 }
 
 .el-breadcrumb__item__inner:hover, .el-breadcrumb__item__inner a:hover{
     color: #20a0ff;
-    cursor: pointer
+    cursor: pointer;
 }
 :root{
     /* Transition
