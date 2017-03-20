@@ -18,15 +18,15 @@
     <el-row class="content-bar">
       <el-col class="menu-bar">
         <el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo" :router="true">
-          <el-menu-item index="/"><i class="el-icon-message"></i>销冠首页</el-menu-item>
-          <el-menu-item index="/home/business-management"><i class="el-icon-message"></i>商家管理</el-menu-item>
-          <el-menu-item index="/home/broker-company"><i class="el-icon-message"></i>经纪公司</el-menu-item>
-          <el-menu-item index="/home/building-management"><i class="el-icon-message"></i>商品管理</el-menu-item>
-          <el-menu-item index="/home/order-management"><i class="el-icon-message"></i>订单管理</el-menu-item>
-          <el-menu-item index="/home/todo-audit"><i class="el-icon-message"></i>待办审核</el-menu-item>
+          <el-menu-item index="/home"><i class="el-icon-message"></i>销冠首页</el-menu-item>
+          <el-menu-item index="/business-management"><i class="el-icon-message"></i>商家管理</el-menu-item>
+          <el-menu-item index="/broker-company"><i class="el-icon-message"></i>经纪公司</el-menu-item>
+          <el-menu-item index="/building-management"><i class="el-icon-message"></i>商品管理</el-menu-item>
+          <el-menu-item index="/order-management"><i class="el-icon-message"></i>订单管理</el-menu-item>
+          <el-menu-item index="/todo-audit"><i class="el-icon-message"></i>待办审核</el-menu-item>
           <el-menu-item-group title="系统管理">
-            <el-menu-item index="/home/account-management"><i class="el-icon-message"></i>账号管理</el-menu-item>
-            <el-menu-item index="/home/operation-log"><i class="el-icon-message"></i>操作日志</el-menu-item>
+            <el-menu-item index="/account-management"><i class="el-icon-message"></i>账号管理</el-menu-item>
+            <el-menu-item index="/operation-log"><i class="el-icon-message"></i>操作日志</el-menu-item>
           </el-menu-item-group>
         </el-menu>
       </el-col>
@@ -38,14 +38,31 @@
 </template>
 <script>
   export default {
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
+
+    data(){
+      return　{
+          isActive:false,
+          nowPath:""
       }
-    }
+    },
+//    computed:{
+//        setActiveClass: (path) => {
+//          return {
+//              'is-active' : this.nowPath === path
+//          }
+//        }
+//    },
+    methods: {
+
+    },
+//    watch:{
+//        "$route": (to,from) => {
+//          this.nowPath=to.path;
+//          console.log(this.nowPath);
+//          console.log(to);
+//          console.log(from);
+//        }
+//    }
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
