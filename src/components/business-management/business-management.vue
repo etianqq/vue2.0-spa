@@ -40,9 +40,19 @@
             <ul>
                 <li>
                     <el-row class="developer-list-title">
-                        <el-col :span="10" class="developer-name">太原绿城华瑞房地产开发商</el-col>
+                        <el-col :span="10" class="developer-name">
+                            <span>太原绿城华瑞房地产开发商</span>
+                            <span class=""><i class="el-icon-star-off fs14"></i></span>
+                            <span class=""><i class="el-icon-star-on fs14"></i></span>
+                            
+                        </el-col>
                         <el-col :span="6" :offset="4" class="developer-contacts">刘长江(营销总监) 138-9898-0987</el-col>
                         <el-col :span="2" :offset="2" class="text-right"><i class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col class="developer-tag">
+                            <span>绿城集团 | 万达集团 联合开发</span>
+                        </el-col>
                     </el-row>
                     <ul class="developer-child-list">
                         <li>
@@ -156,6 +166,9 @@
                         <el-col :span="6" :offset="4" class="developer-contacts">刘长江(营销总监) 138-9898-0987</el-col>
                         <el-col :span="2" :offset="2" class="text-right"><i class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
                     </el-row>
+                    <el-row>
+                        <el-col class="developer-tag"></el-col>
+                    </el-row>
                     <ul class="developer-child-list">
                         <li>
                             <el-row class="developer-child-content">                            
@@ -235,6 +248,9 @@
                         <el-col :span="10" class="developer-name">太原绿城华瑞房地产开发商</el-col>
                         <el-col :span="6" :offset="4" class="developer-contacts">刘长江(营销总监) 138-9898-0987</el-col>
                         <el-col :span="2" :offset="2" class="text-right"><i class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col class="developer-tag"></el-col>
                     </el-row>
                     <ul class="developer-child-list">
                         <li>
@@ -443,9 +459,9 @@
                     height: 50px;
                     line-height: 50px;
                     background-color: #fafafa;
-                    border-bottom: 1px solid #E5E5E5;
+                    // border-bottom: 1px solid #E5E5E5;
                     i{
-                        font-size: 24px;
+                        font-size: 14px;
                         padding-right: 20px;
                     }
                 }
@@ -453,6 +469,12 @@
                     color: #40474f;
                     font-weight: bold;
                     font-size: 16px;
+                }
+                .developer-tag{
+                    padding: 0 40px;
+                    background-color: #fafafa;
+                    border-bottom: 1px solid #E5E5E5;
+                    padding-bottom: 10px;
                 }
                 .developer-contacts{
                     color: #40474f;
