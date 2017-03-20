@@ -1656,15 +1656,12 @@
     color: #20a0ff;
 }
 .el-pagination button.disabled {
-    color: #e4e4e4;
-    background-color: #fff;
+    color: #d1dbe5;
     cursor: not-allowed;
 }
 .el-pagination .btn-prev, .el-pagination .btn-next {
     background: center center no-repeat;
     background-size: 16px;
-    background-color: #fff;
-    border: 1px solid rgb(209, 219, 229);
     cursor: pointer;
     margin: 0;
     color: rgb(151, 168, 190);
@@ -1674,11 +1671,11 @@
     font-size: 12px;
 }
 .el-pagination .btn-prev {
-    border-radius: 2px 0 0 2px;
+    border-radius: 14px 0 0 14px;
     border-right: 0;
 }
 .el-pagination .btn-next {
-    border-radius: 0 2px 2px 0;
+    border-radius: 0 14px 14px 0;
     border-left: 0;
 }
 .el-pagination--small .btn-prev, .el-pagination--small .btn-next, .el-pagination--small .el-pager li, .el-pagination--small .el-pager li:last-child {
@@ -1692,7 +1689,7 @@
     visibility: hidden;
 }
 .el-pagination--small .el-pager li {
-    border-radius: 2px;
+    border-radius: 14px;
 }
 .el-pagination__sizes {
     margin: 0 10px 0 0;
@@ -1715,7 +1712,7 @@
 }
 .el-pagination__editor {
     border: 1px solid rgb(209, 219, 229);
-    border-radius: 2px;
+    border-radius: 14px;
     line-height: 18px;
     padding: 4px 2px;
     width: 30px;
@@ -1746,9 +1743,7 @@
 }
 .el-pager li {
     padding: 0 4px;
-    border: 1px solid rgb(209, 219, 229);
     border-right: 0;
-    background: #fff;
     vertical-align: top;
     display: inline-block;
     font-size: 13px;
@@ -1758,10 +1753,8 @@
     cursor: pointer;
     box-sizing: border-box;
     text-align: center;
-    margin: 0;
-}
-.el-pager li:last-child {
-    border-right: 1px solid rgb(209, 219, 229);
+    margin: 0 2px;
+    border-radius: 14px;
 }
 .el-pager li.btn-quicknext, .el-pager li.btn-quickprev {
     line-height: 28px;
