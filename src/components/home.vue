@@ -17,78 +17,18 @@
     </el-row>
     <el-row class="content-bar">
       <el-col class="menu-bar">
-        <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :unique-opened="true" :router="true">
-            <el-submenu index="1">
-              <template slot="title"><i class="el-icon-message"></i>商家管理</template>
-              <el-menu-item index="/home/business-management">商家列表</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-submenu index="2">
-              <template slot="title"><i class="el-icon-message"></i>经纪公司</template>
-              <el-menu-item index="/home/broker-company">经纪公司列表</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-submenu index="3">
-              <template slot="title"><i class="el-icon-message"></i>商品管理</template>
-              <el-menu-item index="/home/building-management">商品列表</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-submenu index="4">
-              <template slot="title"><i class="el-icon-message"></i>订单管理</template>
-              <el-menu-item index="/home/order-management">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-submenu index="5">
-              <template slot="title"><i class="el-icon-message"></i>待办审核</template>
-              <el-menu-item index="/home/todo-audit">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-submenu index="6">
-              <template slot="title"><i class="el-icon-message"></i>账号管理</template>
-              <el-menu-item index="/home/account-management">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-submenu index="7">
-              <template slot="title"><i class="el-icon-message"></i>操作日志</template>
-              <el-menu-item index="/home/operation-log">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-          </el-menu>
+        <el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo" :router="true">
+          <el-menu-item index="/"><i class="el-icon-message"></i>销冠首页</el-menu-item>
+          <el-menu-item index="/home/business-management"><i class="el-icon-message"></i>商家管理</el-menu-item>
+          <el-menu-item index="/home/broker-company"><i class="el-icon-message"></i>经纪公司</el-menu-item>
+          <el-menu-item index="/home/building-management"><i class="el-icon-message"></i>商品管理</el-menu-item>
+          <el-menu-item index="/home/order-management"><i class="el-icon-message"></i>订单管理</el-menu-item>
+          <el-menu-item index="/home/todo-audit"><i class="el-icon-message"></i>待办审核</el-menu-item>
+          <el-menu-item-group title="系统管理">
+            <el-menu-item index="/home/account-management"><i class="el-icon-message"></i>账号管理</el-menu-item>
+            <el-menu-item index="/home/operation-log"><i class="el-icon-message"></i>操作日志</el-menu-item>
+          </el-menu-item-group>
+        </el-menu>
       </el-col>
       <el-col class="route-wrapper">
         <router-view></router-view>
@@ -160,6 +100,13 @@
 
       ul{
         background-color: #fff;
+        .el-menu-item-group__title{
+          text-indent: 37px;
+        }
+
+        .el-menu-item{
+          text-align: center;
+        }
       }
 
     }
