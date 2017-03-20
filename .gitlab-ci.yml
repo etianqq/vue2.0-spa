@@ -1,0 +1,52 @@
+before_script:
+  - test -d node_modules || ln -s ~/node_modules node_modules
+
+build_test_package:
+  script:
+  - gulp publish --test
+  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.sass.agent-vue2 -n test -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
+  tags:
+  - frontend
+  only:
+    - develop
+
+build_demo_package:
+  script:
+  - gulp publish --demo
+  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.sass.agent-vue2 -n demo -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
+  tags:
+  - frontend
+  only:
+    - develop
+
+build_dev_package:
+  script:
+  - gulp publish --dev
+  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.sass.agent-vue2 -n dev -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
+  tags:
+  - frontend
+  only:
+    - develop
+
+build_beta_package:
+  script:
+  - gulp publish --beta
+  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.sass.agent-vue2 -n beta -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz'
+  only:
+    - /^release.*$/
+  tags:
+  - frontend
+
+build_ga_package:
+  script:
+  - gulp publish --release
+  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.sass.agent-vue2 -n ga -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz'
+  only:
+    - /^release.*$/
+  tags:
+  - frontend

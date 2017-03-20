@@ -57,7 +57,7 @@
                     </div>
                     <ul class="developer-child-list">
                         <li v-for="childItem in item.childItems">
-                            <el-row class="developer-child-content">                            
+                            <el-row class="developer-child-content">
                                 <el-col :span="6" class="developer-info line-right">
                                     <h3>{{childItem.subBuildingName}}</h3>
                                     <div>
@@ -104,7 +104,7 @@
                     @current-change="handleCurrentChange"
                     :total="100">
                 </el-pagination>
-            </div>        
+            </div>
         </div>
 
         <!-- 续费dialog -->
@@ -140,7 +140,7 @@
         display: block;
         content: "";
         clear: both;
-    }   
+    }
     .color_black{
         color: #000;
     }
@@ -165,6 +165,7 @@
         padding-right: 20px;
         min-width: 950px;
         overflow-x: auto;
+
         .total-info{
             width: 100%;
             height: 60px;
@@ -275,7 +276,7 @@
             max-height: 800px;
             overflow-y: auto;
             >ul>li{
-                background-color: #fff; 
+                background-color: #fff;
                 border: 1px solid #E5E5E5;
                 border-radius: 4px;
                 margin-bottom: 20px;
@@ -308,7 +309,7 @@
 
                 >.developer-child-list{
 
-                    .developer-child-content{                  
+                    .developer-child-content{
                         margin: 0 40px;
                         border-bottom: 1px dashed #e5e5e5;
                         padding: 20px 0;
@@ -319,7 +320,7 @@
                         p{
                             margin: 8px 0;
                         }
-                        
+
                         .line-right{
                             border-right: 1px solid #eef1f6;
                             height: 120px;
@@ -337,7 +338,7 @@
                                 }
                             }
                         }
-                        
+
                         .btn-control{
                             i{
                                 color: #e5e5e5;
@@ -360,13 +361,13 @@
                         }
                     }
                 }
-                
+
                 .btn-addDeveloper{
                     color: #2896f3;
                     height:  70px;
-                    line-height: 70px;   
-                    font-size: 15px;    
-                    cursor: pointer;        
+                    line-height: 70px;
+                    font-size: 15px;
+                    cursor: pointer;
                     .el-icon-circle-cross{
                         -moz-transform:rotate(45deg);
                         -webkit-transform:rotate(45deg);
@@ -378,7 +379,7 @@
                         padding-left: 10px;
                     }
                 }
-            }           
+            }
         }
 
         /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
@@ -463,7 +464,7 @@
                 //         console.log("error response");
                 //     })
                 //     .catch(function(response) {
-                //         //do something  
+                //         //do something
                 //     });
             },
 
@@ -501,26 +502,26 @@
         },
 
         mounted() {
-            $('.btn-prev').find('i').removeClass('el-icon-arrow-left').addClass('el-icon-d-arrow-left');
-            $('.btn-next').find('i').removeClass('el-icon-arrow-right').addClass('el-icon-d-arrow-right');
-            $('.el-pager li').css({
-                'margin-left': '5px',
-                'background': 'none',
-                'border-radius': '14px',
-                'border': 'none'
-            });
-            $('.el-pager li.active').css('background', '#20a0ff');
-            $('.el-pagination button.disabled').css('color', '#d1dbe5');
-            $('.el-pager li.el-icon-more').css('background', 'none');
-            $('.el-pagination .btn-prev').css({
-                'border': 'none',
-                'background': 'none'
-            });
-            $('.el-pagination .btn-next').css({
-                'border': 'none',
-                'background': 'none'
-            });
-            $('.el-autocomplete-suggestion__wrap').css('background', 'none');
+//            $('.btn-prev').find('i').removeClass('el-icon-arrow-left').addClass('el-icon-d-arrow-left');
+//            $('.btn-next').find('i').removeClass('el-icon-arrow-right').addClass('el-icon-d-arrow-right');
+//            $('.el-pager li').css({
+//                'margin-left': '5px',
+//                'background': 'none',
+//                'border-radius': '14px',
+//                'border': 'none'
+//            });
+//            $('.el-pager li.active').css('background', '#20a0ff');
+//            $('.el-pagination button.disabled').css('color', '#d1dbe5');
+//            $('.el-pager li.el-icon-more').css('background', 'none');
+//            $('.el-pagination .btn-prev').css({
+//                'border': 'none',
+//                'background': 'none'
+//            });
+//            $('.el-pagination .btn-next').css({
+//                'border': 'none',
+//                'background': 'none'
+//            });
+//            $('.el-autocomplete-suggestion__wrap').css('background', 'none');
         }
     }
 </script>
