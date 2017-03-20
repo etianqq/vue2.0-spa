@@ -257,6 +257,7 @@
                 border: 1px solid #E5E5E5;
                 border-radius: 4px;
                 margin-bottom: 20px;
+                overflow: hidden;
                 .developer-list-title{
                     padding: 0 40px;
                     height: 50px;
