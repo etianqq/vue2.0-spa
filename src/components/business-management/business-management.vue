@@ -38,249 +38,52 @@
         </el-row>
         <div class="developer">
             <ul>
-                <li>
+                <li v-for="item in developerList.items">
                     <el-row class="developer-list-title">
-                        <el-col :span="10" class="developer-name">
-                            <span>太原绿城华瑞房地产开发商</span>
+                        <el-col :span="8" class="developer-name">
+                            <span>{{item.developerName}}</span>
                             <span class=""><i class="el-icon-star-off fs14"></i></span>
                             <span class=""><i class="el-icon-star-on fs14"></i></span>
-                            
                         </el-col>
-                        <el-col :span="6" :offset="4" class="developer-contacts">刘长江(营销总监) 138-9898-0987</el-col>
+                        <el-col :span="8" :offset="4" class="developer-contacts">{{item.developerContacts}}({{item.developerPosition}}) {{item.developerContactsPhone}}</el-col>
                         <el-col :span="2" :offset="2" class="text-right"><i class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
                     </el-row>
-                    <el-row>
-                        <el-col class="developer-tag">
-                            <span>绿城集团 | 万达集团 联合开发</span>
-                        </el-col>
-                    </el-row>
+                    <div v-if="item.developerTag">
+                        <el-row>
+                            <el-col class="developer-tag">
+                                <span>{{item.developerTag}}</span>
+                            </el-col>
+                        </el-row>
+                    </div>
                     <ul class="developer-child-list">
-                        <li>
+                        <li v-for="childItem in item.childItems">
                             <el-row class="developer-child-content">                            
                                 <el-col :span="6" class="developer-info line-right">
-                                    <h3>双湖星城</h3>
+                                    <h3>{{childItem.subBuildingName}}</h3>
                                     <div>
-                                        <p class="color_grey fs14">地址：迎泽区滨盛路与长河路交叉路口</p>
-                                        <p class="color_grey fs14">对接人：宋仲基</p>
-                                        <p class="color_grey fs14">联系电话：13455829357</p>
+                                        <p class="color_grey fs14">地址：{{childItem.subBuildingAdress}}</p>
+                                        <p class="color_grey fs14">对接人：{{childItem.subBuildingContacts}}</p>
+                                        <p class="color_grey fs14">联系电话：{{childItem.subBuildingContactsPhone}}</p>
                                     </div>
                                 </el-col>
                                 <el-col :span="6" class="developer-service text-center line-right">
                                     <h3>剩余销冠服务</h3>
                                     <div class="date-view">
-                                        <span class="number-view">11</span>
+                                        <span class="number-view">{{childItem.subBuildingSurplusMonth}}</span>
                                         <span class="fs14 color_grey">月</span>
-                                        <span class="number-view">28</span>
+                                        <span class="number-view">{{childItem.subBuildingSurplusDay}}</span>
                                         <span class="fs14 color_grey">日</span>
                                     </div>
                                 </el-col>
                                 <el-col :span="4" :offset="2" class="developer-sign-date">
                                     <h3>签约时间</h3>
                                     <div>
-                                        <p class="color_grey fs14">2016-02-08</p>
-                                        <p class="color_grey fs14">共购买<span>18</span>个月</p>
+                                        <p class="color_grey fs14">{{childItem.subBuildingSignDate}}</p>
+                                        <p class="color_grey fs14">共购买<span>{{childItem.subBuildingTotalDate}}</span>个月</p>
                                     </div>
                                 </el-col>
                                 <el-col :span="6" class="btn-control text-right pr20">
                                     <span class="developer-renew" @click="handleRenewBuy">续费</span>
-                                    <i class="fa fa-chevron-right"></i>
-                                </el-col>
-                            </el-row>
-                        </li>
-                        <li>
-                            <el-row class="developer-child-content">                            
-                                <el-col :span="6" class="developer-info line-right">
-                                    <h3>双湖星城</h3>
-                                    <div>
-                                        <p class="color_grey fs14">地址：迎泽区滨盛路与长河路交叉路口</p>
-                                        <p class="color_grey fs14">对接人：宋仲基</p>
-                                        <p class="color_grey fs14">联系电话：13455829357</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="developer-service text-center line-right">
-                                    <h3>剩余销冠服务</h3>
-                                    <div class="date-view">
-                                        <span class="number-view">11</span>
-                                        <span class="fs14 color_grey">月</span>
-                                        <span class="number-view">28</span>
-                                        <span class="fs14 color_grey">日</span>
-                                    </div>
-                                </el-col>
-                                <el-col :span="4" :offset="2" class="developer-sign-date">
-                                    <h3>签约时间</h3>
-                                    <div>
-                                        <p class="color_grey fs14">2016-02-08</p>
-                                        <p class="color_grey fs14">共购买<span>18</span>个月</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="btn-control text-right pr20">
-                                    <span class="developer-renew">续费</span>
-                                    <i class="fa fa-chevron-right"></i>
-                                </el-col>
-                            </el-row>
-                        </li>
-                        <li>
-                            <el-row class="developer-child-content">                            
-                                <el-col :span="6" class="developer-info line-right">
-                                    <h3>双湖星城</h3>
-                                    <div>
-                                        <p class="color_grey fs14">地址：迎泽区滨盛路与长河路交叉路口</p>
-                                        <p class="color_grey fs14">对接人：宋仲基</p>
-                                        <p class="color_grey fs14">联系电话：13455829357</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="developer-service text-center line-right">
-                                    <h3>剩余销冠服务</h3>
-                                    <div class="date-view">
-                                        <span class="number-view">11</span>
-                                        <span class="fs14 color_grey">月</span>
-                                        <span class="number-view">28</span>
-                                        <span class="fs14 color_grey">日</span>
-                                    </div>
-                                </el-col>
-                                <el-col :span="4" :offset="2" class="developer-sign-date">
-                                    <h3>签约时间</h3>
-                                    <div>
-                                        <p class="color_grey fs14">2016-02-08</p>
-                                        <p class="color_grey fs14">共购买<span>18</span>个月</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="btn-control text-right pr20">
-                                    <span class="developer-renew">续费</span>
-                                    <i class="fa fa-chevron-right"></i>
-                                </el-col>
-                            </el-row>
-                        </li>
-                    </ul>
-                    <el-row class="text-center">
-                        <el-col>
-                            <span class="btn-addDeveloper">
-                                <i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i>
-                            </span>
-                        </el-col>
-                    </el-row>
-                </li>
-                <li>
-                    <el-row class="developer-list-title">
-                        <el-col :span="10" class="developer-name">太原绿城华瑞房地产开发商</el-col>
-                        <el-col :span="6" :offset="4" class="developer-contacts">刘长江(营销总监) 138-9898-0987</el-col>
-                        <el-col :span="2" :offset="2" class="text-right"><i class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col class="developer-tag"></el-col>
-                    </el-row>
-                    <ul class="developer-child-list">
-                        <li>
-                            <el-row class="developer-child-content">                            
-                                <el-col :span="6" class="developer-info line-right">
-                                    <h3>双湖星城</h3>
-                                    <div>
-                                        <p class="color_grey fs14">地址：迎泽区滨盛路与长河路交叉路口</p>
-                                        <p class="color_grey fs14">对接人：宋仲基</p>
-                                        <p class="color_grey fs14">联系电话：13455829357</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="developer-service text-center line-right">
-                                    <h3>剩余销冠服务</h3>
-                                    <div class="date-view">
-                                        <span class="number-view">11</span>
-                                        <span class="fs14 color_grey">月</span>
-                                        <span class="number-view">28</span>
-                                        <span class="fs14 color_grey">日</span>
-                                    </div>
-                                </el-col>
-                                <el-col :span="4" :offset="2" class="developer-sign-date">
-                                    <h3>签约时间</h3>
-                                    <div>
-                                        <p class="color_grey fs14">2016-02-08</p>
-                                        <p class="color_grey fs14">共购买<span>18</span>个月</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="btn-control text-right pr20">
-                                    <span class="developer-renew">续费</span>
-                                    <i class="fa fa-chevron-right"></i>
-                                </el-col>
-                            </el-row>
-                        </li>
-                        <li>
-                            <el-row class="developer-child-content">                            
-                                <el-col :span="6" class="developer-info line-right">
-                                    <h3>双湖星城</h3>
-                                    <div>
-                                        <p class="color_grey fs14">地址：迎泽区滨盛路与长河路交叉路口</p>
-                                        <p class="color_grey fs14">对接人：宋仲基</p>
-                                        <p class="color_grey fs14">联系电话：13455829357</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="developer-service text-center line-right">
-                                    <h3>剩余销冠服务</h3>
-                                    <div class="date-view">
-                                        <span class="number-view">11</span>
-                                        <span class="fs14 color_grey">月</span>
-                                        <span class="number-view">28</span>
-                                        <span class="fs14 color_grey">日</span>
-                                    </div>
-                                </el-col>
-                                <el-col :span="4" :offset="2" class="developer-sign-date">
-                                    <h3>签约时间</h3>
-                                    <div>
-                                        <p class="color_grey fs14">2016-02-08</p>
-                                        <p class="color_grey fs14">共购买<span>18</span>个月</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="btn-control text-right pr20">
-                                    <span class="developer-renew">续费</span>
-                                    <i class="fa fa-chevron-right"></i>
-                                </el-col>
-                            </el-row>
-                        </li>
-                    </ul>
-                    <el-row class="text-center">
-                        <el-col>
-                            <span class="btn-addDeveloper">
-                                <i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i>
-                            </span>
-                        </el-col>
-                    </el-row>
-                </li>
-                <li>
-                    <el-row class="developer-list-title">
-                        <el-col :span="10" class="developer-name">太原绿城华瑞房地产开发商</el-col>
-                        <el-col :span="6" :offset="4" class="developer-contacts">刘长江(营销总监) 138-9898-0987</el-col>
-                        <el-col :span="2" :offset="2" class="text-right"><i class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
-                    </el-row>
-                    <el-row>
-                        <el-col class="developer-tag"></el-col>
-                    </el-row>
-                    <ul class="developer-child-list">
-                        <li>
-                            <el-row class="developer-child-content">                            
-                                <el-col :span="6" class="developer-info line-right">
-                                    <h3>双湖星城</h3>
-                                    <div>
-                                        <p class="color_grey fs14">地址：迎泽区滨盛路与长河路交叉路口</p>
-                                        <p class="color_grey fs14">对接人：宋仲基</p>
-                                        <p class="color_grey fs14">联系电话：13455829357</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="developer-service text-center line-right">
-                                    <h3>剩余销冠服务</h3>
-                                    <div class="date-view">
-                                        <span class="number-view">11</span>
-                                        <span class="fs14 color_grey">月</span>
-                                        <span class="number-view">28</span>
-                                        <span class="fs14 color_grey">日</span>
-                                    </div>
-                                </el-col>
-                                <el-col :span="4" :offset="2" class="developer-sign-date">
-                                    <h3>签约时间</h3>
-                                    <div>
-                                        <p class="color_grey fs14">2016-02-08</p>
-                                        <p class="color_grey fs14">共购买<span>18</span>个月</p>
-                                    </div>
-                                </el-col>
-                                <el-col :span="6" class="btn-control text-right pr20">
-                                    <span class="developer-renew">续费</span>
                                     <i class="fa fa-chevron-right"></i>
                                 </el-col>
                             </el-row>
@@ -459,7 +262,6 @@
                     height: 50px;
                     line-height: 50px;
                     background-color: #fafafa;
-                    // border-bottom: 1px solid #E5E5E5;
                     i{
                         font-size: 14px;
                         padding-right: 20px;
@@ -587,10 +389,20 @@
 
 </style>
 <script>
+    import DeveloperList from '../../mockData/developer_list_mock_data';
     export default{
         data() {
             return {
                 keyWords: '',
+                developerList: {
+                    count: '',
+                    items: [
+                        {
+                            childItems: []
+                        }
+                    ]
+                },
+                developerChildList: [],
                 reNewDialog: {
                     visible: false,
                     title: '',
@@ -601,30 +413,37 @@
             }
         },
 
-        mounted() {
-            $('.btn-prev').find('i').removeClass('el-icon-arrow-left').addClass('el-icon-d-arrow-left');
-            $('.btn-next').find('i').removeClass('el-icon-arrow-right').addClass('el-icon-d-arrow-right');
-            $('.el-pager li').css({
-                'margin-left': '5px',
-                'background': 'none',
-                'border-radius': '14px',
-                'border': 'none'
-            });
-            $('.el-pager li.active').css('background', '#20a0ff');
-            $('.el-pagination button.disabled').css('color', '#d1dbe5');
-            $('.el-pager li.el-icon-more').css('background', 'none');
-            $('.el-pagination .btn-prev').css({
-                'border': 'none',
-                'background': 'none'
-            });
-            $('.el-pagination .btn-next').css({
-                'border': 'none',
-                'background': 'none'
-            });
-            $('.el-autocomplete-suggestion__wrap').css('background', 'none');
+        created() {
+            this.getDeveloperList();
         },
 
         methods: {
+            getDeveloperList(){
+                var params = {},headers = {}, _self = this;
+
+                console.log("111");
+                _self.developerList.count = DeveloperList.Data.count;
+                _self.developerList.items = DeveloperList.Data.items;
+                let childLength = DeveloperList.Data.items.length;
+                for(let i = 0; i < childLength; i++){
+                    _self.developerChildList = DeveloperList.Data.items[i].childItems;
+                }
+
+                // this.$http.get('../../mockData/business_mock_data.json',
+                //     {
+                //         params: params,
+                //         headers: headers
+                //     })
+                //     .then((response) => {
+                //         console.log(response);
+                //     },(response) => {
+                //         console.log("error response");
+                //     })
+                //     .catch(function(response) {
+                //         //do something  
+                //     });
+            },
+
             handleCurrentChange(val) {
                 $(".el-pager li").css({
                     'background': 'none',
@@ -656,6 +475,29 @@
                     }
                 }
             }
+        },
+
+        mounted() {
+            $('.btn-prev').find('i').removeClass('el-icon-arrow-left').addClass('el-icon-d-arrow-left');
+            $('.btn-next').find('i').removeClass('el-icon-arrow-right').addClass('el-icon-d-arrow-right');
+            $('.el-pager li').css({
+                'margin-left': '5px',
+                'background': 'none',
+                'border-radius': '14px',
+                'border': 'none'
+            });
+            $('.el-pager li.active').css('background', '#20a0ff');
+            $('.el-pagination button.disabled').css('color', '#d1dbe5');
+            $('.el-pager li.el-icon-more').css('background', 'none');
+            $('.el-pagination .btn-prev').css({
+                'border': 'none',
+                'background': 'none'
+            });
+            $('.el-pagination .btn-next').css({
+                'border': 'none',
+                'background': 'none'
+            });
+            $('.el-autocomplete-suggestion__wrap').css('background', 'none');
         }
     }
 </script>
