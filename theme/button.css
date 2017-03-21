@@ -113,7 +113,7 @@
     margin-left: 10px;
 }
 
-.el-button:hover, .el-button:focus{
+.el-button:hover{
     color: #20a0ff;
     border-color: #20a0ff;
 }

@@ -133,38 +133,7 @@
 <style lang="scss" rel="stylesheet/scss" scoped>
     //&bull;
     em{
-        font-style: normal;
         font-weight: bold;
-    }
-    i{
-        font-style: normal;
-    }
-    ul,ol,li{
-        padding: 0;
-        margin: 0;
-    }
-    .clearfix::after {
-        display: block;
-        content: "";
-        clear: both;
-    }
-    .color_black{
-        color: #000;
-    }
-    .text-center{
-        text-align: center;
-    }
-    .text-right{
-        text-align: right;
-    }
-    .fs14{
-        font-size: 14px;
-    }
-    .pr20{
-        padding-right: 20px;
-    }
-    .cur_pointer{
-        cursor: pointer;
     }
 
     .businessList{
