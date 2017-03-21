@@ -5,18 +5,18 @@
 		  	<el-breadcrumb-item class="add-text">添加楼盘</el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="business-info">
-			<el-form :label-position="labelPosition" :relus="businessRelus" label-width="120px" :model="businessAddFormData" class="business-form">
+			<el-form ref="businessAddFormData" :label-position="labelPosition" :relus="businessRelus" label-width="120px" :model="businessAddFormData" class="business-form">
 			  	<el-form-item label="楼盘名称：" prop="buildingName">
 			  		<el-row>
 			  			<el-col :span="8">
 			    			<el-input placeholder="请输入楼盘名称"></el-input>
-			  			</el-col>			  			
+			  			</el-col>
 			  		</el-row>
 			  	</el-form-item>
 			  	<el-form-item label="楼盘地址：" >
 			  		<el-row class="build-col">
 			  			<el-col :span="2">
-			  				<el-form-item prop="provinceValue">			  					
+			  				<el-form-item prop="provinceValue">
 				  				<el-select v-model="businessAddFormData.provinceValue" placeholder="省">
 								    <el-option
 								      v-for="item in province"
@@ -27,7 +27,7 @@
 			  				</el-form-item>
 			  			</el-col>
 			  			<el-col :span="2">
-			  				<el-form-item prop="cityValue">			  					
+			  				<el-form-item prop="cityValue">
 				  				<el-select v-model="businessAddFormData.cityValue" placeholder="市">
 								    <el-option
 								      v-for="item in city"
@@ -38,7 +38,7 @@
 			  				</el-form-item>
 			  			</el-col>
 			  			<el-col :span="2">
-				  			<el-form-item prop="countyValue">			  				
+				  			<el-form-item prop="countyValue">
 				  				<el-select v-model="businessAddFormData.countyValue" placeholder="区/县">
 								    <el-option
 								      v-for="item in county"
@@ -49,10 +49,10 @@
 				  			</el-form-item>
 			  			</el-col>
 			  			<el-col :span="10">
-				  			<el-form-item>			  				
+				  			<el-form-item>
 				    			<el-input placeholder="详细地址"></el-input>
 				  			</el-form-item>
-			  			</el-col>			  			
+			  			</el-col>
 			  		</el-row>
 			  	</el-form-item>
 			  	<el-form-item>
@@ -60,12 +60,12 @@
 			    		<el-col :span="16" class="border" id="divMap"></el-col>
 			    		<el-input id="input-hidden" class="hidden"></el-input>
 			    	</el-row>
-			  	</el-form-item>	  		
+			  	</el-form-item>
 			  	<el-row>
 			  		<el-col :span="8">
 					  	<el-form-item label="对接人：" prop="contacts">
 					    	<el-input placeholder="默认生成为管理员"></el-input>
-					  	</el-form-item>			  			
+					  	</el-form-item>
 			  		</el-col>
 			  		<el-col :span="8">
 					  	<el-form-item label="签约时间：" prop="signDate">
@@ -76,21 +76,21 @@
 						      	:editable="false"
 						      	:picker-options="pickerOptions">
 						    </el-date-picker>
-					  	</el-form-item>			  			
+					  	</el-form-item>
 			  		</el-col>
 			  	</el-row>
 			  	<el-row>
 			  		<el-col :span="8">
 					  	<el-form-item label="联系电话：" prop="contactsPhone">
 					    	<el-input placeholder="请填写联系电话"></el-input>
-					  	</el-form-item>			  			
+					  	</el-form-item>
 			  		</el-col>
 			  		<el-col :span="4">
 					  	<el-form-item label="销冠服务：" prop="serviceDate">
 					    	<el-input placeholder="请填写服务时间"></el-input>
-					  	</el-form-item>			  			
+					  	</el-form-item>
 			  		</el-col>
-			  		<el-col :span="2" class="input-col fs14">个月</el-col>	
+			  		<el-col :span="2" class="input-col fs14">个月</el-col>
 			  	</el-row>
 			  	<el-form-item class="text-center mt20">
 			    	<el-button @click="resetForm('businessAddFormData')" class="button-style mr10">取消</el-button>
@@ -122,11 +122,11 @@
 			border-radius: 4px;
 			margin-right: 20px;
 			padding: 40px 60px 40px 20px;
-			
+
 			.business-form{
 
 				.build-col{
-					
+
 					.el-col{
 						padding-right: 20px;
 					}
@@ -216,13 +216,13 @@
 	       var marker = new BMap.Marker(new_point,17);  //创建标注
 	       map.addOverlay(marker);
 	       map.centerAndZoom(new_point, 17);
-	    
+
 	       //启用地图滚轮放大缩小
 	       //map.enableScrollWheelZoom();
 	       //向地图中添加缩放控件
 	       var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
 	       map.addControl(ctrl_nav);
-	    
+
 	       //单击获取点击的经纬度
 	       map.addEventListener("click", function (e) {
 	       		console.log("lng------" + e.point.lng);
@@ -241,7 +241,7 @@
 		},
 
 		methods: {
-			submitForm(formName) {
+      onSubmit(formName) {
 	        	this.$refs[formName].validate((valid) => {
 		          	if (valid) {
 		            	alert('submit!');
@@ -253,6 +253,9 @@
 	      	},
 			//重置
 			resetForm(formName) {
+          console.log(formName);
+          console.log(this);
+          console.log(this.$refs);
 				this.$refs[formName].resetFields();
 			}
 		}
