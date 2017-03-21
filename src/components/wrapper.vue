@@ -53,8 +53,14 @@
 //        }
 //    },
     methods: {
-
+      getHost(){
+          console.log(HOST);
+          console.log(APIS);
+      }
     },
+    created(){
+        this.getHost();
+    }
 //    watch:{
 //        "$route": (to,from) => {
 //          this.nowPath=to.path;

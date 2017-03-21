@@ -2,6 +2,29 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var apis_url = path.join(__dirname, '../src/service/config/apiconfig.js')
+/*-----------------根据process变量找到对应的webconfig文件-----------------*/
+var host_url="";
+switch (process.env.NODE_ENV) {
+  case 'test' :
+    host_url = path.join(__dirname, '../src/service/config/webconfig_test.js'); // 这里用双斜线，很重要！
+    break;
+  case 'release' :
+    host_url = path.join(__dirname, '../src/service/config/webconfig_release.js');
+    break;
+  case 'integrate' :
+    host_url = path.join(__dirname, '../src/service/config/webconfig_integrate.js');
+    break;
+  case 'beta' :
+    host_url = path.join(__dirname, '../src/service/config/webconfig_beta.js');
+    break;
+  case 'demo' :
+    host_url = path.join(__dirname, '../src/service/config/webconfig_demo.js');
+    break;
+  case 'dev' :
+    host_url = path.join(__dirname, '../src/service/config/webconfig_develop.js');
+    break;
+}
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -23,6 +46,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'HOST': host_url,
+      'APIS': apis_url
     }
   },
   module: {

@@ -1,6 +1,17 @@
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
+/*-----------------封装一个获取npm run参数的方法-----------------*/
+function getEnv() {
+  var argv = process.argv.slice(2);
+  for (var i = 0; i < argv.length; i++) {
+    if (argv[i].indexOf('--env=') >= 0) {
+      return argv[i].substr(6);
+    }
+  }
+}
+
+/*-----------------根据获取到的参数，指定env.NODE_ENV的值-----------------*/
+process.env.NODE_ENV = getEnv();
 
 var ora = require('ora')
 var rm = require('rimraf')
