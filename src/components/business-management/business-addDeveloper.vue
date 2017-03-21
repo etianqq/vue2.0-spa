@@ -6,10 +6,12 @@
 		</el-breadcrumb>
 		<div class="business-info">
 			<el-form ref="businessAddFormData" :label-position="labelPosition" :relus="businessRelus" label-width="120px" :model="businessAddFormData" class="business-form">
-			  	<el-form-item label="楼盘名称：" prop="buildingName">
+			  	<el-form-item label="楼盘名称：">
 			  		<el-row>
 			  			<el-col :span="8">
-			    			<el-input placeholder="请输入楼盘名称"></el-input>
+			  				<el-form-item prop="buildingName">
+			    				<el-input placeholder="请输入楼盘名称"></el-input>
+			  				</el-form-item>
 			  			</el-col>
 			  		</el-row>
 			  	</el-form-item>
@@ -253,9 +255,6 @@
 	      	},
 			//重置
 			resetForm(formName) {
-          console.log(formName);
-          console.log(this);
-          console.log(this.$refs);
 				this.$refs[formName].resetFields();
 			}
 		}
