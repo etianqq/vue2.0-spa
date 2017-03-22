@@ -53,9 +53,10 @@
 //        }
 //    },
     methods: {
+
       getHost(){
-          console.log(HOST);
-          console.log(APIS);
+//          console.log(HOST);
+//          console.log(APIS);
       }
     },
     created(){
@@ -123,12 +124,9 @@
 
       ul{
         background-color: #fff;
-        .el-menu-item-group__title{
-          text-indent: 37px;
-        }
 
         .el-menu-item{
-          text-align: center;
+
         }
       }
 
@@ -136,9 +134,8 @@
 
     .route-wrapper{
       flex: 1;
-      padding-left: 20px;
+      padding: 20px;
       background-color: #f0f0f0;
-      padding-bottom: 20px;
     }
 
   }

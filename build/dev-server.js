@@ -33,6 +33,15 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+/*------------S-自己模拟服务端接口返回数据------------*/
+var homeData = require('../src/mockData/home/home.mock.json')
+var apiRoutes = express.Router()
+apiRoutes.get('/homeData',function (req, res) {
+  res.json(homeData);
+})
+app.use(apiRoutes)
+
+/*------------E-自己模拟服务端接口返回数据------------*/
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

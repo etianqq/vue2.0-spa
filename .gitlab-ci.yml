@@ -3,7 +3,7 @@ before_script:
 
 build_test_package:
   script:
-  - gulp publish --test
+  - npm run build-test
   - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
   - uploadPackage.py -p top.sass.agent-vue2 -n test -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
   tags:
@@ -13,7 +13,7 @@ build_test_package:
 
 build_demo_package:
   script:
-  - gulp publish --demo
+  - npm run build-demo
   - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
   - uploadPackage.py -p top.sass.agent-vue2 -n demo -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
   tags:
@@ -23,7 +23,7 @@ build_demo_package:
 
 build_dev_package:
   script:
-  - gulp publish --dev
+  - npm run build-dev
   - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
   - uploadPackage.py -p top.sass.agent-vue2 -n dev -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
   tags:
@@ -33,7 +33,7 @@ build_dev_package:
 
 build_beta_package:
   script:
-  - gulp publish --beta
+  - npm run build-beta
   - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
   - uploadPackage.py -p top.sass.agent-vue2 -n beta -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz'
   only:
@@ -43,7 +43,7 @@ build_beta_package:
 
 build_ga_package:
   script:
-  - gulp publish --release
+  - npm run build-release
   - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
   - uploadPackage.py -p top.sass.agent-vue2 -n ga -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz'
   only:
