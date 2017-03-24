@@ -1,11 +1,12 @@
 before_script:
   - test -d node_modules || ln -s ~/node_modules node_modules
+  - yarn
 
 build_test_package:
   script:
   - npm run build-test
-  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
-  - uploadPackage.py -p top.sass.agent-vue2 -n test -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
+  - tar czvf top.saas.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.saas.agent-vue2 -n test -v "$CI_BUILD_ID" -g 'top.saas.agent.vue.tar.gz' --publish True
   tags:
   - frontend
   only:
@@ -14,8 +15,8 @@ build_test_package:
 build_demo_package:
   script:
   - npm run build-demo
-  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
-  - uploadPackage.py -p top.sass.agent-vue2 -n demo -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
+  - tar czvf top.saas.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.saas.agent-vue2 -n demo -v "$CI_BUILD_ID" -g 'top.saas.agent.vue.tar.gz' --publish True
   tags:
   - frontend
   only:
@@ -24,8 +25,8 @@ build_demo_package:
 build_dev_package:
   script:
   - npm run build-dev
-  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
-  - uploadPackage.py -p top.sass.agent-vue2 -n dev -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz' --publish True
+  - tar czvf top.saas.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.saas.agent-vue2 -n dev -v "$CI_BUILD_ID" -g 'top.saas.agent.vue.tar.gz' --publish True
   tags:
   - frontend
   only:
@@ -34,8 +35,8 @@ build_dev_package:
 build_beta_package:
   script:
   - npm run build-beta
-  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
-  - uploadPackage.py -p top.sass.agent-vue2 -n beta -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz'
+  - tar czvf top.saas.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.saas.agent-vue2 -n beta -v "$CI_BUILD_ID" -g 'top.saas.agent.vue.tar.gz'
   only:
     - /^release.*$/
   tags:
@@ -44,8 +45,8 @@ build_beta_package:
 build_ga_package:
   script:
   - npm run build-release
-  - tar czvf top.sass.agent.vue.tar.gz -C dist/ .
-  - uploadPackage.py -p top.sass.agent-vue2 -n ga -v "$CI_BUILD_ID" -g 'top.sass.agent.vue.tar.gz'
+  - tar czvf top.saas.agent.vue.tar.gz -C dist/ .
+  - uploadPackage.py -p top.saas.agent-vue2 -n ga -v "$CI_BUILD_ID" -g 'top.saas.agent.vue.tar.gz'
   only:
     - /^release.*$/
   tags:

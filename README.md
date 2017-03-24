@@ -12,7 +12,12 @@ npm install
 npm run dev
 
 # build for production with minification
-npm run build
+npm run build-dev
+npm run build-test
+npm run build-release
+npm run build-integrate
+npm run build-beta
+npm run build-demo
 
 # build for production and view the bundle analyzer report
 npm run build --report
