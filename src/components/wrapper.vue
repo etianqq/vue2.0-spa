@@ -17,7 +17,7 @@
     </el-row>
     <el-row class="content-bar">
       <el-col class="menu-bar">
-        <el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo" :router="true">
+        <el-menu mode="vertical" :default-active="nowPath" class="el-menu-vertical-demo" :router="true">
           <el-menu-item index="/home"><i class="el-icon-message"></i>销冠首页</el-menu-item>
           <el-menu-item index="/business-management"><i class="el-icon-message"></i>商家管理</el-menu-item>
           <el-menu-item index="/broker-company"><i class="el-icon-message"></i>经纪公司</el-menu-item>
@@ -39,37 +39,22 @@
 <script>
   export default {
 
-    data(){
+    data() {
       return　{
-          isActive:false,
-          nowPath:""
+        nowPath:''
       }
     },
-//    computed:{
-//        setActiveClass: (path) => {
-//          return {
-//              'is-active' : this.nowPath === path
-//          }
-//        }
-//    },
-    methods: {
+    methods:{
 
-      getHost(){
-//          console.log(HOST);
-//          console.log(APIS);
-      }
     },
     created(){
-        this.getHost();
+        this.nowPath = this.$route.path;
+    },
+    watch:{
+      "$route": function(to,from) {
+        this.nowPath=to.path;
+      }
     }
-//    watch:{
-//        "$route": (to,from) => {
-//          this.nowPath=to.path;
-//          console.log(this.nowPath);
-//          console.log(to);
-//          console.log(from);
-//        }
-//    }
   }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>

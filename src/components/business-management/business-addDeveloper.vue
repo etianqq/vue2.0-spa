@@ -22,6 +22,7 @@
 				  				<el-select v-model="businessAddFormData.provinceValue" placeholder="省">
 								    <el-option
 								      v-for="item in province"
+                      :key="item.cityId"
 								      :label="item.cityName"
 								      :value="item.cityId">
 								    </el-option>
@@ -33,6 +34,7 @@
 				  				<el-select v-model="businessAddFormData.cityValue" placeholder="市">
 								    <el-option
 								      v-for="item in city"
+                      :key="item.cityId"
 								      :label="item.cityName"
 								      :value="item.cityId">
 								    </el-option>
@@ -44,6 +46,7 @@
 				  				<el-select v-model="businessAddFormData.countyValue" placeholder="区/县">
 								    <el-option
 								      v-for="item in county"
+                      :key="item.cityId"
 								      :label="item.cityName"
 								      :value="item.cityId">
 								    </el-option>
