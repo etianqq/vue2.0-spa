@@ -61,7 +61,7 @@
                                 <el-col :span="6" class="developer-info line-right">
                                     <h3>{{childItem.subBuildingName}}</h3>
                                     <div>
-                                        <p class="color_grey fs14">地址：{{childItem.subBuildingAdress}}</p>
+                                        <p class="address">地址：{{childItem.subBuildingAdress}}</p>
                                         <p class="color_grey fs14">对接人：{{childItem.subBuildingContacts}}</p>
                                         <p class="color_grey fs14">联系电话：{{childItem.subBuildingContactsPhone}}</p>
                                     </div>
@@ -83,8 +83,17 @@
                                     </div>
                                 </el-col>
                                 <el-col :span="6" class="btn-control text-right pr20">
-                                    <span class="developer-renew" @click="handleRenewBuy">续费</span>
-                                    <i class="fa fa-chevron-right"></i>
+                                    <div v-if="item.isExpire" class="btn-expire">
+                                        <span class="btn-expire-left">
+                                            <span class="developer-renew" @click="handleRenewBuy">续费</span>
+                                            <span class="developer-delete" @click="handleRenewBuy">删除</span>
+                                        </span>
+                                        <span class="btn-expire-left"><i class="fa fa-chevron-right"></i></span>
+                                    </div>
+                                    <div v-else>                                       
+                                        <span class="developer-renew" @click="handleRenewBuy">续费</span>
+                                        <i class="fa fa-chevron-right"></i>
+                                    </div>
                                 </el-col>
                             </el-row>
                         </li>
@@ -92,13 +101,13 @@
                     <el-row class="text-center">
                         <el-col>
                             <span class="btn-addDeveloper">
-                                <i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i>
+                                <router-link to="/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
                             </span>
                         </el-col>
                     </el-row>
                 </li>
             </ul>
-            <div class="block text-right" style="margin-bottom: 60px;">
+            <div class="block text-right">
                 <el-pagination class="self-pagination"
                     layout="prev, pager, next"
                     @current-change="handleCurrentChange"
@@ -117,11 +126,6 @@
                     </el-col>
                     <el-col :span="2" class="el-col-height">个月</el-col>  
                 </el-row>
-                <!-- <span>新增销冠服务</span>
-                <span>
-                    <el-input placeholder="请输入月份" class="input-reset"></el-input>
-                </span>
-                <span>个月</span> -->
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="reNewDialog.visible = false" class="mr20">取 消</el-button>
@@ -137,9 +141,7 @@
     }
 
     .businessList{
-        padding-top: 10px;
-        padding-right: 20px;
-
+        
         .total-info{
             width: 100%;
             height: 60px;
@@ -247,8 +249,8 @@
         }
 
         .developer{
-            max-height: 800px;
-            overflow-y: auto;
+            // max-height: 800px;
+            // overflow-y: auto;
             >ul>li{
                 background-color: #fff;
                 border: 1px solid #E5E5E5;
@@ -314,67 +316,106 @@
                         }
 
                         .btn-control{
+
+                            .btn-expire{
+                                display: table;
+                                float: right;
+
+                                .btn-expire-left{
+                                    display: table-cell;
+                                    vertical-align: middle;
+                                    >span{
+                                        display: block;
+                                        margin: 10px;
+                                    }
+                                    >i{
+                                        padding-left: 30px;
+                                    }
+                                }
+                            }
                             i{
                                 color: #e5e5e5;
                                 font-size: 18px;
                                 vertical-align: middle;
                                 cursor: pointer;
                             }
-                        }
-                        .developer-renew{
-                            display: inline-block;
-                            width: 87px;
-                            height: 35px;
-                            line-height: 35px;
-                            color: #2896f3;
-                            border: 1px solid #2896f3;
-                            border-radius: 20px;
-                            text-align: center;
-                            cursor: pointer;
-                            margin: 36px;
+
+                            .developer-renew{
+                                display: inline-block;
+                                width: 87px;
+                                height: 35px;
+                                line-height: 35px;
+                                color: #2896f3;
+                                border: 1px solid #2896f3;
+                                border-radius: 20px;
+                                text-align: center;
+                                cursor: pointer;
+                                margin: 36px;
+
+                                &:hover{
+                                    background-color: #2896f3;
+                                    color: #fff;
+                                }
+                            }
+                            .developer-delete{
+                                display: inline-block;
+                                width: 87px;
+                                height: 35px;
+                                line-height: 35px;
+                                color: #757575;
+                                border: 1px solid #757575;
+                                border-radius: 20px;
+                                text-align: center;
+                                cursor: pointer;
+                                margin: 36px;
+
+                                &:hover{
+                                    background-color: #757575;
+                                    color: #fff;
+                                }
+                            }
                         }
                     }
                 }
 
                 .btn-addDeveloper{
-                    color: #2896f3;
-                    height:  70px;
                     line-height: 70px;
                     font-size: 15px;
-                    cursor: pointer;
                     .el-icon-circle-cross{
+                        color: #20a0ff;
                         -moz-transform:rotate(45deg);
                         -webkit-transform:rotate(45deg);
                         -ms-transform:rotate(45deg);
                         transform:rotate(45deg);
                     }
                     .text-develop{
-                        font-style: normal;
+                        color: #20a0ff;
+                        font-size: 14px;
                         padding-left: 10px;
                     }
                 }
             }
         }
 
-        /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
-        .developer::-webkit-scrollbar{
-            width: 4px;
-            height: 4px;
-            background-color: #f5f5f5;
-        }
-        /*定义滚动条的轨道，内阴影及圆角*/
-        .developer::-webkit-scrollbar-track{
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
-            border-radius: 10px;
-            background-color: #f0f0f0;
-        }
-        /*定义滑块，内阴影及圆角*/
-        .developer::-webkit-scrollbar-thumb{
-            height: 5px;
-            border-radius: 10px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-            background-color: #e5e5e5;
-        }
+        // /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+        // .developer::-webkit-scrollbar{
+        //     width: 4px;
+        //     height: 4px;
+        //     background-color: #f5f5f5;
+        // }
+        // /*定义滚动条的轨道，内阴影及圆角*/
+        // .developer::-webkit-scrollbar-track{
+        //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+        //     border-radius: 10px;
+        //     background-color: #f0f0f0;
+        // }
+        // /*定义滑块，内阴影及圆角*/
+        // .developer::-webkit-scrollbar-thumb{
+        //     height: 5px;
+        //     border-radius: 10px;
+        //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        //     background-color: #e5e5e5;
+        // }
     }
     .mr20{
         margin-right: 20px;

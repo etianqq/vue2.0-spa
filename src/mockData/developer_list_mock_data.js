@@ -10,6 +10,7 @@ var developer_list = {
 				developerPosition: '营销总监',
 				developerContactsPhone: '138-9898-9878',
 				developerTag: '绿城集团 | 万达集团 联合开发',
+				isExpire: false,
 				childItems: [
 					{
 						subBuildingId: '001001',
@@ -52,6 +53,7 @@ var developer_list = {
 				developerContacts: '刘长江测试002',
 				developerPosition: '营销总监',
 				developerContactsPhone: '138-9898-9878',
+				isExpire: true,
 				childItems: [
 					{
 						subBuildingId: '001002',

@@ -48,7 +48,7 @@
   --border-color-hover: var(--color-base-silver);
   --border-base: var(--border-width-base) var(--border-style-base) var(--border-color-base);
   --border-radius-base: 4px;
-  --border-radius-small: 2px;
+  --border-radius-small: 4px;
   --border-radius-circle: 100%;
 
   /* Box-shadow
@@ -398,7 +398,7 @@
  -------------------------- */
   --dialog-background-color: var(--color-secondary);
   --dialog-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --dialog-tiny-width: 20%;
+  --dialog-tiny-width: 400px;
   --dialog-small-width: 50%;
   --dialog-large-width: 90%;
   --dialog-close-color: var(--color-extra-light-silver);
