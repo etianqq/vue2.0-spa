@@ -1,4 +1,4 @@
-<template>
+ 	<template>
 	<div class="business-add">
 		<el-breadcrumb separator="|" class="header-breadcrumb">
 		  	<el-breadcrumb-item :to="{ path: '/business-management' }" class="go-back"><i class="el-icon-arrow-left"></i>返回</el-breadcrumb-item>
@@ -8,7 +8,7 @@
 			<el-form ref="businessAddFormData" :label-position="labelPosition" :relus="businessRelus" label-width="120px" :model="businessAddFormData" class="business-form">
 			  	<el-form-item label="楼盘名称：">
 			  		<el-row>
-			  			<el-col :span="8">
+			  			<el-col :span="12">
 			  				<el-form-item prop="buildingName">
 			    				<el-input placeholder="请输入楼盘名称"></el-input>
 			  				</el-form-item>
@@ -17,7 +17,7 @@
 			  	</el-form-item>
 			  	<el-form-item label="楼盘地址：" >
 			  		<el-row class="build-col">
-			  			<el-col :span="2">
+			  			<el-col :span="4">
 			  				<el-form-item prop="provinceValue">
 				  				<el-select v-model="businessAddFormData.provinceValue" placeholder="省">
 								    <el-option
@@ -29,7 +29,7 @@
 								</el-select>
 			  				</el-form-item>
 			  			</el-col>
-			  			<el-col :span="2">
+			  			<el-col :span="4">
 			  				<el-form-item prop="cityValue">
 				  				<el-select v-model="businessAddFormData.cityValue" placeholder="市">
 								    <el-option
@@ -41,7 +41,7 @@
 								</el-select>
 			  				</el-form-item>
 			  			</el-col>
-			  			<el-col :span="2">
+			  			<el-col :span="4">
 				  			<el-form-item prop="countyValue">
 				  				<el-select v-model="businessAddFormData.countyValue" placeholder="区/县">
 								    <el-option
@@ -62,7 +62,7 @@
 			  	</el-form-item>
 			  	<el-form-item>
 			    	<el-row>
-			    		<el-col :span="16" class="border" id="divMap"></el-col>
+			    		<el-col :span="20" class="border" id="divMap"></el-col>
 			    		<el-input id="input-hidden" class="hidden"></el-input>
 			    	</el-row>
 			  	</el-form-item>
@@ -90,7 +90,7 @@
 					    	<el-input placeholder="请填写联系电话"></el-input>
 					  	</el-form-item>
 			  		</el-col>
-			  		<el-col :span="4">
+			  		<el-col :span="6">
 					  	<el-form-item label="销冠服务：" prop="serviceDate">
 					    	<el-input placeholder="请填写服务时间"></el-input>
 					  	</el-form-item>

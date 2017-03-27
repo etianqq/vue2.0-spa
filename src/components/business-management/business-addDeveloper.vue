@@ -7,14 +7,14 @@
 		<div class="business-add-developer">
 			<el-form :label-position="labelPosition" label-width="120px" :model="addDeveloperFormData" ref="addDeveloperFormData">
 			  	<el-row>
-			  		<el-col :span="12">
+			  		<el-col :span="16">
 					  	<el-form-item label="开发商名称：" prop="developerName">
 					    	<el-input v-model="addDeveloperFormData.developerName" placeholder="请填写开发商名称"></el-input>
 					  	</el-form-item>			  			
 			  		</el-col>
 			  	</el-row>
 			  	<el-row>
-			  		<el-col :span="12">
+			  		<el-col :span="16">
 					  	<el-form-item label="所属品牌：" prop="developerBrand">
 					    	<!-- <el-select v-model="addDeveloperFormData.developerBrand" multiple placeholder="请选择开发商品牌" style="width: 100%;">
 							    <el-option
@@ -33,28 +33,28 @@
 			  		</el-col>
 			  	</el-row>
 			  	<el-row>
-			  		<el-col :span="12">
+			  		<el-col :span="16">
 					  	<el-form-item label="联系人：" prop="developerContacts">
 					    	<el-input v-model="addDeveloperFormData.developerContacts" placeholder="请填写联系人"></el-input>
 					  	</el-form-item>			  			
 			  		</el-col>
 			  	</el-row>
 			  	<el-row>
-			  		<el-col :span="12">
+			  		<el-col :span="16">
 			  			<el-form-item label="联系人职位：" prop="developerPosition">
 					    	<el-input v-model="addDeveloperFormData.developerPosition" placeholder="请填写联系人职位"></el-input>
 					  	</el-form-item>
 			  		</el-col>
 			  	</el-row>
 			  	<el-row>
-			  		<el-col :span="12">
+			  		<el-col :span="16">
 			  			<el-form-item label="联系电话：" prop="developerContactsPhone">
 				    	<el-input v-model="addDeveloperFormData.developerContactsPhone" placeholder="请填写联系电话"></el-input>
 				  	</el-form-item>
 			  		</el-col>
 			  	</el-row>
 			  	<el-row>
-			  		<el-col :span="12">
+			  		<el-col :span="16">
 					  	<el-form-item class="text-right mt20">
 					    	<el-button @click="resetForm('addDeveloperFormData')" class="button-style mr10">取消</el-button>
 					    	<el-button type="primary" @click="onSubmit('addDeveloperFormData')" class="button-style ml10">保存</el-button>
