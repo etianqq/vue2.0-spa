@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack')
 var apis_url = path.join(__dirname, '../src/service/config/apiconfig.js')
 /*-----------------根据process变量找到对应的webconfig文件-----------------*/
 var host_url="";
@@ -79,5 +80,12 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    //定义全局插件，不需要引入，直接可以使用模块名，如：$z.xxx();
+    new webpack.ProvidePlugin({
+      HOST: 'HOST',
+      APIS: "APIS",
+    })
+  ]
 }

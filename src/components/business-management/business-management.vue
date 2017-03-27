@@ -101,7 +101,7 @@
                     <el-row class="text-center">
                         <el-col>
                             <span class="btn-addDeveloper">
-                                <router-link to="/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
+                                <router-link to="/business-addBuilding" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
                             </span>
                         </el-col>
                     </el-row>
@@ -468,7 +468,6 @@
             getDeveloperList(){
                 var params = {},headers = {}, _self = this;
 
-                console.log("111");
                 _self.developerList.count = DeveloperList.Data.count;
                 _self.developerList.items = DeveloperList.Data.items;
                 let childLength = DeveloperList.Data.items.length;
