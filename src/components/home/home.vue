@@ -196,6 +196,7 @@
         box-sizing: border-box;
 
         h2{
+          margin-bottom: 20px;
           font-size: 20px;
           color: #000;
         }
@@ -218,6 +219,7 @@
               }
             }
             p{
+              margin-top: 20px;
               font-size: 16px;
               color: #666;
             }
@@ -303,6 +305,7 @@
                     }
                   }
                   p{
+                    margin-top: 20px;
                     font-size: 16px;
                     color: #666;
                   }
@@ -348,9 +351,9 @@
 
             li{
               margin-bottom: 10px;
-              font-size: 16px;
 
               p{
+                font-size: 14px;
                 height: 20px;
                 line-height: 20px;
               }
