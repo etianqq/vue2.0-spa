@@ -92,13 +92,13 @@
                     <el-row class="text-center">
                         <el-col>
                             <span class="btn-addDeveloper">
-                                <i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i>
+                                <router-link to="/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
                             </span>
                         </el-col>
                     </el-row>
                 </li>
             </ul>
-            <div class="block text-right" style="margin-bottom: 60px;">
+            <div class="block text-right">
                 <el-pagination class="self-pagination"
                     layout="prev, pager, next"
                     @current-change="handleCurrentChange"
@@ -137,9 +137,7 @@
     }
 
     .businessList{
-        padding-top: 10px;
-        padding-right: 20px;
-
+        
         .total-info{
             width: 100%;
             height: 60px;
@@ -247,8 +245,8 @@
         }
 
         .developer{
-            max-height: 800px;
-            overflow-y: auto;
+            // max-height: 800px;
+            // overflow-y: auto;
             >ul>li{
                 background-color: #fff;
                 border: 1px solid #E5E5E5;
@@ -337,18 +335,17 @@
                 }
 
                 .btn-addDeveloper{
-                    color: #2896f3;
-                    height:  70px;
                     line-height: 70px;
                     font-size: 15px;
-                    cursor: pointer;
                     .el-icon-circle-cross{
+                        color: #20a0ff;
                         -moz-transform:rotate(45deg);
                         -webkit-transform:rotate(45deg);
                         -ms-transform:rotate(45deg);
                         transform:rotate(45deg);
                     }
                     .text-develop{
+                        color: #20a0ff;
                         font-style: normal;
                         padding-left: 10px;
                     }
@@ -356,25 +353,25 @@
             }
         }
 
-        /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
-        .developer::-webkit-scrollbar{
-            width: 4px;
-            height: 4px;
-            background-color: #f5f5f5;
-        }
-        /*定义滚动条的轨道，内阴影及圆角*/
-        .developer::-webkit-scrollbar-track{
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
-            border-radius: 10px;
-            background-color: #f0f0f0;
-        }
-        /*定义滑块，内阴影及圆角*/
-        .developer::-webkit-scrollbar-thumb{
-            height: 5px;
-            border-radius: 10px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-            background-color: #e5e5e5;
-        }
+        // /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+        // .developer::-webkit-scrollbar{
+        //     width: 4px;
+        //     height: 4px;
+        //     background-color: #f5f5f5;
+        // }
+        // /*定义滚动条的轨道，内阴影及圆角*/
+        // .developer::-webkit-scrollbar-track{
+        //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+        //     border-radius: 10px;
+        //     background-color: #f0f0f0;
+        // }
+        // /*定义滑块，内阴影及圆角*/
+        // .developer::-webkit-scrollbar-thumb{
+        //     height: 5px;
+        //     border-radius: 10px;
+        //     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        //     background-color: #e5e5e5;
+        // }
     }
     .mr20{
         margin-right: 20px;
