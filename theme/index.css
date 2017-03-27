@@ -2783,7 +2783,6 @@
     box-sizing: border-box;
     outline: none;
     margin: 0;
-    font-family: "Microsoft YaHei";
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -6220,7 +6219,6 @@
     box-sizing: border-box;
     outline: none;
     margin: 0;
-    font-family: "Microsoft YaHei";
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -12401,7 +12399,6 @@
     box-sizing: border-box;
     outline: none;
     margin: 0;
-    font-family: "Microsoft YaHei";
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -13302,6 +13299,14 @@
 .el-breadcrumb {
     font-size: 13px;
     line-height: 1;
+}
+.el-breadcrumb .go-back .el-breadcrumb__item__inner {
+    margin-right: 10px;
+}
+.el-breadcrumb .add-text .el-breadcrumb__item__inner {
+    color: #333 !important;
+    font-weight: 700;
+    font-size: 18px;
 }
 .el-breadcrumb__separator {
     margin: 0 8px;

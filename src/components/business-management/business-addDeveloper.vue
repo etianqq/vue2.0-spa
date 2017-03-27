@@ -118,7 +118,7 @@
 
 			.add-text{
 				font-size: 16px;
-				margin-left: 15px;
+				margin-left: 10px;
 			}
 		}
 
