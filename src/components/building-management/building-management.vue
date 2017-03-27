@@ -42,6 +42,14 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-row>
+        <el-col class="pagination-wrapper">
+          <el-pagination
+            layout="prev, pager, next"
+            :total="50">
+          </el-pagination>
+        </el-col>
+      </el-row>
     </div>
 </template>
 <style lang="scss" rel="stylesheet/scss" scoped>
@@ -89,17 +97,20 @@
         padding-bottom: 10px;
 
         h2{
+          margin-bottom: 5px;
           font-size: 24px;
           color: #000;
         }
         .tags{
-          margin-bottom: 10px;
+          margin-bottom: 15px;
 
           span{
             margin-right: 10px;
           }
         }
         p{
+          height: 20px;
+          line-height: 20px;
           color: #666;
           font-size: 14px;
         }
@@ -153,7 +164,7 @@
           .edit{
             width: 16px;
             height: 16px;
-            line-height: 14px;
+            line-height: 10px;
             text-align: center;
             padding-left: 1px;
             background: #fff;
@@ -165,6 +176,9 @@
         }
       }
     }
+  }
+  .pagination-wrapper{
+    text-align: right;
   }
 </style>
 <script>
@@ -270,17 +284,6 @@
             id : 8,
             img : '../../assets/images/building.jpg',
             title : '双湖星城8',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 0
-          },
-          {
-            id : 9,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城9',
             tags : ['普通住宅','商铺'],
             averagePrice : 35000,
             household : '4房/3房',

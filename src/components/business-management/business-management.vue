@@ -33,7 +33,7 @@
                 <el-button><i class="fa fa-circle"></i>即将到期（4）</el-button>
             </el-col>
             <el-col :span="5" :offset="7" class="text-right">
-                <router-link to="/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
+                <router-link to="/business-management/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
             </el-col>
         </el-row>
         <div class="developer">
@@ -101,7 +101,7 @@
                     <el-row class="text-center">
                         <el-col>
                             <span class="btn-addDeveloper">
-                                <router-link to="/business-addBuilding" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
+                                <router-link to="/business-management/business-addBuilding" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
                             </span>
                         </el-col>
                     </el-row>

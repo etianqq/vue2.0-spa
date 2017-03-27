@@ -53,7 +53,7 @@
     },
     created(){
       // 进入wrapper组件后，立即获取并修改当前路由
-      this.nowPath = this.$route.path;
+      this.nowPath = this.$route.path.match(/\/[a-z]+-*[a-z]+/)[0]; // 正则只匹配一级路由
     },
     mounted(){
       // 渲染完毕后，修改菜单的高度沾满屏幕高度
@@ -63,7 +63,7 @@
     watch:{
       // 监听路由变化，获取并修改当前路由
       "$route": function(to,from) {
-        this.nowPath=to.path;
+        this.nowPath=to.path.match(/\/[a-z]+-*[a-z]+/)[0]; // 正则只匹配一级路由
       }
     }
   }
