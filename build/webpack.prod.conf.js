@@ -25,11 +25,6 @@ var webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
-    //定义全局插件，不需要引入，直接可以使用模块名，如：$z.xxx();
-    new webpack.ProvidePlugin({
-      HOST: 'HOST',
-      APIS: "APIS",
-    }),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env

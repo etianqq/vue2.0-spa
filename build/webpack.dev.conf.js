@@ -18,11 +18,6 @@ module.exports = merge(baseWebpackConfig, {
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
   plugins: [
-    //定义全局插件，不需要引入，直接可以使用模块名，如：$z.xxx();
-    new webpack.ProvidePlugin({
-      HOST: 'HOST',
-      APIS: "APIS",
-    }),
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     }),
