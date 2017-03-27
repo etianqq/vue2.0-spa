@@ -61,7 +61,7 @@
                                 <el-col :span="6" class="developer-info line-right">
                                     <h3>{{childItem.subBuildingName}}</h3>
                                     <div>
-                                        <p class="color_grey fs14">地址：{{childItem.subBuildingAdress}}</p>
+                                        <p class="address">地址：{{childItem.subBuildingAdress}}</p>
                                         <p class="color_grey fs14">对接人：{{childItem.subBuildingContacts}}</p>
                                         <p class="color_grey fs14">联系电话：{{childItem.subBuildingContactsPhone}}</p>
                                     </div>
@@ -83,8 +83,17 @@
                                     </div>
                                 </el-col>
                                 <el-col :span="6" class="btn-control text-right pr20">
-                                    <span class="developer-renew" @click="handleRenewBuy">续费</span>
-                                    <i class="fa fa-chevron-right"></i>
+                                    <div v-if="item.isExpire" class="btn-expire">
+                                        <span class="btn-expire-left">
+                                            <span class="developer-renew" @click="handleRenewBuy">续费</span>
+                                            <span class="developer-delete" @click="handleRenewBuy">删除</span>
+                                        </span>
+                                        <span class="btn-expire-left"><i class="fa fa-chevron-right"></i></span>
+                                    </div>
+                                    <div v-else>                                       
+                                        <span class="developer-renew" @click="handleRenewBuy">续费</span>
+                                        <i class="fa fa-chevron-right"></i>
+                                    </div>
                                 </el-col>
                             </el-row>
                         </li>
@@ -117,11 +126,6 @@
                     </el-col>
                     <el-col :span="2" class="el-col-height">个月</el-col>  
                 </el-row>
-                <!-- <span>新增销冠服务</span>
-                <span>
-                    <el-input placeholder="请输入月份" class="input-reset"></el-input>
-                </span>
-                <span>个月</span> -->
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="reNewDialog.visible = false" class="mr20">取 消</el-button>
@@ -312,24 +316,64 @@
                         }
 
                         .btn-control{
+
+                            .btn-expire{
+                                display: table;
+                                float: right;
+
+                                .btn-expire-left{
+                                    display: table-cell;
+                                    vertical-align: middle;
+                                    >span{
+                                        display: block;
+                                        margin: 10px;
+                                    }
+                                    >i{
+                                        padding-left: 30px;
+                                    }
+                                }
+                            }
                             i{
                                 color: #e5e5e5;
                                 font-size: 18px;
                                 vertical-align: middle;
                                 cursor: pointer;
                             }
-                        }
-                        .developer-renew{
-                            display: inline-block;
-                            width: 87px;
-                            height: 35px;
-                            line-height: 35px;
-                            color: #2896f3;
-                            border: 1px solid #2896f3;
-                            border-radius: 20px;
-                            text-align: center;
-                            cursor: pointer;
-                            margin: 36px;
+
+                            .developer-renew{
+                                display: inline-block;
+                                width: 87px;
+                                height: 35px;
+                                line-height: 35px;
+                                color: #2896f3;
+                                border: 1px solid #2896f3;
+                                border-radius: 20px;
+                                text-align: center;
+                                cursor: pointer;
+                                margin: 36px;
+
+                                &:hover{
+                                    background-color: #2896f3;
+                                    color: #fff;
+                                }
+                            }
+                            .developer-delete{
+                                display: inline-block;
+                                width: 87px;
+                                height: 35px;
+                                line-height: 35px;
+                                color: #757575;
+                                border: 1px solid #757575;
+                                border-radius: 20px;
+                                text-align: center;
+                                cursor: pointer;
+                                margin: 36px;
+
+                                &:hover{
+                                    background-color: #757575;
+                                    color: #fff;
+                                }
+                            }
                         }
                     }
                 }
@@ -346,7 +390,7 @@
                     }
                     .text-develop{
                         color: #20a0ff;
-                        font-style: normal;
+                        font-size: 14px;
                         padding-left: 10px;
                     }
                 }
