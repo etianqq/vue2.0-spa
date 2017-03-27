@@ -2,7 +2,7 @@
 	<div class="business-add">
 		<el-breadcrumb separator="|" class="header-breadcrumb">
 		  	<el-breadcrumb-item :to="{ path: '/business-management' }" class="go-back"><i class="el-icon-arrow-left"></i>返回</el-breadcrumb-item>
-		  	<el-breadcrumb-item class="add-text">添加楼盘</el-breadcrumb-item>
+		  	<el-breadcrumb-item class="current-text">添加楼盘</el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="business-info">
 			<el-form ref="businessAddFormData" :label-position="labelPosition" :relus="businessRelus" label-width="120px" :model="businessAddFormData" class="business-form">
@@ -116,7 +116,7 @@
 			height: 60px;
 			line-height: 60px;
 
-			.add-text{
+			.current-text{
 				font-size: 16px;
 				margin-left: 10px;
 			}
