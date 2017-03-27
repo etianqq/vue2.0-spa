@@ -14,7 +14,7 @@
 			  		</el-col>
 			  		<el-col :span="8">
 					  	<el-form-item label="门店简称：" prop="signDate">
-					    	<el-input placeholder="请输入楼盘简 称"></el-input>
+					    	<el-input placeholder="请输入楼盘简称"></el-input>
 					  	</el-form-item>
 			  		</el-col>
 			  	</el-row>
