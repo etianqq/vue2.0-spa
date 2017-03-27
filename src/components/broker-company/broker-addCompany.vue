@@ -20,7 +20,7 @@
 			  	</el-row>
 			  	<el-form-item label="门店地址：" >
 			  		<el-row class="build-col">
-			  			<el-col :span="2">
+			  			<el-col :span="3">
 			  				<el-form-item prop="provinceValue">
 				  				<el-select v-model="brokerAddFormData.provinceValue" placeholder="省">
 								    <el-option
@@ -32,7 +32,7 @@
 								</el-select>
 			  				</el-form-item>
 			  			</el-col>
-			  			<el-col :span="2">
+			  			<el-col :span="3">
 			  				<el-form-item prop="cityValue">
 				  				<el-select v-model="brokerAddFormData.cityValue" placeholder="市">
 								    <el-option
@@ -44,7 +44,7 @@
 								</el-select>
 			  				</el-form-item>
 			  			</el-col>
-			  			<el-col :span="2">
+			  			<el-col :span="3">
 				  			<el-form-item prop="countyValue">
 				  				<el-select v-model="brokerAddFormData.countyValue" placeholder="区/县">
 								    <el-option
@@ -126,51 +126,7 @@
 		</div>
 	</div>
 </template>
-<style lang="scss" rel="stylesheet/scss" scoped>
-	.input-col{
-		height: 37px;
-		line-height: 37px;
-	}
-	.business-add{
 
-		.header-breadcrumb{
-			height: 60px;
-			line-height: 60px;
-
-			.add-text{
-				font-size: 16px;
-				margin-left: 10px;
-			}
-		}
-
-		.business-info{
-			background-color: #fff;
-			border-radius: 4px;
-			margin-right: 20px;
-			padding: 40px 60px 40px 20px;
-
-			.business-form{
-
-				.build-col{
-
-					.el-col{
-						padding-right: 20px;
-					}
-				}
-
-				.border{
-					border: 1px solid #ccc;
-					height: 300px;
-				}
-
-				.button-style{
-					width: 120px;
-					border-radius: 20px;
-				}
-			}
-		}
-	}
-</style>
 <script>
 	export default {
 		data() {
@@ -290,3 +246,48 @@
 		}
 	}
 </script>
+<style lang="scss" rel="stylesheet/scss" scoped>
+	.input-col{
+		height: 37px;
+		line-height: 37px;
+	}
+	.business-add{
+
+		.header-breadcrumb{
+			height: 60px;
+			line-height: 60px;
+
+			.add-text{
+				font-size: 16px;
+				margin-left: 10px;
+			}
+		}
+
+		.business-info{
+			background-color: #fff;
+			border-radius: 4px;
+			margin-right: 20px;
+			padding: 40px 60px 40px 20px;
+
+			.business-form{
+
+				.build-col{
+
+					.el-col{
+						padding-right: 20px;
+					}
+				}
+
+				.border{
+					border: 1px solid #ccc;
+					height: 300px;
+				}
+
+				.button-style{
+					width: 120px;
+					border-radius: 20px;
+				}
+			}
+		}
+	}
+</style>
