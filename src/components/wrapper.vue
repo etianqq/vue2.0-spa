@@ -7,7 +7,7 @@
       <el-col class="operate">
         <el-dropdown class="drop-down" :trigger="'click'">
           <span class="el-dropdown-link">
-            郭大明<i class="el-icon-caret-bottom el-icon--right"></i>
+            郭大明<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="a">退出登录</el-dropdown-item>

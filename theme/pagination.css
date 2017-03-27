@@ -187,7 +187,7 @@
     position: absolute;
     z-index: 1001;
     border: solid 1px rgb(209, 219, 229);
-    border-radius: 2px;
+    border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
     box-sizing: border-box;
@@ -1301,7 +1301,7 @@
 
 .el-pagination .el-select .el-input input{
     padding-right: 25px;
-    border-radius: 2px;
+    border-radius: 4px;
     height: 28px;
 }
 
@@ -1425,7 +1425,6 @@
 
 .el-pager li{
     padding: 0 4px;
-    border-right: 0;
     vertical-align: top;
     display: inline-block;
     font-size: 13px;
@@ -1434,9 +1433,7 @@
     line-height: 28px;
     cursor: pointer;
     box-sizing: border-box;
-    text-align: center;
-    margin: 0 2px;
-    border-radius: 14px
+    text-align: center
 }
 
 .el-pager li.btn-quicknext, .el-pager li.btn-quickprev{
@@ -1466,6 +1463,7 @@
     background-color: #20a0ff;
     color: #fff;
     cursor: default;
+    border-radius: 20px;
 }
 :root{
     /* Transition

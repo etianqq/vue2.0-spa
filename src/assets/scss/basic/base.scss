@@ -12,8 +12,8 @@ ol, ul, li {list-style-type: none}
 fieldset,img{border: medium none}
 caption,th{text-align: left}
 table{border-collapse: collapse;border-spacing: 0;}
-body{font: 12px/1.5 Arial,"微软雅黑",Helvetica,sans-serif;}
-input,select,textarea{font: 12px/1.5 Arial,"微软雅黑",Helvvetica,sans-serif;}
+body{font: 12px/1.5 "Microsoft YaHei",Arial,Helvetica,sans-serif;}
+input,select,textarea{font: 12px/1.5 "Microsoft YaHei",Arial,Helvvetica,sans-serif;}
 i,cite,em{font-style: normal}
 input,button,select,textarea{outline: none}
 button{cursor: pointer;}
@@ -38,7 +38,7 @@ output{display: inline;}
   display: inline-block;
   text-align: center;
   border-radius: 5px;
-  font-family: "微软雅黑";
+  font-family: "Microsoft YaHei";
   cursor: pointer;
 }
 /*超出部分隐藏的通用样式*/

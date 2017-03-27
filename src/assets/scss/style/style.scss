@@ -1,4 +1,34 @@
-﻿em,i{font-style: normal;}
+﻿html, body {
+  height: 100%;
+}
+
+body, textarea, input, button, select, keygen, legend, td, th, li, p, a {
+  font: 12px/1.14 "Microsoft YaHei", arial, \5b8b\4f53;
+  color: #666;
+  outline: 0;
+}
+label {
+    font-weight: normal!important;
+}
+h1, h2, h3, h4, h5, h6, div {
+  font-family: "Microsoft YaHei", arial, \5b8b\4f53;
+}
+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+li {
+  list-style: none;
+}
+em,i{font-style: normal;}
 ul,ol,li{padding: 0;margin: 0;}
 
 .fs14{font-size: 14px;}
@@ -34,3 +64,67 @@ ul,ol,li{padding: 0;margin: 0;}
 
 .color_black{color: #000;}
 .hidden{display: none;}
+
+.mid_line {
+  @include bg_image("mid_line.jpg", "0px 12px no-repeat");
+}
+
+.color_red {
+  color: $red
+}
+
+.color_blue {
+  color: $blue
+}
+
+.color_green {
+  color: $green !important;
+}
+
+.color_grey {
+  color: $grey
+}
+
+.color_orange {
+  color: $orange
+}
+
+.color_yellow {
+  color: $yellow
+}
+
+.color_purple {
+  color: $purple
+}
+
+.bg_red {
+  background: $red
+}
+
+.bg_blue {
+  background: $blue_dark
+}
+
+.bg_green {
+  background: $green_light
+}
+
+.bg_grey {
+  background: $grey
+}
+
+.bg_orange {
+  background: $orange_light
+}
+
+.bg_yellow {
+  background: $yellow_light
+}
+
+.bg_purple {
+  background: $purple
+}
+
+.bg_white{
+  background-color: #fff;
+}

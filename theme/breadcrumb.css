@@ -102,13 +102,14 @@
     clear: both;
 }
 
-.el-breadcrumb .go-back>.el-breadcrumb__item__inner{
-    margin-right: 15px;
+.el-breadcrumb .go-back .el-breadcrumb__item__inner{
+    margin-right: 10px;
 }
 
-.el-breadcrumb .add-text>.el-breadcrumb__item__inner{
+.el-breadcrumb .add-text .el-breadcrumb__item__inner{
     color: #333 !important;
     font-weight: 700;
+    font-size: 18px;
 }
 
 .el-breadcrumb__separator{
