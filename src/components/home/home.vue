@@ -350,6 +350,10 @@
               margin-bottom: 10px;
               font-size: 16px;
 
+              p{
+                height: 20px;
+                line-height: 20px;
+              }
               .event-time{
                 color: #666;
               }
