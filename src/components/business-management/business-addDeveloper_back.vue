@@ -16,19 +16,21 @@
 			  	<el-row>
 			  		<el-col :span="12">
 					  	<el-form-item label="所属品牌：" prop="developerBrand">
-					    	<!-- <el-select v-model="addDeveloperFormData.developerBrand" multiple placeholder="请选择开发商品牌" style="width: 100%;">
+					    	<el-select
+							    v-model="checkBrandListOption"
+							    multiple
+							    filterable
+							    remote
+							    placeholder="请输入搜索关键字"
+							    :remote-method="remoteMethod"
+							    :loading="loading" style="width: 100%;">
 							    <el-option
 							      v-for="item in brandOptions"
+							      :key="item.developerId"
 							      :label="item.developerName"
 							      :value="item.developerId">
 							    </el-option>
-						  	</el-select> -->
-						  	<div class="select-brandDeveloper">
-						  		<ul class="checkBrandList">
-						  			<li class="default-text">请选择开发商品牌</li>
-						  		</ul>
-						  		<span class="btn-select" @click="brandDialog.dialogVisible = true">选择开发商品牌</span>
-						  	</div>
+						  	</el-select>
 					  	</el-form-item>			  			
 			  		</el-col>
 			  	</el-row>
@@ -185,25 +187,28 @@
 					},
 					{
 						developerId: 102,
-						developerName: '滨江集团002'
+						developerName: '黄河集团002'
 					},
 					{
 						developerId: 103,
-						developerName: '滨江集团003'
+						developerName: '大连集团003'
 					},
 					{
 						developerId: 104,
-						developerName: '滨江集团004'
+						developerName: '成都公司004'
 					},
 					{
 						developerId: 105,
-						developerName: '滨江集团005'
+						developerName: '天津科技005'
 					},
 					{
 						developerId: 106,
 						developerName: '滨江集团006'
 					}
 				],
+				list: [],
+				checkBrandListOption: [],
+				loading: false,
 				labelPosition: 'right',
 				addDeveloperFormData: {
 					developerName: '',
@@ -246,6 +251,12 @@
 			}
 		},
 
+	 	mounted() {
+		    this.list = this.brandOptions.map(item => {
+		        return { value: developerId, label: developerName };
+		    });
+	    },
+
 		methods: {
 			//品牌开发商弹窗
 			handleBrandDeveloper() {
@@ -283,6 +294,22 @@
 
 				this.brandDialog.dialogVisible = false;
             },
+            remoteMethod(query) {
+            	console.log(query);
+		        if (query !== '') {
+		          	this.loading = true;
+		          	setTimeout(() => {
+			            this.loading = false;
+			            this.checkBrandListOption = this.list.filter(item => {
+			              // return item.label.toLowerCase().indexOf(query.toLowerCase()) > -1;
+			              console.log(item);
+			              return item.label;
+			            });
+		          	}, 200);
+		        } else {
+		          this.checkBrandListOption = [];
+		        }
+		     },
             //添加开发商提交
       		onSubmit(formName) {
 	        	this.$refs[formName].validate((valid) => {

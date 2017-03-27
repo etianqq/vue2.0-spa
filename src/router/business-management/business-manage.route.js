@@ -6,7 +6,11 @@ const businessManagementComponent = resolve => {
 };
 
 const businessAddDeveloperComponent = resolve => {
-	require(['@/components/business-management/business-addDeveloper.vue'], resolve)
+  require(['@/components/business-management/business-addDeveloper.vue'], resolve)
+};
+
+const businessAddBuildComponent = resolve => {
+	require(['@/components/business-management/business-addBuilding.vue'], resolve)
 };
 
 const businessManagementRoutes = [
@@ -16,9 +20,14 @@ const businessManagementRoutes = [
     component: businessManagementComponent
   },
   {
-  	path: 'business-addDeveloper',
-  	name: 'business-addDeveloper',
-  	component: businessAddDeveloperComponent
+    path: 'business-addDeveloper',
+    name: 'business-addDeveloper',
+    component: businessAddDeveloperComponent
+  },
+  {
+  	path: 'business-addBuilding',
+  	name: 'business-addBuilding',
+  	component: businessAddBuildComponent
   }
 ];
 
