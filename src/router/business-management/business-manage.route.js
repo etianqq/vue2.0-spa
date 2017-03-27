@@ -20,14 +20,14 @@ const businessManagementRoutes = [
     component: businessManagementComponent
   },
   {
-    path: 'business-addDeveloper',
+    path: 'business-management/business-addDeveloper',
     name: 'business-addDeveloper',
     component: businessAddDeveloperComponent
   },
   {
-  	path: 'business-addBuilding',
-  	name: 'business-addBuilding',
-  	component: businessAddBuildComponent
+    path: 'business-management/business-addBuilding',
+    name: 'business-addBuilding',
+    component: businessAddBuildComponent
   }
 ];
 
