@@ -19,10 +19,6 @@ npm run build-integrate
 npm run build-beta
 npm run build-demo
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
 # 项目遵循的格式规则
 
 ## 目录和文件名
@@ -33,5 +29,9 @@ npm run build --report
 ## HTML:
     标签名：中划线命名法，只包含小写字母和中划线，如<el-col></el-col>
     属性名：中划线命名法，只包含小写字母和中划线，如<el-menu default-active="2"></el-menu>
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
