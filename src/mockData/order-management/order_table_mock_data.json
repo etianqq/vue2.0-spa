@@ -1,0 +1,87 @@
+{
+	"Code": 0,
+	"Message": "",
+	"Data": [
+		{
+			"orderId": 001,
+			"buildingName": "双湖星城",
+			"companyShop": "太原市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523365",
+			"status": 1,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 002,
+			"buildingName": "中和露骨成",
+			"companyShop": "杭州市迎泽区房地产代理公司",
+			"customerName": "钟爱红",
+			"customerPhone": "18532523001",
+			"status": 2,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 003,
+			"buildingName": "黑星城",
+			"companyShop": "天津市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523365",
+			"status": 3,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 004,
+			"buildingName": "太行新屋",
+			"companyShop": "上海市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523002",
+			"status": 4,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 005,
+			"buildingName": "广元泰城",
+			"companyShop": "成都市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523365",
+			"status": 1,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 006,
+			"buildingName": "万象城",
+			"companyShop": "日照市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523365",
+			"status": 5,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 007,
+			"buildingName": "紫金花园",
+			"companyShop": "衢州市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523365",
+			"status": 1,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 008,
+			"buildingName": "流星悦城",
+			"companyShop": "广元市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523365",
+			"status": 1,
+			"date": "2017-02-15 15:33"
+		},
+		{
+			"orderId": 009,
+			"buildingName": "双湖星城",
+			"companyShop": "金牛市迎泽区房地产代理公司",
+			"customerName": "万新房",
+			"customerPhone": "18532523365",
+			"status": 1,
+			"date": "2017-02-15 15:33"
+		}
+	]
+}

@@ -42,9 +42,13 @@
         </el-row>
         <div class="order-table">
             <el-table :data="tableData" stripe style="width: 100%">
-            <el-table-column prop="date" label="日期"></el-table-column>
-            <el-table-column prop="name" label="姓名"></el-table-column>
-            <el-table-column prop="address" label="地址"></el-table-column>
+            <el-table-column prop="number" label="序号" width="55"></el-table-column>
+            <el-table-column prop="buildingName" label="楼盘名称"></el-table-column>
+            <el-table-column prop="companyShop" label="经纪门店"></el-table-column>
+            <el-table-column prop="customer" label="客户"></el-table-column>
+            <el-table-column prop="customerPhone" label="手机号"></el-table-column>
+            <el-table-column prop="status" label="状态"></el-table-column>
+            <el-table-column prop="date" label="最新操作时间"></el-table-column>
           </el-table>
         </div>
     </div>
@@ -82,6 +86,12 @@
                 }
             }
         }
+
+        .order-table{
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+        }
 	}
 </style>
 <script>
@@ -106,22 +116,22 @@
                     }
                 },
                 tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
+                  date: '2016-05-02',
+                  name: '王小虎',
+                  address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                  date: '2016-05-04',
+                  name: '王小虎',
+                  address: '上海市普陀区金沙江路 1517 弄'
+                }, {
+                  date: '2016-05-01',
+                  name: '王小虎',
+                  address: '上海市普陀区金沙江路 1519 弄'
+                }, {
+                  date: '2016-05-03',
+                  name: '王小虎',
+                  address: '上海市普陀区金沙江路 1516 弄'
+                }]
             }
         },
 
