@@ -22,30 +22,30 @@
         </el-row>
         <el-row class="btn-list">
             <el-col :span="2">
-                <el-button class="btn-all btn-hover">全部<i>（59）</i></el-button>
+                <el-button class="btn-all btn-hover" :class="[activeName == 'all' ? 'active' : '']" name="all" @click="handleSelectType('all')">全部<i>（59）</i></el-button>
             </el-col>
             <el-col :span="2" class="ml20">
-                <el-button class="btn-push-cusomter btn-hover">推客<i>（59）</i></el-button>
+                <el-button class="btn-push-cusomter btn-hover" :class="[activeName == 'push' ? 'active' : '']" name="push" @click="handleSelectType('push')">推客<i>（59）</i></el-button>
             </el-col>
             <el-col :span="2" class="ml20">
-                <el-button class="btn-visited btn-hover">到访<i>（59）</i></el-button>
+                <el-button class="btn-visited btn-hover" :class="[activeName == 'visited' ? 'active' : '']" name="visited" @click="handleSelectType('visited')">到访<i>（59）</i></el-button>
             </el-col>
             <el-col :span="2" class="ml20">
-                <el-button class="btn-voucher btn-hover">认筹<i>（59）</i></el-button>
+                <el-button class="btn-voucher btn-hover" :class="[activeName == 'voucher' ? 'active' : '']" name="voucher" @click="handleSelectType('voucher')">认筹<i>（59）</i></el-button>
             </el-col>
             <el-col :span="2" class="ml20">
-                <el-button class="btn-sell btn-hover">认购<i>（59）</i></el-button>
+                <el-button class="btn-sell btn-hover" :class="[activeName == 'sell' ? 'active' : '']" name="sell" @click="handleSelectType('sell')">认购<i>（59）</i></el-button>
             </el-col>
             <el-col :span="2" class="ml20">
-                <el-button class="btn-deal btn-hover">成交<i>（59）</i></el-button>
+                <el-button class="btn-deal btn-hover" :class="[activeName == 'deal' ? 'active' : '']" name="deal" @click="handleSelectType('deal')">成交<i>（59）</i></el-button>
             </el-col>
         </el-row>
         <div class="order-table">
             <el-table :data="tableData" stripe border style="width: 100%">
-                <el-table-column type="index" label="序号" width="80"></el-table-column>
+                <el-table-column type="index" label="序号" width="60"></el-table-column>
                 <el-table-column prop="buildingName" label="楼盘名称"></el-table-column>
-                <el-table-column prop="companyShop" label="经纪门店"></el-table-column>
-                <el-table-column prop="customerName" label="客户" width="120"></el-table-column>
+                <el-table-column prop="companyShop" label="经纪门店" width="220"></el-table-column>
+                <el-table-column prop="customerName" label="客户" width="100"></el-table-column>
                 <el-table-column prop="customerPhone" label="手机号"></el-table-column>
                 <el-table-column prop="status" label="状态">
                     <template scope="scope">
@@ -95,6 +95,11 @@
                     color: #fff;
                 }
             }
+
+            .active{
+                background-color: #2795ee;
+                color: #fff;
+            }
         }
 
         .order-table{
@@ -109,6 +114,7 @@
     export default{
         data() {
             return {
+                activeName: "all",
                 keyWords: '',
                 tableData: []
             }
@@ -160,6 +166,10 @@
                 if(event.keyCode == 13){
                     console.log(this.keyWords);
                 }
+            },
+            //类型选择
+            handleSelectType(name){
+                this.activeName = name;
             }
         },
 
