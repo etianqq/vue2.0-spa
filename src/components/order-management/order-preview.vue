@@ -41,13 +41,17 @@
             </el-col>
         </el-row>
         <div class="order-table">
-            <el-table :data="tableData" stripe style="width: 100%">
-            <el-table-column prop="number" label="序号" width="55"></el-table-column>
+            <el-table :data="tableData" stripe border style="width: 100%">
+            <el-table-column type="index" label="序号" width="80"></el-table-column>
             <el-table-column prop="buildingName" label="楼盘名称"></el-table-column>
             <el-table-column prop="companyShop" label="经纪门店"></el-table-column>
-            <el-table-column prop="customer" label="客户"></el-table-column>
+            <el-table-column prop="customerName" label="客户" width="120"></el-table-column>
             <el-table-column prop="customerPhone" label="手机号"></el-table-column>
-            <el-table-column prop="status" label="状态"></el-table-column>
+            <el-table-column prop="status" label="状态">
+                <template scope="scope">
+                    <span >{{scope.row.statusText}}</span>
+                </template>
+            </el-table-column>
             <el-table-column prop="date" label="最新操作时间"></el-table-column>
           </el-table>
         </div>
@@ -95,67 +99,47 @@
 	}
 </style>
 <script>
+    import { orderTableService } from '../../service/order-management/order_table.service'
     export default{
         data() {
             return {
                 keyWords: '',
-                developerList: {
-                    count: '',
-                    items: [
-                        {
-                            childItems: []
-                        }
-                    ]
-                },
-                developerChildList: [],
-                reNewDialog: {
-                    visible: false,
-                    title: '',
-                    formData: {
-                        newDate: ''
-                    }
-                },
-                tableData: [{
-                  date: '2016-05-02',
-                  name: '王小虎',
-                  address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                  date: '2016-05-04',
-                  name: '王小虎',
-                  address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                  date: '2016-05-01',
-                  name: '王小虎',
-                  address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                  date: '2016-05-03',
-                  name: '王小虎',
-                  address: '上海市普陀区金沙江路 1516 弄'
-                }]
+                tableData: []
             }
         },
 
         created() {
-            this.getDeveloperList();
+            this.getOrderTable();
         },
 
         methods: {
-            getDeveloperList(){
-                console.log("this is api")
+            getOrderTable(){
+                orderTableService.getOrderTableData().then((response) => {
+                    var result = response.data.Data;
 
-                // this.$http.get('../../mockData/business_mock_data.json',
-                //     {
-                //         params: params,
-                //         headers: headers
-                //     })
-                //     .then((response) => {
-                //         console.log(response);
-                //     },(response) => {
-                //         console.log("error response");
-                //     })
-                //     .catch(function(response) {
-                //         //do something
-                //     });
+                    result.forEach(function(item, index){
+                        switch(item.status){
+                            case 1: 
+                                item.statusText = "等待界定";
+                                break;
+                            case 2: 
+                                item.statusText = "界定成功";
+                                break;
+                            case 3: 
+                                item.statusText = "界定失败";
+                                break;
+                            case 4: 
+                                item.statusText = "界定成功，但未带看失效";
+                                break;
+                            case 5: 
+                                item.statusText = "界定推客";
+                                break;
+                            default: 
+                                break;
+                        }
+                    });
+                    this.tableData = result;
+                });
             },
 
             handleCurrentChange(val) {
