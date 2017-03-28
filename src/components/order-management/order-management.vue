@@ -24,115 +24,23 @@
         </div>
         <div class="order-content">
         	<ul id="order-list">
-        		<li>
+        		<li v-for="item in list">
         			<div class="list-box">
         				<div class="list-sub-box">
-        					<p class="building-name">绿城华瑞</p>
-        					<p class="company">杭州绿城华瑞房地产代理有限公司</p>
+        					<p class="building-name">{{item.buildingName}}</p>
+        					<p class="company">{{item.company}}</p>
         				</div>
         				<div class="list-sub-box">
         					<p class="title">成交<i class="unit">（套）</i></p>
-        					<p class="count">123</p>
+        					<p class="count">{{item.dealCount}}</p>
         				</div>
         				<div class="list-sub-box">
         					<p class="title">推客<i class="unit">（位）</i></p>
-        					<p class="count">123</p>
+        					<p class="count">{{item.pushCount}}</p>
         				</div>
         				<div class="list-sub-box">
         					<p class="title">订单<i class="unit">（个）</i></p>
-        					<p class="count">222</p>
-        				</div>
-        				<div class="list-link">
-        					<router-link to="/order-management/order-preview"><i class="fa fa-chevron-right"></i></router-link>
-        				</div>
-        			</div>
-        		</li>
-        		<li>
-        			<div class="list-box">
-        				<div class="list-sub-box">
-        					<p class="building-name">绿城华瑞</p>
-        					<p class="company">杭州绿城华瑞房地产代理有限公司</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">成交<i class="unit">（套）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">推客<i class="unit">（位）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">订单<i class="unit">（个）</i></p>
-        					<p class="count">222</p>
-        				</div>
-        				<div class="list-link">
-        					<router-link to="/order-management/order-preview"><i class="fa fa-chevron-right"></i></router-link>
-        				</div>
-        			</div>
-        		</li>
-        		<li>
-        			<div class="list-box">
-        				<div class="list-sub-box">
-        					<p class="building-name">绿城华瑞</p>
-        					<p class="company">杭州绿城华瑞房地产代理有限公司</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">成交<i class="unit">（套）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">推客<i class="unit">（位）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">订单<i class="unit">（个）</i></p>
-        					<p class="count">222</p>
-        				</div>
-        				<div class="list-link">
-        					<router-link to="/order-management/order-preview"><i class="fa fa-chevron-right"></i></router-link>
-        				</div>
-        			</div>
-        		</li>
-        		<li>
-        			<div class="list-box">
-        				<div class="list-sub-box">
-        					<p class="building-name">绿城华瑞</p>
-        					<p class="company">杭州绿城华瑞房地产代理有限公司</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">成交<i class="unit">（套）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">推客<i class="unit">（位）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">订单<i class="unit">（个）</i></p>
-        					<p class="count">222</p>
-        				</div>
-        				<div class="list-link">
-        					<router-link to="/order-management/order-preview"><i class="fa fa-chevron-right"></i></router-link>
-        				</div>
-        			</div>
-        		</li>
-        		<li>
-        			<div class="list-box">
-        				<div class="list-sub-box">
-        					<p class="building-name">绿城华瑞</p>
-        					<p class="company">杭州绿城华瑞房地产代理有限公司</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">成交<i class="unit">（套）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">推客<i class="unit">（位）</i></p>
-        					<p class="count">123</p>
-        				</div>
-        				<div class="list-sub-box">
-        					<p class="title">订单<i class="unit">（个）</i></p>
-        					<p class="count">222</p>
+        					<p class="count">{{item.orderCount}}</p>
         				</div>
         				<div class="list-link">
         					<router-link to="/order-management/order-preview"><i class="fa fa-chevron-right"></i></router-link>
@@ -140,6 +48,12 @@
         			</div>
         		</li>
         	</ul>
+            <div class="block text-right">
+                <el-pagination
+                  layout="prev, pager, next"
+                  :total="50">
+                </el-pagination>
+            </div>
         </div>
     </div>
 </template>
@@ -260,50 +174,25 @@
 	}
 </style>
 <script>
+    import { orderService } from '../../service/order-management/order.service'
     export default{
         data() {
             return {
                 keyWords: '',
-                developerList: {
-                    count: '',
-                    items: [
-                        {
-                            childItems: []
-                        }
-                    ]
-                },
-                developerChildList: [],
-                reNewDialog: {
-                    visible: false,
-                    title: '',
-                    formData: {
-                        newDate: ''
-                    }
-                }
+                list: []
             }
         },
 
         created() {
-            this.getDeveloperList();
+            this.getOrderList();
         },
 
         methods: {
-            getDeveloperList(){
-                console.log("this is api");
-
-                // this.$http.get('../../mockData/business_mock_data.json',
-                //     {
-                //         params: params,
-                //         headers: headers
-                //     })
-                //     .then((response) => {
-                //         console.log(response);
-                //     },(response) => {
-                //         console.log("error response");
-                //     })
-                //     .catch(function(response) {
-                //         //do something
-                //     });
+            getOrderList(){
+                orderService.getOrderListData().then((response) => {
+                    var result = response.data.Data;
+                    this.list = result;
+                });
             },
 
             handleCurrentChange(val) {
@@ -317,18 +206,6 @@
             keypress(event){
                 if(event.keyCode == 13){
                     console.log(this.keyWords);
-                }
-            },
-            //续费
-            handleRenewBuy() {
-                var _self = this;
-
-                _self.reNewDialog = {
-                    visible: true,
-                    title: '销冠服务期续费',
-                    formData: {
-                        newDate: ''
-                    }
                 }
             }
         },
