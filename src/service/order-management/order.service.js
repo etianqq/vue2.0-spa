@@ -5,9 +5,13 @@
  * @version $Id$
  */
 import axios from 'axios'
-var orderTableService = {
-  getOrderTableData(){
+var orderService = {
+  getOrderTableData() {
     return axios.get('/order-table-data');
+  },
+
+  getOrderListData() {
+  	return axios.get('/order-list-data');
   }
 }
-export { orderTableService }
+export { orderService }

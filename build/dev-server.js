@@ -35,11 +35,18 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 /*------------S-自己模拟服务端接口返回数据------------*/
 var homeData = require('../src/mockData/home/home.mock.json')
+//订单列表模拟数据
+var orderListData = require('../src/mockData/order-management/order_list_mock_data.json');
 //订单表格模拟数据
 var orderTableData = require('../src/mockData/order-management/order_table_mock_data.json');
+
 var apiRoutes = express.Router()
 apiRoutes.get('/homeData',function (req, res) {
   res.json(homeData);
+})
+
+apiRoutes.get('/order-list-data', function(req, res) {
+  res.json(orderListData)
 })
 
 apiRoutes.get('/order-table-data', function(req, res) {

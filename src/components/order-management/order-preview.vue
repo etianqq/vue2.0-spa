@@ -42,18 +42,24 @@
         </el-row>
         <div class="order-table">
             <el-table :data="tableData" stripe border style="width: 100%">
-            <el-table-column type="index" label="序号" width="80"></el-table-column>
-            <el-table-column prop="buildingName" label="楼盘名称"></el-table-column>
-            <el-table-column prop="companyShop" label="经纪门店"></el-table-column>
-            <el-table-column prop="customerName" label="客户" width="120"></el-table-column>
-            <el-table-column prop="customerPhone" label="手机号"></el-table-column>
-            <el-table-column prop="status" label="状态">
-                <template scope="scope">
-                    <span >{{scope.row.statusText}}</span>
-                </template>
-            </el-table-column>
-            <el-table-column prop="date" label="最新操作时间"></el-table-column>
-          </el-table>
+                <el-table-column type="index" label="序号" width="80"></el-table-column>
+                <el-table-column prop="buildingName" label="楼盘名称"></el-table-column>
+                <el-table-column prop="companyShop" label="经纪门店"></el-table-column>
+                <el-table-column prop="customerName" label="客户" width="120"></el-table-column>
+                <el-table-column prop="customerPhone" label="手机号"></el-table-column>
+                <el-table-column prop="status" label="状态">
+                    <template scope="scope">
+                        <span >{{scope.row.statusText}}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="date" label="最新操作时间"></el-table-column>
+            </el-table>
+            <div class="block text-right mt20">
+                <el-pagination
+                  layout="prev, pager, next"
+                  :total="50">
+                </el-pagination>
+            </div>
         </div>
     </div>
 </template>
@@ -99,7 +105,7 @@
 	}
 </style>
 <script>
-    import { orderTableService } from '../../service/order-management/order_table.service'
+    import { orderService } from '../../service/order-management/order.service'
     export default{
         data() {
             return {
@@ -114,7 +120,7 @@
 
         methods: {
             getOrderTable(){
-                orderTableService.getOrderTableData().then((response) => {
+                orderService.getOrderTableData().then((response) => {
                     var result = response.data.Data;
 
                     result.forEach(function(item, index){
