@@ -118,11 +118,18 @@
     .content-bar {
       margin-left: auto;
       margin-right: auto;
-      width: 1440px;
+      min-width: 1080px;
+      max-width: 1440px;
       padding-top: 55px;
       box-sizing: border-box;
 
       .menu-bar {
+        @media screen and(max-width: 1439px) {
+          width: 200px;
+        }
+        @media screen and(min-width: 1440px) {
+          width: 250px;
+        }
         width: 200px;
         background-color: #fff;
         color: #939393;
