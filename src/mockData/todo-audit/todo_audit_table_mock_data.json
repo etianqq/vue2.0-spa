@@ -1,0 +1,87 @@
+{
+	"Code": 0,
+	"Message": "",
+	"Data": [
+		{
+			"auditId": 1001,
+			"buildingName": "双湖星城",
+			"administrativeRegion": "太原市迎泽区",
+			"type": "新房",
+			"launchCity": "太原市",
+			"commission": "2000元-4000元",
+			"avgPrice": "5800"
+		},
+		{
+			"auditId": 1002,
+			"buildingName": "中和露骨成",
+			"administrativeRegion": "杭州市迎泽区",
+			"type": "二手房",
+			"launchCity": "全国",
+			"commission": "2%-5%",
+			"avgPrice": "2800"
+		},
+		{
+			"auditId": 1003,
+			"buildingName": "黑星城",
+			"administrativeRegion": "天津市迎泽区",
+			"type": "商业地产",
+			"launchCity": "杭州市、宁波市、长沙市、成都市、无锡市",
+			"commission": "7%-8%",
+			"avgPrice": "5600"
+		},
+		{
+			"auditId": 1004,
+			"buildingName": "太行新屋",
+			"administrativeRegion": "上海市迎泽区",
+			"type": "新房",
+			"launchCity": "武汉市",
+			"commission": "2000元-4000元",
+			"avgPrice": "5300"
+		},
+		{
+			"auditId": 1005,
+			"buildingName": "广元泰城",
+			"administrativeRegion": "成都市迎泽区",
+			"type": "新房",
+			"launchCity": "杭州市",
+			"commission": "2%-5%",
+			"avgPrice": "6355"
+		},
+		{
+			"auditId": 1006,
+			"buildingName": "万象城",
+			"administrativeRegion": "日照市迎泽区",
+			"type": "二手房",
+			"launchCity": "长沙市",
+			"commission": "7%-8%",
+			"avgPrice": "4125"
+		},
+		{
+			"auditId": 1007,
+			"buildingName": "紫金花园",
+			"administrativeRegion": "衢州市迎泽区",
+			"type": "二手房",
+			"launchCity": "日照市",
+			"commission": "2000元-4000元",
+			"avgPrice": "5422"
+		},
+		{
+			"auditId": 1008,
+			"buildingName": "流星悦城",
+			"administrativeRegion": "广元市迎泽",
+			"type": "新房",
+			"launchCity": "衢州市",
+			"commission": "2%-5%",
+			"avgPrice": "3600"
+		},
+		{
+			"auditId": 1009,
+			"buildingName": "双湖星城",
+			"administrativeRegion": "金牛市迎泽区",
+			"type": "新房",
+			"launchCity": "上海市",
+			"commission": "7%-8%",
+			"avgPrice": "5822"
+		}
+	]
+}
