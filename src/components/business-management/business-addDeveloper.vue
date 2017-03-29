@@ -262,10 +262,8 @@
         console.log(a);
         console.log(b);
         if(this.multipleSelection.length>2){
-            for(var i in this.selectedOptions){
-                if(this.selectedOptions[i]==b){
-                    return true;
-                }
+            if(this.selectedOptions.indexOf(b)!=-1){
+                return true;
             }
             return false;
         }
