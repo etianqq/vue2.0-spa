@@ -73,7 +73,7 @@
 
 		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible">
 			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper"></el-input>
-			<el-table :data="developerTableData" style="width: 100%" @select="handleCurrentCheckbox">
+			<el-table :data="developerTableData" style="width: 100%" @selection-change="handleCurrentCheckbox">
 		      	<el-table-column prop="dialogDeveloperName" label="开发商名称"></el-table-column>
 		      	<el-table-column :selectable="canSelect" type="selection" width="55"></el-table-column>
 		    </el-table>
@@ -85,6 +85,7 @@
                 <el-pagination class="self-pagination" small
                     layout="prev, pager, next"
                     @current-change="handleCurrentChange"
+                    :page-size="3"
                     :total="50">
                 </el-pagination>
             </div>
@@ -124,7 +125,7 @@
 					border-right: 0;
 					border-top-left-radius: 4px;
 					border-bottom-left-radius: 4px;
-					min-height: 37px;
+					min-height: 36px;
 
 					>li{
 						display: inline-block;
@@ -257,42 +258,38 @@
 		},
 
 		methods: {
-
-      canSelect(a,b){
-        console.log(a);
-        console.log(b);
-        if(this.multipleSelection.length>2){
-            if(this.selectedOptions.indexOf(b)!=-1){
-                return true;
-            }
-            return false;
-        }
-        return true;
-      },
+			//选中三个后禁止
+		    canSelect(item, index){
+		        if(this.multipleSelection.length > 2){
+		            if(this.selectedOptions.indexOf(item.dialogDeveloperId)!= -1){
+		                return true;
+		            }
+		            return false;
+		        }
+		        return true;
+		    },
 			//品牌开发商弹窗
 			handleBrandDeveloper() {
 				this.brandDialog.dialogVisible = true;
 			},
 			//选中品牌开发商
       		handleCurrentCheckbox(checkVal){
+				let length = checkVal.length, 
+					mulLen = this.multipleSelection.length,
+					mulLen2 = this.selectedOptions.length;
 
-				let length = checkVal.length;
-				if(length > 3){
-					this.$message({
-			          	message: '最多可选三个品牌开发商',
-			          	type: 'warning'
-			        });
-				}else{
-					console.log("11");
-	      			this.multipleSelection = checkVal;
+				this.multipleSelection.splice(0, mulLen);
+				this.selectedOptions.splice(0, mulLen2);
+
+				for(let i = 0; i < length; i++){
+					var obj = {
+						dialogDeveloperId: checkVal[i].dialogDeveloperId,
+						dialogDeveloperName: checkVal[i].dialogDeveloperName,
+					}
+					this.multipleSelection.push(obj);
+					this.selectedOptions.push(checkVal[i].dialogDeveloperId);
 				}
-				console.log(this.multipleSelection);
 				this.hasCheckValue = true;
-				// let length = checkVal.length, mulLen = this.multipleSelection.length;
-				// this.multipleSelection.splice(0, mulLen);
-				// for(let i = 0; i < length; i++){
-				// 	this.multipleSelection.push(checkVal[i].dialogDeveloperId);
-				// }
 	      	},
 	      	//品牌开发商搜索
 	      	handleSeacrhDeveloper(val) {
