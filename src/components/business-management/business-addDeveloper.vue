@@ -252,31 +252,31 @@
 				multipleSelection: [],
 				developerSearchQuery: '',
 				hasCheckValue: false,
-        selectedOptions: [1,3,5]
+        		selectedOptions: []
 			}
 		},
 
 		methods: {
 
-      canSelect(a,b){
-        console.log(a);
-        console.log(b);
-        if(this.multipleSelection.length>2){
-            for(var i in this.selectedOptions){
-                if(this.selectedOptions[i]==b){
-                    return true;
-                }
-            }
-            return false;
-        }
-        return true;
-      },
+	      	canSelect(a,b){
+		        console.log(a);
+		        console.log(b);
+		        if(this.multipleSelection.length>2){
+		            for(var i in this.selectedOptions){
+		                if(this.selectedOptions[i]==b){
+		                    return true;
+		                }
+		            }
+		            return false;
+		        }
+		        return true;
+	      	},
 			//品牌开发商弹窗
 			handleBrandDeveloper() {
 				this.brandDialog.dialogVisible = true;
 			},
 			//选中品牌开发商
-      handleCurrentCheckbox(checkVal){
+      		handleCurrentCheckbox(checkVal){
 
 				let length = checkVal.length;
 				if(length > 3){
