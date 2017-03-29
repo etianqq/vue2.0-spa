@@ -384,6 +384,7 @@
     methods:{
       getData(){
         homeService.getHomeData().then((data)=>{
+          console.log(data);
           this.data=data;
         });
       },

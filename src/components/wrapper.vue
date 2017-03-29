@@ -56,7 +56,7 @@
       this.nowPath = this.$route.path.match(/\/[a-z]+-*[a-z]+/)[0]; // 正则只匹配一级路由
     },
     mounted(){
-      // 渲染完毕后，修改菜单的高度沾满屏幕高度
+      // 渲染完毕后，修改菜单的高度占满屏幕高度
       let bodyHeight = document.documentElement.clientHeight-55; // 去除topbar的高度
       document.querySelector(".menu-bar").style.minHeight = bodyHeight+'px';
     },
