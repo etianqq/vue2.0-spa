@@ -84,7 +84,7 @@
 		</el-dialog>
 	</div>
 </template>
-<style lang="scss" rel="stylesheet/scss" scoped>
+<style lang="scss" rel="stylesheet/scss">
 	.input-col{
 		height: 37px;
 		line-height: 37px;
@@ -129,6 +129,7 @@
 						color: #20a0ff;
 						padding: 5px;
 						border-radius: 4px;
+						margin-right: 5px;
 						>i{
 							padding-left: 5px;
 							-moz-transform:scale(.7);
@@ -277,11 +278,15 @@
 				for (var i = 0; i < length; i++) {
 					var li = document.createElement('li');
 					li.className = 'check-active';
-					li.innerHTML = this.multipleSelection[i].dialogDeveloperName +'<i class="el-icon-close"></i>';
+					li.innerHTML = this.multipleSelection[i].dialogDeveloperName +'<i class="el-icon-close @click=handleCheckDelete"></i>';
 					table.appendChild(li);
 				}
 
 				this.brandDialog.dialogVisible = false;
+            },
+            //删除选中品牌开发商
+            handleCheckDelete(event) {
+            	console.log(event);
             },
             //添加开发商提交
       		onSubmit(formName) {
