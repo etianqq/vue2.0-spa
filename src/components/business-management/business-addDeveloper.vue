@@ -24,9 +24,16 @@
 							    </el-option>
 						  	</el-select> -->
 						  	<div class="select-brandDeveloper">
-						  		<ul class="checkBrandList">
-						  			<li class="default-text">请选择开发商品牌</li>
-						  		</ul>
+						  		<div v-if="hasCheckValue">					  			
+						  			<ul class="checkBrandList">
+							  			<li v-for="item in multipleSelection" class="check-active" @click="handleCheckDelete(item.dialogDeveloperId)">{{item.dialogDeveloperName}}<i class="el-icon-close"></i></li>
+							  		</ul>
+						  		</div>
+						  		<div v-else>
+							  		<ul class="checkBrandList">
+							  			<li class="default-text">请选择开发商品牌</li>
+							  		</ul>
+						  		</div>
 						  		<span class="btn-select" @click="brandDialog.dialogVisible = true">选择开发商品牌</span>
 						  	</div>
 					  	</el-form-item>			  			
@@ -66,7 +73,7 @@
 
 		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible">
 			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper"></el-input>
-			<el-table :data="developerTableData" style="width: 100%" @selection-change="handleSelectionChange">
+			<el-table :data="developerTableData" style="width: 100%" @select="handleCurrentCheckbox">
 		      	<el-table-column prop="dialogDeveloperName" label="开发商名称"></el-table-column>
 		      	<el-table-column type="selection" width="55"></el-table-column>
 		    </el-table>
@@ -111,8 +118,8 @@
 				display: table;
 				width: 100%;			
 				.checkBrandList{
-					display: table-cell;
-					width: 80%;
+					// display: table-cell;
+					// width: 80%;
 					border: 1px solid #bfcbd9;
 					border-right: 0;
 					border-top-left-radius: 4px;
@@ -243,7 +250,8 @@
 					}
 				],
 				multipleSelection: [],
-				developerSearchQuery: ''
+				developerSearchQuery: '',
+				hasCheckValue: false
 			}
 		},
 
@@ -253,13 +261,21 @@
 				this.brandDialog.dialogVisible = true;
 			},
 			//选中品牌开发商
-			handleSelectionChange(val) {
+	      	handleCurrentCheckbox(checkVal){
+	      		this.multipleSelection = checkVal;
+				this.hasCheckValue = true;
 
-				this.multipleSelection = val;
-				// let length = val.length, mulLen = this.multipleSelection.length;
+				let length = checkVal.length;
+				if(length > 3){
+					this.$message({
+			          	message: '最多可选三个品牌开发商',
+			          	type: 'warning'
+			        });
+				}
+				// let length = checkVal.length, mulLen = this.multipleSelection.length;
 				// this.multipleSelection.splice(0, mulLen);
 				// for(let i = 0; i < length; i++){
-				// 	this.multipleSelection.push(val[i].dialogDeveloperId);
+				// 	this.multipleSelection.push(checkVal[i].dialogDeveloperId);
 				// }
 	      	},
 	      	//品牌开发商搜索
@@ -272,21 +288,22 @@
             },
             //弹窗确定操作
             handleCheckBrandDeveloper() {
-            	var length = this.multipleSelection.length;
-            	var table = document.body.querySelector('.checkBrandList');
-            	document.body.querySelector('.checkBrandList').innerHTML = '';
-				for (var i = 0; i < length; i++) {
-					var li = document.createElement('li');
-					li.className = 'check-active';
-					li.innerHTML = this.multipleSelection[i].dialogDeveloperName +'<i class="el-icon-close @click=handleCheckDelete"></i>';
-					table.appendChild(li);
-				}
-
 				this.brandDialog.dialogVisible = false;
             },
             //删除选中品牌开发商
-            handleCheckDelete(event) {
-            	console.log(event);
+            handleCheckDelete(val) {
+
+            	let length = this.multipleSelection.length;
+            	for(let i = 0; i < length; i++){
+            		if(this.multipleSelection[i].dialogDeveloperId == val){
+            			this.multipleSelection.splice(i, 1);
+            			break;
+            		}
+            	}
+
+            	if(this.multipleSelection == ""){
+            		this.hasCheckValue = false;
+            	}
             },
             //添加开发商提交
       		onSubmit(formName) {
