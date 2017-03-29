@@ -26,7 +26,7 @@
 						  	<div class="select-brandDeveloper">
 						  		<div v-if="hasCheckValue">
 						  			<ul class="checkBrandList">
-							  			<li v-for="item in multipleSelection" class="check-active" @click="handleCheckDelete(item.dialogDeveloperId)">{{item.dialogDeveloperName}}<i class="el-icon-close"></i></li>
+							  			<li v-for="item in multipleSelection" class="check-active" @click="handleCheckDelete(item.applyId)">{{item.applyBrokerName}}<i class="el-icon-close"></i></li>
 							  		</ul>
 						  		</div>
 						  		<div v-else>
@@ -72,9 +72,9 @@
 		</div>
 
 		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible">
-			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper"></el-input>
-			<el-table :data="developerTableData" style="width: 100%" @selection-change="handleCurrentCheckbox">
-		      	<el-table-column prop="dialogDeveloperName" label="开发商名称"></el-table-column>
+			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper" @keypress.native="keypress"></el-input>
+			<el-table :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox">
+		      	<el-table-column prop="applyBrokerName" label="开发商名称"></el-table-column>
 		      	<el-table-column :selectable="canSelect" type="selection" width="55"></el-table-column>
 		    </el-table>
 		 	<div slot="footer" class="dialog-footer">
@@ -85,8 +85,7 @@
                 <el-pagination class="self-pagination" small
                     layout="prev, pager, next"
                     @current-change="handleCurrentChange"
-                    :page-size="3"
-                    :total="50">
+                    :total="relationDeveloperCount">
                 </el-pagination>
             </div>
 		</el-dialog>
@@ -184,6 +183,8 @@
 	}
 </style>
 <script>
+	import { businessDeveloperService } from '../../service/business-management/business.developer.service'
+	import { commonService } from '../../service/common'
 	export default {
 		data() {
 			return {
@@ -224,50 +225,41 @@
 				brandDialog: {
 					dialogVisible: false
 				},
-				developerTableData: [
-					{
-						dialogDeveloperId: 101,
-						dialogDeveloperName: '滨江集团001'
-					},
-					{
-						dialogDeveloperId: 102,
-						dialogDeveloperName: '滨江集团002'
-					},
-					{
-						dialogDeveloperId: 103,
-						dialogDeveloperName: '滨江集团003'
-					},
-					{
-						dialogDeveloperId: 104,
-						dialogDeveloperName: '滨江集团004'
-					},
-					{
-						dialogDeveloperId: 105,
-						dialogDeveloperName: '滨江集团005'
-					},
-					{
-						dialogDeveloperId: 106,
-						dialogDeveloperName: '滨江集团006'
-					}
-				],
-				multipleSelection: [],
+				relationDeveloperTableData: [],
+				relationDeveloperCount: '',
+				relationConfig: {
+					pageIndex: 1
+				},
 				developerSearchQuery: '',
+				multipleSelection: [],
 				hasCheckValue: false,
         		selectedOptions: []
 			}
 		},
 
+		created() {
+			this.handleList(this.relationConfig);
+		},
+
 		methods: {
-			//选中三个后禁止
-		    canSelect(item, index){
-		        if(this.multipleSelection.length > 2){
-		            if(this.selectedOptions.indexOf(item.dialogDeveloperId)!= -1){
-		                return true;
-		            }
-		            return false;
-		        }
-		        return true;
-		    },
+			//获取城市列表
+			handleList(params){
+
+				businessDeveloperService.getList(params).then((response) => {
+
+					switch(response.data.Code){
+						case 4002:
+							commonService.login().then((response) => {
+								location.href = response.data.Data.location;
+							});
+							break;
+						default:
+							this.relationDeveloperTableData = response.data.Data.items;
+							this.relationDeveloperCount = response.data.Data.count;
+							break;
+					}
+				})
+			},
 			//品牌开发商弹窗
 			handleBrandDeveloper() {
 				this.brandDialog.dialogVisible = true;
@@ -283,21 +275,40 @@
 
 				for(let i = 0; i < length; i++){
 					var obj = {
-						dialogDeveloperId: checkVal[i].dialogDeveloperId,
-						dialogDeveloperName: checkVal[i].dialogDeveloperName,
+						applyId: checkVal[i].applyId,
+						applyBrokerName: checkVal[i].applyBrokerName,
 					}
 					this.multipleSelection.push(obj);
-					this.selectedOptions.push(checkVal[i].dialogDeveloperId);
+					this.selectedOptions.push(checkVal[i].applyId);
 				}
 				this.hasCheckValue = true;
 	      	},
+			//选中三个后禁止
+		    canSelect(item, index){
+		        if(this.multipleSelection.length > 2){
+		            if(this.selectedOptions.indexOf(item.applyId)!= -1){
+		                return true;
+		            }
+		            return false;
+		        }
+		        return true;
+		    },	      	
 	      	//品牌开发商搜索
 	      	handleSeacrhDeveloper(val) {
 	      		console.log(val);
+	      		this.developerSearchQuery = val;
+	      		this.handleList(this.relationConfig);
 	      	},
+	      	//键盘事件
+			keypress(event){
+				if(event.keyCode == 13){
+					this.handleList(this.relationConfig);
+				}
+			},
 	      	//弹窗当前页数
 	      	handleCurrentChange(val) {
-                console.log("current page---" + val);
+                this.relationConfig.pageIndex = val;
+                this.handleList(this.relationConfig);
             },
             //弹窗确定操作
             handleCheckBrandDeveloper() {

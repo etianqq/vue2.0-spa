@@ -1,3 +1,3 @@
 module.exports = {
-    host: 'http://saasapi.dev.apitops.com'
+    host: 'http://brokeroa.dev.apitops.com/broker-oa-web/api/v5/'
 };

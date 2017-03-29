@@ -47,6 +47,10 @@ var APIS = {
     CHART: {
         //汇总分析报表
         SUMMARY_CHART: 'topsales-web/v4/report/gather/all'
+    },
+
+    CITY_LSIT: {
+        OA_CITY_LIST_URL: 'common-data/managing-city-list'
     }
 };
 
