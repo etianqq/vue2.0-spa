@@ -262,16 +262,19 @@
 			},
 			//选中品牌开发商
 	      	handleCurrentCheckbox(checkVal){
-	      		this.multipleSelection = checkVal;
-				this.hasCheckValue = true;
 
 				let length = checkVal.length;
 				if(length > 3){
 					this.$message({
 			          	message: '最多可选三个品牌开发商',
 			          	type: 'warning'
-			        });
+			        }); 
+				}else{
+					console.log("11");
+	      			this.multipleSelection = checkVal;
 				}
+				console.log(this.multipleSelection);
+				this.hasCheckValue = true;
 				// let length = checkVal.length, mulLen = this.multipleSelection.length;
 				// this.multipleSelection.splice(0, mulLen);
 				// for(let i = 0; i < length; i++){
