@@ -73,9 +73,9 @@
 
 		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible">
 			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper" @keypress.native="keypress"></el-input>
-			<el-table :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox">
+			<el-table :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox" @toggleRowSelection="handleToggleRowSelected">
 		      	<el-table-column prop="applyBrokerName" label="开发商名称"></el-table-column>
-		      	<el-table-column :selectable="canSelect" type="selection" width="55"></el-table-column>
+		      	<el-table-column :selectable="canSelect" type="selection" :reserve-selection="true" width="55"></el-table-column>
 		    </el-table>
 		 	<div slot="footer" class="dialog-footer">
 		    	<el-button @click="brandDialog.dialogVisible = false" class="mr10">取 消</el-button>
@@ -136,7 +136,7 @@
 						color: #20a0ff;
 						padding: 5px;
 						border-radius: 4px;
-						margin-right: 5px;
+						margin-left: 5px;
 						>i{
 							padding-left: 5px;
 							-moz-transform:scale(.7);
@@ -292,7 +292,12 @@
 		            return false;
 		        }
 		        return true;
-		    },	      	
+		    },
+		    //判断某一行是否选中	      	
+	      	handleToggleRowSelected(row, selected) {
+	      		console.log(row);
+	      		console.log(selected);
+	      	},
 	      	//品牌开发商搜索
 	      	handleSeacrhDeveloper(val) {
 	      		console.log(val);
@@ -319,7 +324,7 @@
 
             	let length = this.multipleSelection.length;
             	for(let i = 0; i < length; i++){
-            		if(this.multipleSelection[i].dialogDeveloperId == val){
+            		if(this.multipleSelection[i].applyId == val){
             			this.multipleSelection.splice(i, 1);
             			break;
             		}
