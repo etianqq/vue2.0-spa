@@ -73,9 +73,9 @@
 
 		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible" @open="setRelationDeveloperTableData">
 			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper" @keypress.native="keypress"></el-input>
-			<el-table ref="table" :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox" @toggleRowSelection="handleToggleRowSelected">
+			<el-table ref="table" :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox">
 		      	<el-table-column prop="applyBrokerName" label="开发商名称"></el-table-column>
-		      	<el-table-column :selectable="canSelect" type="selection" width="55"></el-table-column>
+		      	<el-table-column type="selection" width="55"></el-table-column>
 		    </el-table>
 		 	<div slot="footer" class="dialog-footer">
 		    	<el-button @click="brandDialog.dialogVisible = false" class="mr10">取 消</el-button>
@@ -188,32 +188,6 @@
 	export default {
 		data() {
 			return {
-//				brandOptions: [
-//					{
-//						developerId: 101,
-//						developerName: '滨江集团001'
-//					},
-//					{
-//						developerId: 102,
-//						developerName: '滨江集团002'
-//					},
-//					{
-//						developerId: 103,
-//						developerName: '滨江集团003'
-//					},
-//					{
-//						developerId: 104,
-//						developerName: '滨江集团004'
-//					},
-//					{
-//						developerId: 105,
-//						developerName: '滨江集团005'
-//					},
-//					{
-//						developerId: 106,
-//						developerName: '滨江集团006'
-//					}
-//				],
 				labelPosition: 'right',
 				// 表单数据源
 				addDeveloperFormData: {
@@ -231,18 +205,19 @@
 				relationDeveloperTableData: [],
 				// 品牌列表页总页数
 				relationDeveloperCount: '',
-        // 品牌列表页当前页码
+        		// 品牌列表页当前页码
 				relationConfig: {
-					pageIndex: 1
+					pageIndex: 1,
+					pageSize: 10
 				},
-        // 品牌列表页搜索关键字
+        		// 品牌列表页搜索关键字
 				developerSearchQuery: '',
-        // 输入框已选中的品牌商数据源
+        		// 输入框已选中的品牌商数据源
 				multipleSelection: [],
-        // 是否有选中的品牌商标记
+        		// 是否有选中的品牌商标记
 				hasCheckValue: false,
-        // 品牌列表页中被选中的选项
-        selectedOptions: []
+        		// 品牌列表页中被选中的选项
+        		selectedOptions: []
 			}
 		},
 
@@ -253,7 +228,9 @@
 		methods: {
 			//获取城市列表
 			handleList(params){
-
+				if(this.developerSearchQuery){
+					params = Object.assign({}, {searchQuery: this.developerSearchQuery}, params);
+				}
 				businessDeveloperService.getList(params).then((response) => {
 
 					switch(response.data.Code){
@@ -274,26 +251,27 @@
 				this.brandDialog.dialogVisible = true;
 			},
 			//选中品牌开发商
-      handleCurrentCheckbox(checkVal){
+      		handleCurrentCheckbox(checkVal){
 
-        // 获取mulLen和selLen来判断是否选择超过了3个
-        let mulLen = this.multipleSelection.length,
-          checkLen = checkVal.length;
-        console.log(mulLen);
-        console.log(checkLen);
-        console.log(checkVal);
-        if(mulLen+checkLen>3){
-          alert("最多选三个");
-          this.$refs.table.toggleRowSelection(checkVal[checkVal.length-1],false);
-          return;
-        }
+    			// 获取mulLen和selLen来判断是否选择超过了3个
+        		let mulLen = this.multipleSelection.length,
+          			checkLen = checkVal.length;
+
+		        if(mulLen+checkLen>3){
+		        	this.$message({
+			          	message: '最多选中三个品牌关联开发商',
+			          	type: 'warning'
+			        });
+		          	this.$refs.table.toggleRowSelection(checkVal[checkVal.length-1],false);
+		          	return;
+		        }
 
 				let selLen = this.selectedOptions.length;
-        // 每次选中复选框时，先清除selectedOptions中的选项
-        this.selectedOptions.splice(0, selLen);
+        		// 每次选中复选框时，先清除selectedOptions中的选项
+        		this.selectedOptions.splice(0, selLen);
 
-        // 每次选中复选框时，先清除multipleSelection中的选项
-//				this.multipleSelection.splice(0, mulLen);
+        		// 每次选中复选框时，先清除multipleSelection中的选项
+				//this.multipleSelection.splice(0, mulLen);
 
 				for(let i = 0; i < checkLen; i++){
 					var obj = {
@@ -301,97 +279,71 @@
 						applyBrokerName: checkVal[i].applyBrokerName,
 					}
 					this.selectedOptions.push(obj);
-//					this.selectedOptions.push(checkVal[i].applyId);
 				}
-
-        // 每次只增加最后一个元素，即增量追加
-//        var obj = {
-//          applyId: checkVal[length-1].applyId,
-//          applyBrokerName: checkVal[length-1].applyBrokerName,
-//        }
-//        this.selectedOptions.push(obj);
-        console.log(this.selectedOptions);
-//				this.hasCheckValue = true;
-      },
-			//选中三个后禁止
-      canSelect(item, index){
-//        if(this.multipleSelection.length > 2){
-//            if(this.selectedOptions.indexOf(item.applyId)!= -1){
-//                return true;
-//            }
-//            return false;
-//        }
-        return true;
-		    },
-      //判断某一行是否选中
-      handleToggleRowSelected(row, selected) {
-        console.log(row);
-        console.log(selected);
-      },
-      //品牌开发商搜索
-      handleSeacrhDeveloper(val) {
-        console.log(val);
-        this.developerSearchQuery = val;
-        this.handleList(this.relationConfig);
-      },
-      //键盘事件
+      		},
+	      	//品牌开发商搜索
+	      	handleSeacrhDeveloper(val) {
+		        this.developerSearchQuery = val;
+		        this.handleList(this.relationConfig);
+	      	},
+	      	//键盘事件
 			keypress(event){
 				if(event.keyCode == 13){
 					this.handleList(this.relationConfig);
 				}
 			},
-      //弹窗当前页数
-      handleCurrentChange(val) {
-        this.relationConfig.pageIndex = val;
-        this.handleList(this.relationConfig);
-      },
-      //弹窗确定操作
-      handleCheckBrandDeveloper() {
-        // 点击确定时，才把列表中选中的值传递给multipleSelection
-        for(let i=0;i<this.selectedOptions.length;i++){
-            // 这里只会增加，不会减少
-            this.multipleSelection.push(this.selectedOptions[i]);
-        }
-        // 如果multipleSelection不为空，则把hasCheckValue置为true
-        if(this.multipleSelection.length>0){
-          this.hasCheckValue = true;
-        }
-        this.brandDialog.dialogVisible = false;
-      },
-      //删除选中品牌开发商
-      handleCheckDelete(val) {
+	      	//弹窗当前页数
+	      	handleCurrentChange(val) {
+		        this.relationConfig.pageIndex = val;
+		        this.handleList(this.relationConfig);
+	      	},
+	      	//弹窗确定操作
+	      	handleCheckBrandDeveloper() {
+		        // 点击确定时，才把列表中选中的值传递给multipleSelection
+		        for(let i=0;i<this.selectedOptions.length;i++){
+		            // 这里只会增加，不会减少
+		            this.multipleSelection.push(this.selectedOptions[i]);
+		        }
+		        // 如果multipleSelection不为空，则把hasCheckValue置为true
+		        if(this.multipleSelection.length>0){
+		          	this.hasCheckValue = true;
+		        }
+		        this.brandDialog.dialogVisible = false;
+	      	},
+	      	//删除选中品牌开发商
+	      	handleCheckDelete(val) {
 
-        let length = this.multipleSelection.length;
-        for(let i = 0; i < length; i++){
-          if(this.multipleSelection[i].applyId == val){
-            this.multipleSelection.splice(i, 1);
-            break;
-          }
-        }
+		        let length = this.multipleSelection.length;
+		        for(let i = 0; i < length; i++){
+		          	if(this.multipleSelection[i].applyId == val){
+		            	this.multipleSelection.splice(i, 1);
+		            	break;
+		          	}
+		        }
 
-        if(this.multipleSelection == ""){
-          this.hasCheckValue = false;
-        }
-      },
-      //添加开发商提交
-      onSubmit(formName) {
-        this.$refs[formName].validate((valid) => {
-            if (valid) {
-              alert('submit!');
-            } else {
-              console.log('error submit!!');
-              return false;
-            }
-        });
-      },
+	        	if(this.multipleSelection == ""){
+	          		this.hasCheckValue = false;
+	        	}
+	      	},
+	      	//添加开发商提交
+	      	onSubmit(formName) {
+		        this.$refs[formName].validate((valid) => {
+		            if (valid) {
+		              alert('submit!');
+		            } else {
+		              console.log('error submit!!');
+		              return false;
+		            }
+		        });
+	      	},
 			//添加开发商重置
 			resetForm(formName) {
 				this.$refs[formName].resetFields();
 			},
-      // 设置开发商品牌列表源数据
-      setRelationDeveloperTableData(){
-        this.handleList(this.relationConfig);
-      }
+	      	// 设置开发商品牌列表源数据
+	      	setRelationDeveloperTableData(){
+	        	this.handleList(this.relationConfig);
+	      	}
 		}
 	}
 </script>
