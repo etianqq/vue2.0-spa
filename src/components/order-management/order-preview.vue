@@ -110,7 +110,7 @@
 	}
 </style>
 <script>
-    import { orderService } from '../../service/order-management/order.service'
+    import { orderService } from '../../service/index'
     export default{
         data() {
             return {
@@ -126,32 +126,34 @@
 
         methods: {
             getOrderTable(){
-                orderService.getOrderTableData().then((response) => {
-                    var result = response.data.Data;
-
-                    result.forEach(function(item, index){
+                orderService.getOrderTableData().then(
+                    (response) => {
+                        response.forEach(function(item, index){
                         switch(item.status){
-                            case 1: 
+                            case 1:
                                 item.statusText = "等待界定";
                                 break;
-                            case 2: 
+                            case 2:
                                 item.statusText = "界定成功";
                                 break;
-                            case 3: 
+                            case 3:
                                 item.statusText = "界定失败";
                                 break;
-                            case 4: 
+                            case 4:
                                 item.statusText = "界定成功，但未带看失效";
                                 break;
-                            case 5: 
+                            case 5:
                                 item.statusText = "界定推客";
                                 break;
-                            default: 
+                            default:
                                 break;
                         }
                     });
-                    this.tableData = result;
-                });
+                        this.tableData = response;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             },
 
             handleCurrentChange(val) {
@@ -176,5 +178,5 @@
         mounted() {
             console.log("DOM");
         }
-    }    
+    }
 </script>

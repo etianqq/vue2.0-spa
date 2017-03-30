@@ -7,7 +7,7 @@
                 <span class="tips">订单<i class="color_black">329</i>个</span>
             </div>
         </div>
-        <div class="operate">    	
+        <div class="operate">
 	        <el-row>
 	            <el-col :span="6">
 	                <el-input class="search-input"
@@ -98,7 +98,7 @@
         	padding: 20px 0;
 
         	.btn-refresh{
-                
+
                 i{
                     padding-right: 5px;
                 }
@@ -111,7 +111,7 @@
 				border-radius: 4px;
 				margin-bottom: 14px;
         		.list-box{
-					
+
         			display:-webkit-flex;
         			display:flex;
 
@@ -174,7 +174,7 @@
 	}
 </style>
 <script>
-    import { orderService } from '../../service/order-management/order.service'
+    import { orderService } from '../../service/index'
     export default{
         data() {
             return {
@@ -190,8 +190,9 @@
         methods: {
             getOrderList(){
                 orderService.getOrderListData().then((response) => {
-                    var result = response.data.Data;
-                    this.list = result;
+                    this.list = response;
+                }).catch(error => {
+                    console.log(error);
                 });
             },
 

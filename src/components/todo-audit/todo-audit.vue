@@ -44,7 +44,7 @@
                   layout="prev, pager, next"
                   :total="50">
                 </el-pagination>
-            </div>            
+            </div>
         </div>
     </div>
 </template>
@@ -77,7 +77,7 @@
         	padding: 15px;
         	background-color: #fff;
         	border-radius: 4px;
-			
+
 			.el-table th:nth-child(8) > .cell{
 				text-align: center;
 			}
@@ -106,7 +106,7 @@
 	}
 </style>
 <script>
-	import { todoAuditService } from "../../service/todo-audit/todo-audit.service";
+	import { todoAuditService } from "../../service/index";
     export default{
         data() {
             return {
@@ -123,8 +123,9 @@
         methods: {
             getTodoAuditTable(){
                 todoAuditService.getTodoAuditData().then((response) => {
-                    var result = response.data.Data;
-                    this.tableData = result;
+                    this.tableData = response;
+                }).catch(error => {
+                    console.log(error);
                 });
             },
 
@@ -150,5 +151,5 @@
         mounted() {
             console.log("DOM");
         }
-    }  
+    }
 </script>

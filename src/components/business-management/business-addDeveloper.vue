@@ -72,7 +72,7 @@
 		</div>
 
 		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible" @open="setRelationDeveloperTableData">
-			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper" @keypress.native="keypress"></el-input>
+			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSearchDeveloper" @keypress.native="keypress"></el-input>
 			<el-table ref="table" :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox">
 		      	<el-table-column prop="applyBrokerName" label="开发商名称"></el-table-column>
 		      	<el-table-column type="selection" width="55"></el-table-column>
@@ -183,7 +183,7 @@
 	}
 </style>
 <script>
-	import { businessDeveloperService } from '../../service/business-management/business.developer.service'
+	import { businessDeveloperService } from '../../service/index'
 	import { commonService } from '../../service/common'
 	export default {
 		data() {
@@ -232,16 +232,15 @@
 					params = Object.assign({}, {searchQuery: this.developerSearchQuery}, params);
 				}
 				businessDeveloperService.getList(params).then((response) => {
-
-					switch(response.data.Code){
+					switch(response.Code){
 						case 4002:
 							commonService.login().then((response) => {
-								location.href = response.data.Data.location;
+								location.href = response.location;
 							});
 							break;
 						default:
-							this.relationDeveloperTableData = response.data.Data.items;
-							this.relationDeveloperCount = response.data.Data.count;
+							this.relationDeveloperTableData = response.items;
+							this.relationDeveloperCount = response.count;
 							break;
 					}
 				})
@@ -277,12 +276,12 @@
 					var obj = {
 						applyId: checkVal[i].applyId,
 						applyBrokerName: checkVal[i].applyBrokerName,
-					}
+					};
 					this.selectedOptions.push(obj);
 				}
       		},
 	      	//品牌开发商搜索
-	      	handleSeacrhDeveloper(val) {
+	      	handleSearchDeveloper(val) {
 		        this.developerSearchQuery = val;
 		        this.handleList(this.relationConfig);
 	      	},
