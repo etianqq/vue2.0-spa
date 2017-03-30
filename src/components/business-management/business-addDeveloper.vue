@@ -75,7 +75,7 @@
 			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper" @keypress.native="keypress"></el-input>
 			<el-table :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox" ref="table">
 		      	<el-table-column prop="applyBrokerName" label="开发商名称"></el-table-column>
-		      	<el-table-column :selectable="canSelect" type="selection" width="55"></el-table-column>
+		      	<el-table-column :selectable="canSelect" type="selection" :reserve-selection="true" width="55"></el-table-column>
 		    </el-table>
 		 	<div slot="footer" class="dialog-footer">
 		    	<el-button @click="handleCloseDialog" class="mr10">取 消</el-button>
@@ -242,7 +242,7 @@
 		},
 
 		methods: {
-			//获取城市列表
+			//获取列表
 			handleList(params){
 
 				businessDeveloperService.getList(params).then((response) => {
@@ -318,9 +318,13 @@
             //弹窗确定操作
             handleCheckBrandDeveloper() {
 				this.brandDialog.dialogVisible = false;
+				this.relationConfig.pageIndex = 1;
+				this.developerSearchQuery = '';
             },
             //关闭弹窗
             handleCloseDialog() {
+				this.relationConfig.pageIndex = 1;
+				this.developerSearchQuery = '';
             	this.brandDialog.dialogVisible = false;
 				if(this.multipleSelection == ""){
             		this.hasCheckValue = false;
