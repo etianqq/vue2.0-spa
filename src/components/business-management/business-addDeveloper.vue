@@ -71,7 +71,7 @@
 			</el-form>
 		</div>
 
-		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible">
+		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible" :close-on-click-modal="false">
 			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper" @keypress.native="keypress"></el-input>
 			<el-table :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox" ref="table">
 		      	<el-table-column prop="applyBrokerName" label="开发商名称"></el-table-column>
@@ -85,6 +85,7 @@
                 <el-pagination class="self-pagination" small
                     layout="prev, pager, next"
                     @current-change="handleCurrentChange"
+                    :current-page="relationConfig.pageIndex"
                     :total="relationDeveloperCount">
                 </el-pagination>
             </div>
@@ -228,7 +229,8 @@
 				relationDeveloperTableData: [],
 				relationDeveloperCount: '',
 				relationConfig: {
-					pageIndex: 1
+					pageIndex: 1,
+					pageSize: 10
 				},
 				developerSearchQuery: '',
 				multipleSelection: [],
@@ -244,6 +246,9 @@
 		methods: {
 			//获取列表
 			handleList(params){
+				if(this.developerSearchQuery){
+					params = Object.assign({}, {searchQuery: this.developerSearchQuery}, params);
+				}
 
 				businessDeveloperService.getList(params).then((response) => {
 
@@ -263,6 +268,9 @@
 			//品牌开发商弹窗
 			handleBrandDeveloper() {
 				this.brandDialog.dialogVisible = true;
+				this.relationConfig.pageIndex = 1;
+				this.developerSearchQuery = '';
+				this.handleList(this.relationConfig);
 				this.$refs.table.clearSelection(this.multipleSelection);
 			},
 			//选中品牌开发商
@@ -282,7 +290,11 @@
 					this.multipleSelection.push(obj);
 					this.selectedOptions.push(checkVal[i].applyId);
 				}
-				this.hasCheckValue = true;
+				if(this.multipleSelection == ""){
+            		this.hasCheckValue = false;
+            	}else{
+					this.hasCheckValue = true;
+            	}
 	      	},
 			//选中三个后禁止
 		    canSelect(item, index){
@@ -318,13 +330,9 @@
             //弹窗确定操作
             handleCheckBrandDeveloper() {
 				this.brandDialog.dialogVisible = false;
-				this.relationConfig.pageIndex = 1;
-				this.developerSearchQuery = '';
             },
             //关闭弹窗
             handleCloseDialog() {
-				this.relationConfig.pageIndex = 1;
-				this.developerSearchQuery = '';
             	this.brandDialog.dialogVisible = false;
 				if(this.multipleSelection == ""){
             		this.hasCheckValue = false;

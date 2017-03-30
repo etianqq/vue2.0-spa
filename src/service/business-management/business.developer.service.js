@@ -5,10 +5,7 @@ import axios from 'axios'
 
 var businessDeveloperService = {
   getList(params){
-  	var data = {
-  		pageIndex: params.pageIndex
-  	};
-
+  
   	var config = {
   		url: 'broker-apply/list',
   		method: 'get',
@@ -16,9 +13,7 @@ var businessDeveloperService = {
   		headers: {
   			UserToken: '90abf029-3f9a-47b3-89ff-4964c4bf2054'
   		},
-  		params: {
-  			pageIndex: params.pageIndex
-  		},
+  		params: params,
   		withCredentials: true
   	};
     return axios(config);
