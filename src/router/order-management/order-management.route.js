@@ -17,7 +17,7 @@ const orderManagementRoutes = [
   },
   {
     path: 'order-management/order-preview',
-    name: 'order-management',
+    name: 'order-management-preview',
     component: orderPreviewComponent
   }
 ];

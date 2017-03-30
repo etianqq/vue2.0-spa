@@ -1,37 +1,38 @@
 /**
  * Created by jiangyan on 2017/3/13.
  */
-import Vue from 'vue'
-import VueResource from 'vue-resource'
+
 import axios from 'axios'
+import router from '../router/index'
+import {homeService} from './home/home.service'
+import {buildingService} from './building-management/building-management.service'
+import {businessDeveloperService} from './business-management/business.developer.service'
+import {todoAuditService} from './todo-audit/todo-audit.service'
 
-Vue.use(VueResource);
+axios.interceptors.response.use(
+    response => {
+        console.log("response")
+        console.log(response);
+        console.log("response.data")
+        console.log(response.data);
+        // 如果是未登录，那么把响应reject掉
+        if (response.data.Code == 4002) {
+            console.log("response.Message");
+            console.log(response.data.Message);
+            router.replace('/login');
+            return Promise.reject(response.data.Message);
+        } else {
+            return Promise.resolve(response.data.data);
+        }
+    },
+    error => {
+        return Promise.reject(error.response);
+    }
+);
 
-//添加响应拦截器
-// axios.interceptors.response.use(function (response) {
-// 	// 对响应数据做点什么
-// 	switch(response.data.Code){
-// 		case 4002:
-// 			var referrer =  encodeURIComponent(window.location.href);
-//             var data = {
-//                 callback: referrer
-//             };
-// 		  	var config = {
-// 		  		url: 'authentication/oauth/login',
-// 		  		method: 'get',
-// 		  		baseURL: HOST.host,
-// 		  		headers: {
-// 		  			UserToken: '90abf029-3f9a-47b3-89ff-4964c4bf2054'
-// 		  		},
-// 		  		params: data,
-// 		  		withCredentials: true
-// 		  	};
-// 		    axios(config);
-// 			break;
-// 		default:
-// 		//do nothing
-// 	}
-// }, function (error) {
-// 	// 对响应错误做点什么
-// 	return Promise.reject(error);
-// });
+export {
+    homeService,
+    buildingService,
+    businessDeveloperService,
+    todoAuditService
+}

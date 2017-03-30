@@ -7,7 +7,7 @@
               <h2>合作开发商</h2>
               <div class="sub">
                 <div class="total">
-                  <em>108</em>
+                  <em>{{business}}</em>
                   <p>合作开发商总计</p>
                 </div>
                 <div class="new-in">
@@ -75,7 +75,7 @@
           <div class="grid-content">
             <div class="operate">
               <h2>订单统计</h2>
-              <el-select v-model="value" class="switch-date-type">
+              <el-select v-model="type" class="switch-date-type">
                 <el-option :label="'周'" :value="0"></el-option>
                 <el-option :label="'月'" :value="1"></el-option>
                 <el-option :label="'年'" :value="2"></el-option>
@@ -371,22 +371,26 @@
   }
 </style>
 <script>
-  import { homeService } from '../../service/home/home.service'
+  import { homeService } from '../../service/index'
   import echarts from 'echarts'
 
   export default{
 
     data(){
       return {
-          value: 0
+          type: 0,
+          business: 0
       }
     },
     methods:{
       getData(){
-        homeService.getHomeData().then((data)=>{
-          console.log(data);
-          this.data=data;
-        });
+        homeService.getHomeData().then(
+            data => {
+              console.log(data);
+              this.type=data.type;
+              this.business=data.business;
+            }
+        );
       },
 
       renderChart(){

@@ -182,119 +182,23 @@
   }
 </style>
 <script>
+  import { buildingService } from '../../service/index'
   export default {
 
     data(){
       return {
         newBuildings:0,
-        onSaleBuildings:4,
-        auditBuildings:3,
-        noSaleBuildings:1,
-        rejectBuildings:1,
-        buildingList:[
-          {
-            id : 0,
-            img : '../../assets/images/building.jpg', // 这里img路径要用绝对路径
-            title : '双湖星城0',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 0
-          },
-          {
-            id : 1,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城1',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 34000,
-            household : '2房/3房',
-            area : '60-120',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 1
-          },
-          {
-            id : 2,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城2',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 31000,
-            household : '4房/3房',
-            area : '80-170',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 2
-          },
-          {
-            id : 3,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城3',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 3
-          },
-          {
-            id : 4,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城4',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 4
-          },
-          {
-            id : 5,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城5',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 0
-          },
-          {
-            id : 6,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城6',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 0
-          },
-          {
-            id : 7,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城7',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 0
-          },
-          {
-            id : 8,
-            img : '../../assets/images/building.jpg',
-            title : '双湖星城8',
-            tags : ['普通住宅','商铺'],
-            averagePrice : 35000,
-            household : '4房/3房',
-            area : '90-150',
-            addr : '迎泽区滨盛路与长和路交叉路口',
-            status : 0
-          }
-        ],
+        onSaleBuildings:0,
+        auditBuildings:0,
+        noSaleBuildings:0,
+        rejectBuildings:0,
+        buildingList:[],
         operateStatusClasses:['re-shelves','audit','shelves','shelves',''],
         saleStatusClasses:['on-sale','auditing','reject','off-shelf','imperfect']
       }
+    },
+    created(){
+      this.getBuildingData();
     },
     mounted(){
 
@@ -303,6 +207,24 @@
 
     },
     methods:{
+      getBuildingData(){
+          buildingService.getBuildingData().then(
+              data => {
+                  console.log("楼盘管理获取数据成功");
+                  this.newBuildings = data.newBuildings;
+                  this.onSaleBuildings = data.onSaleBuildings;
+                  this.auditBuildings = data.auditBuildings;
+                  this.noSaleBuildings = data.noSaleBuildings;
+                  this.rejectBuildings = data.rejectBuildings;
+                  this.buildingList = data.buildingList;
+              }
+          ).catch(
+              error => {
+                  console.log(error);
+                  console.log("获取数据出错");
+              }
+          )
+      },
       operateStatusFilter: function (status) {
         var operateStatusStr=['重新上架','审核','销冠上架','销冠上架','信息待完善'];
         return operateStatusStr[status];

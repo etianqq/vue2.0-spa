@@ -34,7 +34,10 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 /*------------S-自己模拟服务端接口返回数据------------*/
+// 首页模拟数据源
 var homeData = require('../src/mockData/home/home.mock.json')
+// 楼盘管理模拟数据源
+var buildingData = require('../src/mockData/building-management/building.mock.json');
 //订单列表模拟数据
 var orderListData = require('../src/mockData/order-management/order_list_mock_data.json');
 //订单表格模拟数据
@@ -45,6 +48,10 @@ var todoAuditTableData = require('../src/mockData/todo-audit/todo_audit_table_mo
 var apiRoutes = express.Router()
 apiRoutes.get('/homeData',function (req, res) {
   res.json(homeData);
+});
+
+apiRoutes.get('/buildingData',function (req, res) {
+  res.json(buildingData);
 });
 
 apiRoutes.get('/order-list-data', function(req, res) {
