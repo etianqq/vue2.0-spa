@@ -34,7 +34,7 @@
 							  			<li class="default-text">请选择开发商品牌</li>
 							  		</ul>
 						  		</div>
-						  		<span class="btn-select" @click="brandDialog.dialogVisible = true">选择开发商品牌</span>
+						  		<span class="btn-select" @click="handleBrandDeveloper">选择开发商品牌</span>
 						  	</div>
 					  	</el-form-item>
 			  		</el-col>
@@ -73,12 +73,12 @@
 
 		<el-dialog title="关联品牌开发商" v-model="brandDialog.dialogVisible">
 			<el-input placeholder="请输入搜索关键字" class="developer-search" icon="search" v-model="developerSearchQuery" :on-icon-click="handleSeacrhDeveloper" @keypress.native="keypress"></el-input>
-			<el-table :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox" @toggleRowSelection="handleToggleRowSelected">
+			<el-table :data="relationDeveloperTableData" style="width: 100%" @selection-change="handleCurrentCheckbox" ref="table">
 		      	<el-table-column prop="applyBrokerName" label="开发商名称"></el-table-column>
-		      	<el-table-column :selectable="canSelect" type="selection" :reserve-selection="true" width="55"></el-table-column>
+		      	<el-table-column :selectable="canSelect" type="selection" width="55"></el-table-column>
 		    </el-table>
 		 	<div slot="footer" class="dialog-footer">
-		    	<el-button @click="brandDialog.dialogVisible = false" class="mr10">取 消</el-button>
+		    	<el-button @click="handleCloseDialog" class="mr10">取 消</el-button>
 		    	<el-button type="primary" @click="handleCheckBrandDeveloper" class="ml10">确 定</el-button>
 		  	</div>
 		  	<div class="block text-right">
@@ -263,6 +263,7 @@
 			//品牌开发商弹窗
 			handleBrandDeveloper() {
 				this.brandDialog.dialogVisible = true;
+				this.$refs.table.clearSelection(this.multipleSelection);
 			},
 			//选中品牌开发商
       		handleCurrentCheckbox(checkVal){
@@ -293,10 +294,9 @@
 		        }
 		        return true;
 		    },
-		    //判断某一行是否选中	      	
-	      	handleToggleRowSelected(row, selected) {
-	      		console.log(row);
-	      		console.log(selected);
+		    //清空选中	
+	      	handleClearSelected(selection) {
+	      		console.log(selection);
 	      	},
 	      	//品牌开发商搜索
 	      	handleSeacrhDeveloper(val) {
@@ -318,6 +318,13 @@
             //弹窗确定操作
             handleCheckBrandDeveloper() {
 				this.brandDialog.dialogVisible = false;
+            },
+            //关闭弹窗
+            handleCloseDialog() {
+            	this.brandDialog.dialogVisible = false;
+				if(this.multipleSelection == ""){
+            		this.hasCheckValue = false;
+            	}
             },
             //删除选中品牌开发商
             handleCheckDelete(val) {
