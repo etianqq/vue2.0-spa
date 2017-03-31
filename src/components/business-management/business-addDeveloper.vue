@@ -239,8 +239,8 @@
 							});
 							break;
 						default:
-							this.relationDeveloperTableData = response.items;
-							this.relationDeveloperCount = response.count;
+							this.relationDeveloperTableData = response.Data.items;
+							this.relationDeveloperCount = response.Data.count;
 							break;
 					}
 				})
