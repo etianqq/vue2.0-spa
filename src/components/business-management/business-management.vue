@@ -12,12 +12,13 @@
         </div>
         <el-row class="operate">
             <el-col :span="6">
-                <el-input class="search-input"
-                        v-model="keyWords"
-                        @keypress.native="keypress"
-                        placeholder="请输入搜索关键词">
-                    <el-button slot="prepend" @click="handleSearch" icon="search"></el-button>
-                </el-input>
+                <search-bar :handleSearchChild="handleSearch"></search-bar>
+                <!--<el-input class="search-input"-->
+                          <!--v-model="keyWords"-->
+                          <!--@keypress.native="keypress"-->
+                          <!--placeholder="请输入搜索关键词">-->
+                    <!--<el-button slot="prepend" @click="handleSearch" icon="search"></el-button>-->
+                <!--</el-input>-->
                 <!-- <el-input class="search-input"
                         placeholder="请输入搜索关键词"
                         icon="search"
@@ -33,7 +34,8 @@
                 <el-button><i class="fa fa-circle"></i>即将到期（4）</el-button>
             </el-col>
             <el-col :span="5" :offset="7" class="text-right">
-                <router-link to="/business-management/business-addDeveloper" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
+                <router-link to="/business-management/business-addDeveloper" class="btn-link"><i
+                    class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
             </el-col>
         </el-row>
         <div class="developer">
@@ -45,8 +47,11 @@
                             <span class=""><i class="el-icon-star-off fs14"></i></span>
                             <span class=""><i class="el-icon-star-on fs14"></i></span>
                         </el-col>
-                        <el-col :span="8" :offset="4" class="developer-contacts">{{item.developerContacts}}({{item.developerPosition}}) {{item.developerContactsPhone}}</el-col>
-                        <el-col :span="2" :offset="2" class="text-right"><i class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
+                        <el-col :span="8" :offset="4" class="developer-contacts">
+                            {{item.developerContacts}}({{item.developerPosition}}) {{item.developerContactsPhone}}
+                        </el-col>
+                        <el-col :span="2" :offset="2" class="text-right"><i
+                            class="fa fa-arrow-circle-right cur_pointer"></i></el-col>
                     </el-row>
                     <div v-if="item.developerTag">
                         <el-row>
@@ -79,7 +84,8 @@
                                     <h3>签约时间</h3>
                                     <div>
                                         <p class="color_grey fs14">{{childItem.subBuildingSignDate}}</p>
-                                        <p class="color_grey fs14">共购买<span>{{childItem.subBuildingTotalDate}}</span>个月</p>
+                                        <p class="color_grey fs14">共购买<span>{{childItem.subBuildingTotalDate}}</span>个月
+                                        </p>
                                     </div>
                                 </el-col>
                                 <el-col :span="6" class="btn-control text-right pr20">
@@ -90,7 +96,7 @@
                                         </span>
                                         <span class="btn-expire-left"><i class="fa fa-chevron-right"></i></span>
                                     </div>
-                                    <div v-else>                                       
+                                    <div v-else>
                                         <span class="developer-renew" @click="handleRenewBuy">续费</span>
                                         <i class="fa fa-chevron-right"></i>
                                     </div>
@@ -101,7 +107,8 @@
                     <el-row class="text-center">
                         <el-col>
                             <span class="btn-addDeveloper">
-                                <router-link to="/business-management/business-addBuilding" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
+                                <router-link to="/business-management/business-addBuilding" class="btn-link"><i
+                                    class="el-icon-circle-cross"></i><i class="text-develop">添加楼盘</i></router-link>
                             </span>
                         </el-col>
                     </el-row>
@@ -109,9 +116,9 @@
             </ul>
             <div class="block text-right">
                 <el-pagination class="self-pagination"
-                    layout="prev, pager, next"
-                    @current-change="handleCurrentChange"
-                    :total="100">
+                               layout="prev, pager, next"
+                               @current-change="handleCurrentChange"
+                               :total="100">
                 </el-pagination>
             </div>
         </div>
@@ -124,7 +131,7 @@
                     <el-col :span="10">
                         <el-input class="input-reset"></el-input>
                     </el-col>
-                    <el-col :span="2" class="el-col-height">个月</el-col>  
+                    <el-col :span="2" class="el-col-height">个月</el-col>
                 </el-row>
             </div>
             <span slot="footer" class="dialog-footer">
@@ -136,20 +143,20 @@
 </template>
 <style lang="scss" rel="stylesheet/scss" scoped>
     //&bull;
-    em{
+    em {
         font-weight: bold;
     }
 
-    .businessList{
-        
-        .total-info{
+    .businessList {
+
+        .total-info {
             width: 100%;
             height: 60px;
             line-height: 60px;
-            display:-webkit-flex;
-            display:flex;
+            display: -webkit-flex;
+            display: flex;
             position: relative;
-            &:after{
+            &:after {
                 position: absolute;
                 right: 0;
                 bottom: 0;
@@ -159,11 +166,16 @@
                 background-color: #e5e5e5;
                 width: 100%;
             }
-            .total-left{
-                -webkit-flex:3;flex:3;
-                .tips{
-                    &:nth-child(1){width: 180px;}
-                    &:last-child{background: none;}
+            .total-left {
+                -webkit-flex: 3;
+                flex: 3;
+                .tips {
+                    &:nth-child(1) {
+                        width: 180px;
+                    }
+                    &:last-child {
+                        background: none;
+                    }
                     width: 220px;
                     display: inline-block;
                     font-size: 14px;
@@ -171,49 +183,52 @@
                     background: url("../../assets/images/mid_line.jpg") no-repeat;
                     background-position: right;
                     text-indent: 20px;
-                    em{
+                    em {
                         letter-spacing: 0px;
                         padding: 0 5px;
                     }
                 }
             }
-            .total-right{
-                -webkit-flex:1;flex:1;
+            .total-right {
+                -webkit-flex: 1;
+                flex: 1;
                 text-align: right;
                 margin-right: 60px;
-                .go-buy{
+                .go-buy {
                     color: #008ee5;
                     font-weight: bold;
                     cursor: pointer;
 
-                    .fa{padding-left: 5px;}
+                    .fa {
+                        padding-left: 5px;
+                    }
                 }
             }
         }
 
-        .operate{
+        .operate {
             padding-top: 15px;
             padding-bottom: 15px;
             position: relative;
-            .btn-refresh{
-                .fa-refresh{
+            .btn-refresh {
+                .fa-refresh {
                     padding-right: 5px;
                 }
             }
-    
-            .expire-tips{
-                .fa-circle{
+
+            .expire-tips {
+                .fa-circle {
                     font-size: 12px;
                     padding-right: 5px;
                     color: #e96151;
-                    -moz-transform:scale(.6);
-                    -webkit-transform:scale(.6);
-                    -ms-transform:scale(.6);
-                    transform:scale(.6);
+                    -moz-transform: scale(.6);
+                    -webkit-transform: scale(.6);
+                    -ms-transform: scale(.6);
+                    transform: scale(.6);
                 }
             }
-            
-            .btn-link{
+
+            .btn-link {
                 display: inline-block;
                 line-height: 1;
                 white-space: nowrap;
@@ -235,112 +250,112 @@
                 font-style: normal;
                 margin-right: 50px;
                 width: 160px;
-                .el-icon-circle-cross{
-                    -moz-transform:rotate(45deg);
-                    -webkit-transform:rotate(45deg);
-                    -ms-transform:rotate(45deg);
-                    transform:rotate(45deg);
+                .el-icon-circle-cross {
+                    -moz-transform: rotate(45deg);
+                    -webkit-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
                 }
-                .text-develop{
+                .text-develop {
                     font-style: normal;
                     padding-left: 10px;
                 }
             }
         }
 
-        .developer{
+        .developer {
             // max-height: 800px;
             // overflow-y: auto;
-            >ul>li{
+            > ul > li {
                 background-color: #fff;
                 border: 1px solid #E5E5E5;
                 border-radius: 4px;
                 margin-bottom: 20px;
                 overflow: hidden;
-                .developer-list-title{
+                .developer-list-title {
                     padding: 0 40px;
                     height: 50px;
                     line-height: 50px;
                     background-color: #fafafa;
-                    i{
+                    i {
                         font-size: 14px;
                         padding-right: 20px;
                     }
                 }
-                .developer-name{
+                .developer-name {
                     color: #40474f;
                     font-weight: bold;
                     font-size: 16px;
                 }
-                .developer-tag{
+                .developer-tag {
                     padding: 0 40px;
                     background-color: #fafafa;
                     border-bottom: 1px solid #E5E5E5;
                     padding-bottom: 10px;
                 }
-                .developer-contacts{
+                .developer-contacts {
                     color: #40474f;
                     font-size: 15px;
                 }
 
-                >.developer-child-list{
+                > .developer-child-list {
 
-                    .developer-child-content{
+                    .developer-child-content {
                         margin: 0 40px;
                         border-bottom: 1px dashed #e5e5e5;
                         padding: 20px 0;
-                        h3{
+                        h3 {
                             color: #40474f;
                             font-size: 15px;
                         }
-                        p{
+                        p {
                             margin: 8px 0;
                         }
 
-                        .line-right{
+                        .line-right {
                             border-right: 1px solid #eef1f6;
                             height: 120px;
                         }
 
-                        .date-view{
-                            >span{
+                        .date-view {
+                            > span {
                                 display: inline-block;
                                 width: 44px;
                                 height: 44px;
                                 line-height: 44px;
                                 text-align: center;
-                                &:nth-child(2),&:nth-child(4){
+                                &:nth-child(2), &:nth-child(4) {
                                     width: 12px;
                                 }
                             }
                         }
 
-                        .btn-control{
+                        .btn-control {
 
-                            .btn-expire{
+                            .btn-expire {
                                 display: table;
                                 float: right;
 
-                                .btn-expire-left{
+                                .btn-expire-left {
                                     display: table-cell;
                                     vertical-align: middle;
-                                    >span{
+                                    > span {
                                         display: block;
                                         margin: 10px;
                                     }
-                                    >i{
+                                    > i {
                                         padding-left: 30px;
                                     }
                                 }
                             }
-                            i{
+                            i {
                                 color: #e5e5e5;
                                 font-size: 18px;
                                 vertical-align: middle;
                                 cursor: pointer;
                             }
 
-                            .developer-renew{
+                            .developer-renew {
                                 display: inline-block;
                                 width: 87px;
                                 height: 35px;
@@ -352,12 +367,12 @@
                                 cursor: pointer;
                                 margin: 36px;
 
-                                &:hover{
+                                &:hover {
                                     background-color: #2896f3;
                                     color: #fff;
                                 }
                             }
-                            .developer-delete{
+                            .developer-delete {
                                 display: inline-block;
                                 width: 87px;
                                 height: 35px;
@@ -369,7 +384,7 @@
                                 cursor: pointer;
                                 margin: 36px;
 
-                                &:hover{
+                                &:hover {
                                     background-color: #757575;
                                     color: #fff;
                                 }
@@ -378,17 +393,17 @@
                     }
                 }
 
-                .btn-addDeveloper{
+                .btn-addDeveloper {
                     line-height: 70px;
                     font-size: 15px;
-                    .el-icon-circle-cross{
+                    .el-icon-circle-cross {
                         color: #20a0ff;
-                        -moz-transform:rotate(45deg);
-                        -webkit-transform:rotate(45deg);
-                        -ms-transform:rotate(45deg);
-                        transform:rotate(45deg);
+                        -moz-transform: rotate(45deg);
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
                     }
-                    .text-develop{
+                    .text-develop {
                         color: #20a0ff;
                         font-size: 14px;
                         padding-left: 10px;
@@ -417,19 +432,22 @@
         //     background-color: #e5e5e5;
         // }
     }
-    .mr20{
+
+    .mr20 {
         margin-right: 20px;
     }
-    .ml20{
+
+    .ml20 {
         margin-left: 20px;
     }
-    .renew-content{
-        .el-col-height{
+
+    .renew-content {
+        .el-col-height {
             height: 37px;
             line-height: 37px;
             display: inline-block;
         }
-        .el-col{
+        .el-col {
             border-bottom: 1px dashed #ccc;
         }
     }
@@ -437,6 +455,7 @@
 </style>
 <script>
     import DeveloperList from '../../mockData/developer_list_mock_data';
+    import searchBar from '../common/search-bar/search-bar.vue';
     export default{
         data() {
             return {
@@ -463,15 +482,17 @@
         created() {
             this.getDeveloperList();
         },
-
+        components:{
+            searchBar
+        },
         methods: {
             getDeveloperList(){
-                var params = {},headers = {}, _self = this;
+                var params = {}, headers = {}, _self = this;
 
                 _self.developerList.count = DeveloperList.Data.count;
                 _self.developerList.items = DeveloperList.Data.items;
                 let childLength = DeveloperList.Data.items.length;
-                for(let i = 0; i < childLength; i++){
+                for (let i = 0; i < childLength; i++) {
                     _self.developerChildList = DeveloperList.Data.items[i].childItems;
                 }
 
@@ -495,14 +516,15 @@
             },
 
             handleSearch(value) {
-                console.log(this.keyWords);
+                console.log("这里是父级组件的处理方法");
+                console.log(value);
             },
             //键盘事件
-            keypress(event){
-                if(event.keyCode == 13){
-                    console.log(this.keyWords);
-                }
-            },
+//            keypress(event){
+//                if (event.keyCode == 13) {
+//                    console.log(this.keyWords);
+//                }
+//            },
             //续费
             handleRenewBuy() {
                 var _self = this;
