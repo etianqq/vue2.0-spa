@@ -235,7 +235,7 @@
 					switch(response.Code){
 						case 4002:
 							commonService.login().then((response) => {
-								location.href = response.location;
+								location.href = response.Data.location;
 							});
 							break;
 						default:

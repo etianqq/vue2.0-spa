@@ -190,7 +190,7 @@
         methods: {
             getOrderList(){
                 orderService.getOrderListData().then((response) => {
-                    this.list = response;
+                    this.list = response.Data;
                 }).catch(error => {
                     console.log(error);
                 });

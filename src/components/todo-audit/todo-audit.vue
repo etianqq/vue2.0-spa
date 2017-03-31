@@ -123,7 +123,7 @@
         methods: {
             getTodoAuditTable(){
                 todoAuditService.getTodoAuditData().then((response) => {
-                    this.tableData = response;
+                    this.tableData = response.Data;
                 }).catch(error => {
                     console.log(error);
                 });

@@ -128,7 +128,8 @@
             getOrderTable(){
                 orderService.getOrderTableData().then(
                     (response) => {
-                        response.forEach(function(item, index){
+                        let res = response.Data;
+                        res.forEach(function(item, index){
                         switch(item.status){
                             case 1:
                                 item.statusText = "等待界定";
@@ -149,7 +150,7 @@
                                 break;
                         }
                     });
-                        this.tableData = response;
+                        this.tableData = res;
                     })
                     .catch(error => {
                         console.log(error);
