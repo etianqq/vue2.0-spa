@@ -386,7 +386,6 @@
       getData(){
         homeService.getHomeData().then(
             data => {
-              console.log(data);
               this.type=data.type;
               this.business=data.business;
             }

@@ -210,7 +210,6 @@
       getBuildingData(){
           buildingService.getBuildingData().then(
               data => {
-                  console.log("楼盘管理获取数据成功");
                   this.newBuildings = data.newBuildings;
                   this.onSaleBuildings = data.onSaleBuildings;
                   this.auditBuildings = data.auditBuildings;
@@ -221,7 +220,6 @@
           ).catch(
               error => {
                   console.log(error);
-                  console.log("获取数据出错");
               }
           )
       },
