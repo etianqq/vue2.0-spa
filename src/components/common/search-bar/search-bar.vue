@@ -1,13 +1,23 @@
 <template>
-    <el-input class="search-input"
-              v-model="keyWords"
-              @keypress.native="keypress"
-              placeholder="请输入搜索关键词">
-        <el-button slot="prepend" @click="handleSearchChild(keyWords)" icon="search"></el-button>
-    </el-input>
+    <div class="search-refresh">
+        <el-input class="search-input"
+                  v-model="keyWords"
+                  @keypress.native="keypress"
+                  placeholder="请输入搜索关键词">
+            <el-button slot="prepend" @click="handleSearchChild(keyWords)" icon="search"></el-button>
+        </el-input>
+        <el-button class="btn-refresh" @click="handleRefresh"><i class="fa fa-refresh"></i>刷新</el-button>
+    </div>
 </template>
-<style>
-
+<style lang="scss" rel="stylesheet/scss" scoped>
+    .search-refresh{
+        .search-input{
+            width: 75%;
+        }
+        .btn-refresh{
+            width: 20%;
+        }
+    }
 </style>
 <script>
     export default {
@@ -16,7 +26,7 @@
                 keyWords:''
             }
         },
-        props:['handleSearchChild'],
+        props:['handleSearchChild','handleRefresh'],
         methods:{
             //键盘事件
             keypress(event){

@@ -1,26 +1,36 @@
 <template>
     <div class="brokerList">
-        <div class="total-info">
-            <div class="total-left">
-                <span class="tips">今日新增经纪人<em class="color_black">24</em>人,&nbsp;</span>
-                <span class="tips">注册经纪人总共<em class="color_black">87</em>人</span>
-                <span class="tips">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                <span class="tips">今日新增拓展经纪门店<em class="color_black">329</em>个,&nbsp;</span>
-                <span class="tips">拓展门店总共<em class="color_black">329</em>个</span>
-            </div>
-        </div>
+        <title-info :titles="
+        [
+            {first:'今日新增经纪人',value:24,last:'人'},
+            {first:'注册经纪人总共',value:87,last:'人'},
+            {first:'今日新增拓展经纪门店',value:3,last:'人'},
+            {first:'拓展门店总共',value:329,last:'人'}
+            ]"></title-info>
+        <!--<div class="total-info">-->
+            <!--<div class="total-left">-->
+                <!--<span class="tips">今日新增经纪人<em class="color_black">24</em>人,&nbsp;</span>-->
+                <!--<span class="tips">注册经纪人总共<em class="color_black">87</em>人</span>-->
+                <!--<span class="tips">&nbsp;&nbsp;|&nbsp;&nbsp;</span>-->
+                <!--<span class="tips">今日新增拓展经纪门店<em class="color_black">329</em>个,&nbsp;</span>-->
+                <!--<span class="tips">拓展门店总共<em class="color_black">329</em>个</span>-->
+            <!--</div>-->
+        <!--</div>-->
         <el-row class="operate">
-            <el-col :span="6">
-                <el-input class="search-input"
-                        v-model="keyWords"
-                        @keypress.native="keypress"
-                        placeholder="请输入搜索关键词">
-                    <el-button slot="prepend" @click="handleSearch" icon="search"></el-button>
-                </el-input>
+            <el-col :span="8">
+                <search-bar :handleSearchChild="handleSearch" :handleRefresh="refreshHandler"></search-bar>
             </el-col>
-            <el-col :span="2" class="text-center">
-                <el-button class="btn-refresh" @click="refreshHander"><i class="fa fa-refresh"></i>刷新</el-button>
-            </el-col>
+            <!--<el-col :span="6">-->
+                <!--<el-input class="search-input"-->
+                        <!--v-model="keyWords"-->
+                        <!--@keypress.native="keypress"-->
+                        <!--placeholder="请输入搜索关键词">-->
+                    <!--<el-button slot="prepend" @click="handleSearch" icon="search"></el-button>-->
+                <!--</el-input>-->
+            <!--</el-col>-->
+            <!--<el-col :span="2" class="text-center">-->
+                <!--<el-button class="btn-refresh" @click="refreshHander"><i class="fa fa-refresh"></i>刷新</el-button>-->
+            <!--</el-col>-->
             <el-col class="expire-tips" :span="4">
                 <el-button><i class="fa fa-circle"></i>即将到期（11）</el-button>
             </el-col>
@@ -128,6 +138,8 @@
 </template>
 
 <script>
+    import titleInfo from '../common/title-info/title-info.vue'
+    import searchBar from '../common/search-bar/search-bar.vue'
     export default{
         data() {
             return {
@@ -146,6 +158,11 @@
                     }
                 }
             }
+        },
+
+        components:{
+            titleInfo,
+            searchBar
         },
 
         mounted() {
@@ -183,11 +200,12 @@
             },
 
             handleSearch(value) {
-                console.log(this.keyWords);
+                console.log(value);
             },
-            refreshHander:function (){
+            refreshHandler:function (){
                 this.keyWords = '';
-            }, 
+                console.log('父级组件的刷新');
+            },
             //键盘事件
             keypress(event){
                 if(event.keyCode == 13){
@@ -244,27 +262,6 @@
 
     .brokerList{
         padding-right: 20px;
-
-        .total-info{
-            width: 100%;
-            height: 60px;
-            line-height: 60px;
-            .total-left{
-            	width: 100%;
-                height:60px;
-                line-height: 60px;
-                .tips{   
-                	height:60px;                 
-                    line-height: 60px;
-                    display: inline-block;
-                    font-size: 14px;
-                    em{
-                        letter-spacing: 0px;
-                        padding: 0 5px;
-                    }
-                }
-            }
-        }
 
         .operate{
             padding-top: 15px;

@@ -58,29 +58,6 @@
 </template>
 <style lang="scss" rel="stylesheet/scss" scoped>
     @import "../../assets/scss/basic/variable";
-
-    .total-info {
-        padding: 15px;
-        border-bottom: 1px solid #e9e9e9;
-
-        span {
-            color: #666;
-            font-size: 14px;
-            padding-right: 15px;
-
-            em {
-                padding-left: 5px;
-                padding-right: 5px;
-                color: #000;
-                font-weight: bold;
-            }
-        }
-        span:last-child {
-            padding-left: 15px;
-            border-left: 1px solid #e9e9e9;
-        }
-    }
-
     .search {
         padding: 15px;
         font-size: 14px;

@@ -1,34 +1,23 @@
 <template>
     <div class="businessList">
-        <div class="total-info">
-            <div class="total-left">
-                <span class="tips">今日售卖<em class="color_black">24</em>个月</span>
-                <span class="tips">剩余销冠服务<em class="color_black">87</em>个月</span>
-                <span class="tips">累计购买<em class="color_black">329</em>个月</span>
-            </div>
-            <div class="total-right">
-                <span class="go-buy">去购买<i class="fa fa-chevron-right"></i></span>
-            </div>
-        </div>
+        <title-info :titles="[
+            {first:'今日售卖',value:24,last:'个月'},
+            {first:'剩余销冠服务',value:87,last:'个月'},
+            {first:'累计购买',value:329,last:'个月'},
+        ]"></title-info>
+        <!--<div class="total-info">-->
+            <!--<div class="total-left">-->
+                <!--<span class="tips">今日售卖<em class="color_black">24</em>个月</span>-->
+                <!--<span class="tips">剩余销冠服务<em class="color_black">87</em>个月</span>-->
+                <!--<span class="tips">累计购买<em class="color_black">329</em>个月</span>-->
+            <!--</div>-->
+            <!--<div class="total-right">-->
+                <!--<span class="go-buy">去购买<i class="fa fa-chevron-right"></i></span>-->
+            <!--</div>-->
+        <!--</div>-->
         <el-row class="operate">
-            <el-col :span="6">
-                <search-bar :handleSearchChild="handleSearch"></search-bar>
-                <!--<el-input class="search-input"-->
-                          <!--v-model="keyWords"-->
-                          <!--@keypress.native="keypress"-->
-                          <!--placeholder="请输入搜索关键词">-->
-                    <!--<el-button slot="prepend" @click="handleSearch" icon="search"></el-button>-->
-                <!--</el-input>-->
-                <!-- <el-input class="search-input"
-                        placeholder="请输入搜索关键词"
-                        icon="search"
-                        v-model="keyWords"
-                        @keypress.native="keypress"
-                        :on-icon-click="handleSearch">
-                </el-input> -->
-            </el-col>
-            <el-col :span="2" class="text-center">
-                <el-button class="btn-refresh"><i class="fa fa-refresh"></i>刷新</el-button>
+            <el-col :span="8">
+                <search-bar :handleSearchChild="handleSearch" :handleRefresh="handleRefresh"></search-bar>
             </el-col>
             <el-col class="expire-tips" :span="4">
                 <el-button><i class="fa fa-circle"></i>即将到期（4）</el-button>
@@ -148,63 +137,6 @@
     }
 
     .businessList {
-
-        .total-info {
-            width: 100%;
-            height: 60px;
-            line-height: 60px;
-            display: -webkit-flex;
-            display: flex;
-            position: relative;
-            &:after {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                height: 1px;
-                content: '';
-                background-color: #e5e5e5;
-                width: 100%;
-            }
-            .total-left {
-                -webkit-flex: 3;
-                flex: 3;
-                .tips {
-                    &:nth-child(1) {
-                        width: 180px;
-                    }
-                    &:last-child {
-                        background: none;
-                    }
-                    width: 220px;
-                    display: inline-block;
-                    font-size: 14px;
-                    letter-spacing: 1px;
-                    background: url("../../assets/images/mid_line.jpg") no-repeat;
-                    background-position: right;
-                    text-indent: 20px;
-                    em {
-                        letter-spacing: 0px;
-                        padding: 0 5px;
-                    }
-                }
-            }
-            .total-right {
-                -webkit-flex: 1;
-                flex: 1;
-                text-align: right;
-                margin-right: 60px;
-                .go-buy {
-                    color: #008ee5;
-                    font-weight: bold;
-                    cursor: pointer;
-
-                    .fa {
-                        padding-left: 5px;
-                    }
-                }
-            }
-        }
 
         .operate {
             padding-top: 15px;
@@ -455,6 +387,7 @@
 </style>
 <script>
     import DeveloperList from '../../mockData/developer_list_mock_data';
+    import titleInfo from '../common/title-info/title-info.vue';
     import searchBar from '../common/search-bar/search-bar.vue';
     export default{
         data() {
@@ -483,6 +416,7 @@
             this.getDeveloperList();
         },
         components:{
+            titleInfo,
             searchBar
         },
         methods: {
@@ -518,6 +452,9 @@
             handleSearch(value) {
                 console.log("这里是父级组件的处理方法");
                 console.log(value);
+            },
+            handleRefresh(){
+                console.log("刷新事件的处理方法");
             },
             //键盘事件
 //            keypress(event){
