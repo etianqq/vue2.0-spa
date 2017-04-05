@@ -1,5 +1,5 @@
 {
-  "Code":4002,
+  "Code":0,
   "Message":"token已失效",
   "Data":{
     "newBuildings":0,

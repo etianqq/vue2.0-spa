@@ -6,12 +6,12 @@ var config = require('../config')
 // }
 /*-----------------封装一个获取npm run参数的方法-----------------*/
 function getEnv() {
-  var argv = process.argv.slice(2);
-  for (var i = 0; i < argv.length; i++) {
-    if (argv[i].indexOf('--env=') >= 0) {
-      return argv[i].substr(6);
+    var argv = process.argv.slice(2);
+    for (var i = 0; i < argv.length; i++) {
+        if (argv[i].indexOf('--env=') >= 0) {
+            return argv[i].substr(6);
+        }
     }
-  }
 }
 
 /*-----------------根据获取到的参数，指定env.NODE_ENV的值-----------------*/
@@ -46,27 +46,41 @@ var orderTableData = require('../src/mockData/order-management/order_table_mock_
 var todoAuditTableData = require('../src/mockData/todo-audit/todo_audit_table_mock_data.json');
 
 var apiRoutes = express.Router()
-apiRoutes.get('/homeData',function (req, res) {
-  res.json(homeData);
+
+function delay(number) {
+    var now=new Date();
+    var exitTime=now.getTime()+number;
+    while(true){
+        now = new Date();
+        if(now.getTime()>exitTime){
+            break;
+        }
+    }
+}
+
+apiRoutes.get('/homeData', function (req, res) {
+    delay(500);
+    res.json(homeData);
 });
 
-apiRoutes.get('/buildingData',function (req, res) {
-  res.json(buildingData);
+apiRoutes.get('/buildingData', function (req, res) {
+    delay(1000);
+    res.json(buildingData);
 });
 
-apiRoutes.get('/order-list-data', function(req, res) {
-  res.json(orderListData);
+apiRoutes.get('/order-list-data', function (req, res) {
+    delay(300);
+    res.json(orderListData);
 });
 
-apiRoutes.get('/order-table-data', function(req, res) {
-  res.json(orderTableData);
+apiRoutes.get('/order-table-data', function (req, res) {
+    delay(100);
+    res.json(orderTableData);
 });
 
-apiRoutes.get('/todo-audit-table-data', function(req, res) {
-  res.json(todoAuditTableData);
+apiRoutes.get('/todo-audit-table-data', function (req, res) {
+    res.json(todoAuditTableData);
 });
-
-
 
 
 app.use(apiRoutes)
@@ -74,28 +88,29 @@ app.use(apiRoutes)
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  quiet: true
+    publicPath: webpackConfig.output.publicPath,
+    quiet: true
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-  log: () => {}
+    log: () => {
+    }
 })
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
-    cb()
-  })
+    compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+        hotMiddleware.publish({action: 'reload'})
+        cb()
+    })
 })
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = { target: options }
-  }
-  app.use(proxyMiddleware(options.filter || context, options))
+    var options = proxyTable[context]
+    if (typeof options === 'string') {
+        options = {target: options}
+    }
+    app.use(proxyMiddleware(options.filter || context, options))
 })
 
 // handle fallback for HTML5 history API
@@ -115,17 +130,17 @@ app.use(staticPath, express.static('./static'))
 var uri = 'http://localhost:' + port
 
 devMiddleware.waitUntilValid(function () {
-  console.log('> Listening at ' + uri + '\n')
+    console.log('> Listening at ' + uri + '\n')
 })
 
 module.exports = app.listen(port, function (err) {
-  if (err) {
-    console.log(err)
-    return
-  }
+    if (err) {
+        console.log(err)
+        return
+    }
 
-  // when env is testing, don't need open it
-  if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-    opn(uri)
-  }
+    // when env is testing, don't need open it
+    if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
+        opn(uri)
+    }
 })
