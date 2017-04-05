@@ -61,7 +61,7 @@
                                 <el-col :span="6" class="developer-info line-right">
                                     <h3>{{childItem.subBuildingName}}</h3>
                                     <div>
-                                        <p class="address">地址：{{childItem.subBuildingAdress}}</p>
+                                        <p class="color_grey fs14">地址：{{childItem.subBuildingAdress}}</p>
                                         <p class="color_grey fs14">对接人：{{childItem.subBuildingContacts}}</p>
                                         <p class="color_grey fs14">联系电话：{{childItem.subBuildingContactsPhone}}</p>
                                     </div>
@@ -90,7 +90,7 @@
                                         </span>
                                         <span class="btn-expire-left"><i class="fa fa-chevron-right"></i></span>
                                     </div>
-                                    <div v-else>                                       
+                                    <div v-else>
                                         <span class="developer-renew" @click="handleRenewBuy">续费</span>
                                         <i class="fa fa-chevron-right"></i>
                                     </div>
@@ -124,7 +124,7 @@
                     <el-col :span="10">
                         <el-input class="input-reset"></el-input>
                     </el-col>
-                    <el-col :span="2" class="el-col-height">个月</el-col>  
+                    <el-col :span="2" class="el-col-height">个月</el-col>
                 </el-row>
             </div>
             <span slot="footer" class="dialog-footer">
@@ -135,13 +135,12 @@
     </div>
 </template>
 <style lang="scss" rel="stylesheet/scss" scoped>
-    //&bull;
     em{
         font-weight: bold;
     }
 
     .businessList{
-        
+
         .total-info{
             width: 100%;
             height: 60px;
@@ -200,7 +199,7 @@
                     padding-right: 5px;
                 }
             }
-    
+
             .expire-tips{
                 .fa-circle{
                     font-size: 12px;
@@ -212,7 +211,7 @@
                     transform:scale(.6);
                 }
             }
-            
+
             .btn-link{
                 display: inline-block;
                 line-height: 1;
@@ -292,6 +291,8 @@
                         h3{
                             color: #40474f;
                             font-size: 15px;
+                            margin-bottom: 20px;
+                            font-weight: bold;
                         }
                         p{
                             margin: 8px 0;

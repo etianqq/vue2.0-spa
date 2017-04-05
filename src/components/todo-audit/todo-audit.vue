@@ -70,6 +70,7 @@
             .active{
                 background-color: #2795ee;
                 color: #fff;
+                border: 1px solid #2795ee;
             }
         }
 
