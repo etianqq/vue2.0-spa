@@ -137,14 +137,15 @@
 
     .businessList{
 
-        .total-info{
+        .total-info {
             width: 100%;
             height: 60px;
             line-height: 60px;
-            display:-webkit-flex;
-            display:flex;
+            display: -webkit-flex;
+            display: flex;
             position: relative;
-            &:after{
+
+            &:after {
                 position: absolute;
                 right: 0;
                 bottom: 0;
@@ -154,22 +155,28 @@
                 background-color: #e5e5e5;
                 width: 100%;
             }
-            .total-left{
-                -webkit-flex:3;flex:3;
-                .tips{
-                    &:nth-child(1){width: 180px;}
-                    &:last-child{background: none;}
+
+            .total-left {
+                -webkit-flex: 3;
+                flex: 3;
+
+                .tips {
                     width: 220px;
                     display: inline-block;
                     font-size: 14px;
-                    letter-spacing: 1px;
+                    letter-spacing:1px;
                     background: url("../../assets/images/mid_line.jpg") no-repeat;
                     background-position: right;
                     text-indent: 20px;
-                    em{
+
+                    &:nth-child(1) {width: 180px;}
+                    &:last-child {background: none;}
+
+                    em {
                         letter-spacing: 0px;
                         padding: 0 5px;
                     }
+
                 }
             }
             .total-right {
@@ -183,10 +190,13 @@
                     font-weight: bold;
                     cursor: pointer;
 
-                    .fa{padding-left: 5px;}
+                    .fa {
+                        padding-left: 5px;
+                    }
+
                 }
             }
-
+        }
         .operate {
             padding-top: 15px;
             padding-bottom: 15px;
@@ -429,6 +439,8 @@
             border-bottom: 1px dashed #ccc;
         }
     }
+
+
 
 </style>
 <script>
