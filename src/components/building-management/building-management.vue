@@ -40,7 +40,9 @@
                             <!--这里有几种状态：已上架(0-on-sale)，审核中（1-auditing），审核未通过(2-reject)，已下架(3-off-shelf),信息待完善(4-imperfect)-->
                             <span class="sale-status"
                                   :class="saleStatusClasses[building.status]">{{saleStatusFilter(building.status)}}</span>
-                            <button class="edit"><i class="fa fa-angle-right"></i></button>
+                            <router-link to="building-management/add-nav">
+                                <button class="edit"><i class="fa fa-angle-right"></i></button>
+                            </router-link>
                         </div>
                     </div>
                 </el-card>
