@@ -8,7 +8,6 @@ import { Loading } from 'element-ui'
 import {homeService} from './home/home.service'
 import {buildingService} from './building-management/building-management.service'
 import {businessDeveloperService} from './business-management/business.developer.service'
-import {todoAuditService} from './todo-audit/todo-audit.service'
 import {orderService} from './order-management/order.service'
 
 // 声明一个loading变量存储Loading实例
@@ -48,6 +47,5 @@ export {
     homeService,
     buildingService,
     businessDeveloperService,
-    todoAuditService,
     orderService
 }

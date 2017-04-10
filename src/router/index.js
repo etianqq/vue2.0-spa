@@ -9,7 +9,6 @@ import { buildingManagementRoutes } from './building-management/building-manage.
 import { businessManagementRoutes } from './business-management/business-manage.route'
 import { operationLogRoutes } from './operation-log/operation-log.route'
 import { orderManagementRoutes } from './order-management/order-management.route'
-import { todoAuditRoutes } from './todo-audit/todo-audit.route'
 
 Vue.use(VueRouter)
 
@@ -26,8 +25,7 @@ childRoutes = childRoutes
   .concat(buildingManagementRoutes)
   .concat(businessManagementRoutes)
   .concat(operationLogRoutes)
-  .concat(orderManagementRoutes)
-  .concat(todoAuditRoutes);
+  .concat(orderManagementRoutes);
 
 // 整体路由的配置
 var routes = [

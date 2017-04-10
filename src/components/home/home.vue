@@ -70,17 +70,6 @@
                 </router-link>
             </el-col>
         </el-row>
-        <el-row>
-            <el-tree
-                :data="data2"
-                :props="defaultProps"
-                show-checkbox
-                node-key="id"
-                default-expand-all
-                :expand-on-click-node="false"
-                :render-content="renderContent">
-            </el-tree>
-        </el-row>
         <el-row class="second-row" :gutter="20">
             <el-col class="order-statistics" :span="18">
                 <div class="grid-content">

@@ -26,7 +26,6 @@
                     <el-menu-item index="/business-management"><i class="el-icon-message"></i>商家管理</el-menu-item>
                     <el-menu-item index="/building-management"><i class="el-icon-message"></i>商品管理</el-menu-item>
                     <el-menu-item index="/order-management"><i class="el-icon-message"></i>订单管理</el-menu-item>
-                    <el-menu-item index="/todo-audit"><i class="el-icon-message"></i>待办审核</el-menu-item>
                     <el-menu-item-group title="系统管理">
                         <el-menu-item index="/account-management"><i class="el-icon-message"></i>账号管理</el-menu-item>
                         <el-menu-item index="/operation-log"><i class="el-icon-message"></i>操作日志</el-menu-item>
