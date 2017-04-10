@@ -8,11 +8,11 @@
                     <form id="login_info">
                         <div class="in_ct">
                             <div class="check-block check-block-name">
-                                <input type="text" name="userName" class="userName inpAll js_userName" id="userName" value="21012345678"
+                                <input type="text" name="userName" class="userName inpAll js_userName" id="userName" value="test"
                                        readonly>
                             </div>
                             <div class="check-block check-block-password">
-                                <input type="password" name="passWord" class="passWord inpAll js_passWord" id="password" value="12345678"
+                                <input type="password" name="passWord" class="passWord inpAll js_passWord" id="password" value="test"
                                        readonly>
                             </div>
                         </div>
@@ -180,10 +180,11 @@
     }
 
     .tops {
-        width: 186px;
-        height: 58px;
+        width: 120px;
+        height: 120px;
         background: url("../assets/images/logo.png");
         margin: 0 auto;
+        background-size: 120px 120px;
     }
 
     #login_info {
