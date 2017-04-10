@@ -13,10 +13,10 @@
 	        <el-button class="btn-refresh" @click="refreshHander"><i class="fa fa-refresh"></i>刷新</el-button>
 	    </el-col>
 	</el-row>
-		
+
 <!-- 表格 -->
-	<div class="operationTab">	
-	<el-table 
+	<div class="operationTab">
+	<el-table
 	:data="tableData"
 	stripe
 	border
@@ -107,7 +107,7 @@
             },
             refreshHander:function (){
             	this.keyWords = '';
-            }, 
+            },
             //键盘事件
             keypress(event){
                 if(event.keyCode == 13){
@@ -120,7 +120,7 @@
 
                 _self.reNewDialog = {
                     visible: true,
-                    title: '销冠服务期续费',
+                    title: '服务期续费',
                     formData: {
                         newDate: ''
                     }
@@ -132,7 +132,7 @@
 <style type="text/css">
 	.el-table--striped .el-table__body tr:nth-child(2n) td {
 	    background: #FAFAFA;
-	}	
+	}
 
 </style>
 <style lang="scss" rel="stylesheet/scss" scoped>
@@ -174,7 +174,7 @@
         .operation{
             padding-top: 15px;
             padding-bottom: 15px;
-				
+
             position: relative;
             .btn-refresh{
                 .fa-refresh{

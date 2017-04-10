@@ -22,9 +22,8 @@
         <el-row type="flex" class="content-bar">
             <el-col class="menu-bar">
                 <el-menu mode="vertical" :default-active="nowPath" class="el-menu-vertical-demo" :router="true">
-                    <el-menu-item index="/home"><i class="el-icon-message"></i>销冠首页</el-menu-item>
+                    <el-menu-item index="/home"><i class="el-icon-message"></i>产品首页</el-menu-item>
                     <el-menu-item index="/business-management"><i class="el-icon-message"></i>商家管理</el-menu-item>
-                    <el-menu-item index="/broker-company"><i class="el-icon-message"></i>经纪公司</el-menu-item>
                     <el-menu-item index="/building-management"><i class="el-icon-message"></i>商品管理</el-menu-item>
                     <el-menu-item index="/order-management"><i class="el-icon-message"></i>订单管理</el-menu-item>
                     <el-menu-item index="/todo-audit"><i class="el-icon-message"></i>待办审核</el-menu-item>

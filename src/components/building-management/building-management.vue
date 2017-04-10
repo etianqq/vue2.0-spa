@@ -9,7 +9,7 @@
         <title-info :titles="[{first:'今日供给',value:newBuildings,last:'套新房'},{first:'总供给',value:buildingList.length,last:'套新房'}]"></title-info>
         <el-row class="search">
             <el-col>
-                <span>销冠渠道</span>
+                <span>渠道</span>
                 <el-button type="primary">全部（{{buildingList.length}}）</el-button>
                 <el-button>上架（{{onSaleBuildings}}）</el-button>
                 <el-button>审核中（{{auditBuildings}}）</el-button>
@@ -32,7 +32,6 @@
                         <p>地址：{{building.addr}}</p>
                     </div>
                     <div class="sale-info">
-                        <!--这里有几种状态：重新上架(re-shelves)，审核(audit)，销冠上架(shelves)-->
                         <button v-if="building.status!=4" :class="operateStatusClasses[building.status]">
                             {{operateStatusFilter(building.status)}}
                         </button>
@@ -218,7 +217,7 @@
                 )
             },
             operateStatusFilter: function (status) {
-                var operateStatusStr = ['重新上架', '审核', '销冠上架', '销冠上架', '信息待完善'];
+                var operateStatusStr = ['重新上架', '审核', '上架', '上架', '信息待完善'];
                 return operateStatusStr[status];
             },
             saleStatusFilter: function (status) {

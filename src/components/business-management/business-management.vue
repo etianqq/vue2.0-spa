@@ -2,19 +2,9 @@
     <div class="businessList">
         <title-info :titles="[
             {first:'今日售卖',value:24,last:'个月'},
-            {first:'剩余销冠服务',value:87,last:'个月'},
+            {first:'剩余服务',value:87,last:'个月'},
             {first:'累计购买',value:329,last:'个月'},
         ]"></title-info>
-        <!--<div class="total-info">-->
-            <!--<div class="total-left">-->
-                <!--<span class="tips">今日售卖<em class="color_black">24</em>个月</span>-->
-                <!--<span class="tips">剩余销冠服务<em class="color_black">87</em>个月</span>-->
-                <!--<span class="tips">累计购买<em class="color_black">329</em>个月</span>-->
-            <!--</div>-->
-            <!--<div class="total-right">-->
-                <!--<span class="go-buy">去购买<i class="fa fa-chevron-right"></i></span>-->
-            <!--</div>-->
-        <!--</div>-->
         <el-row class="operate">
             <el-col :span="8">
                 <search-bar :handleSearchChild="handleSearch" :handleRefresh="handleRefresh"></search-bar>
@@ -61,7 +51,7 @@
                                     </div>
                                 </el-col>
                                 <el-col :span="6" class="developer-service text-center line-right">
-                                    <h3>剩余销冠服务</h3>
+                                    <h3>剩余服务</h3>
                                     <div class="date-view">
                                         <span class="number-view">{{childItem.subBuildingSurplusMonth}}</span>
                                         <span class="fs14 color_grey">月</span>
@@ -116,7 +106,7 @@
         <el-dialog :title="reNewDialog.title" v-model="reNewDialog.visible" size="tiny">
             <div class="renew-content">
                 <el-row>
-                    <el-col :span="6" :offset="3" class="el-col-height">新增销冠服务</el-col>
+                    <el-col :span="6" :offset="3" class="el-col-height">新增服务</el-col>
                     <el-col :span="10">
                         <el-input class="input-reset"></el-input>
                     </el-col>
@@ -526,7 +516,7 @@
 
                 _self.reNewDialog = {
                     visible: true,
-                    title: '销冠服务期续费',
+                    title: '服务期续费',
                     formData: {
                         newDate: ''
                     }

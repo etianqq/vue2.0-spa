@@ -5,7 +5,6 @@ import login from '@/components/login'
 
 import { homeRoutes } from './home/home.route'
 import { accountManagementRoutes } from './account-management/account-manage.route'
-import { brokerCompanyRoutes } from './broker-company/broker-company.route'
 import { buildingManagementRoutes } from './building-management/building-manage.route'
 import { businessManagementRoutes } from './business-management/business-manage.route'
 import { operationLogRoutes } from './operation-log/operation-log.route'
@@ -24,7 +23,6 @@ var childRoutes = [
 childRoutes = childRoutes
   .concat(homeRoutes)
   .concat(accountManagementRoutes)
-  .concat(brokerCompanyRoutes)
   .concat(buildingManagementRoutes)
   .concat(businessManagementRoutes)
   .concat(operationLogRoutes)

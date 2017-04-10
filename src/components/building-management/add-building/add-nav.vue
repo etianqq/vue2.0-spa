@@ -17,7 +17,7 @@
                         <div class="edit-wrapper">
                             <i class="fa fa-pencil fa-4"></i>
                         </div>
-                        <p>完善楼盘信息，销冠帮您吸引客户</p>
+                        <p>完善楼盘信息，帮您吸引客户</p>
                     </div>
                 </div>
             </el-card>

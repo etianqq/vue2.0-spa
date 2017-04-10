@@ -16,12 +16,12 @@
           <router-link to="/broker-addCompany" class="btn-link"><i class="el-icon-circle-cross"></i><i class="text-develop">添加开发商</i></router-link>
       </el-col>
   </el-row>
-    
+
 <!-- 表格 -->
-  <div class="operationTab">  
+  <div class="operationTab">
   <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
     <el-tab-pane label="楼盘（44）" name="first">
-      <el-table 
+      <el-table
       :data="tableData"
       stripe
       border
@@ -61,7 +61,7 @@
         label="禁用理由"
         width="180">
       </el-table-column>
-      <el-table-column            
+      <el-table-column
             label="操作"
             width="100">
             <template scope="scope">
@@ -72,7 +72,7 @@
       </el-table>
     </el-tab-pane>
     <el-tab-pane label="经纪公司（125）" name="second">
-      <el-table 
+      <el-table
       :data="tableData"
       stripe
       border
@@ -169,7 +169,7 @@
         },
         refreshHander:function (){
           this.keyWords = '';
-        }, 
+        },
         //键盘事件
         keypress(event){
             if(event.keyCode == 13){
@@ -182,7 +182,7 @@
 
             _self.reNewDialog = {
                 visible: true,
-                title: '销冠服务期续费',
+                title: '服务期续费',
                 formData: {
                     newDate: ''
                 }
@@ -194,7 +194,7 @@
 <style type="text/css">
   .el-table--striped .el-table__body tr:nth-child(2n) td {
       background: #FAFAFA;
-  } 
+  }
 
 </style>
 <style lang="scss" rel="stylesheet/scss" scoped>
@@ -236,7 +236,7 @@
         .operation{
             padding-top: 15px;
             padding-bottom: 15px;
-        
+
             position: relative;
             .btn-refresh{
                 .fa-refresh{

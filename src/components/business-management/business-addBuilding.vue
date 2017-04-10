@@ -91,7 +91,7 @@
 					  	</el-form-item>
 			  		</el-col>
 			  		<el-col :span="6">
-					  	<el-form-item label="销冠服务：" prop="serviceDate">
+					  	<el-form-item label="服务：" prop="serviceDate">
 					    	<el-input placeholder="请填写服务时间"></el-input>
 					  	</el-form-item>
 			  		</el-col>
