@@ -370,7 +370,7 @@
         }
     }
 </style>
-<script>
+<script type="es6">
     import {homeService} from '../../service/index'
     import echarts from 'echarts'
     let id = 1000;
@@ -438,19 +438,6 @@
                 store.remove(data);
             },
 
-            renderContent(h, { node, data, store }) {
-                return (
-                    <span>
-                        <span>
-                            <span on-click={ () => this.routeTo(store,data) }>{node.label}</span>
-                        </span>
-                        <span style="float: right; margin-right: 20px">
-                            <el-button size="mini" on-click={ () => this.append(store, data) }>Append</el-button>
-                            <el-button size="mini" on-click={ () => this.remove(store, data) }>Delete</el-button>
-                        </span>
-                    </span>
-            );
-            },
             getData(){
                 homeService.getHomeData().then(
                     data => {

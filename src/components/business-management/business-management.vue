@@ -390,25 +390,6 @@
             }
         }
 
-         /*!*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*!*/
-         /*.developer::-webkit-scrollbar{*/
-             /*width: 4px;*/
-             /*height: 4px;*/
-             /*background-color: #f5f5f5;*/
-         /*}*/
-         /*!*定义滚动条的轨道，内阴影及圆角*!*/
-         /*.developer::-webkit-scrollbar-track{*/
-             /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);*/
-             /*border-radius: 10px;*/
-             /*background-color: #f0f0f0;*/
-         /*}*/
-         /*!*定义滑块，内阴影及圆角*!*/
-         /*.developer::-webkit-scrollbar-thumb{*/
-             /*height: 5px;*/
-             /*border-radius: 10px;*/
-             /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
-             /*background-color: #e5e5e5;*/
-         /*}*/
     }
 
     .mr20 {
@@ -477,20 +458,6 @@
                 for (let i = 0; i < childLength; i++) {
                     _self.developerChildList = DeveloperList.Data.items[i].childItems;
                 }
-
-                // this.$http.get('../../mockData/business_mock_data.json',
-                //     {
-                //         params: params,
-                //         headers: headers
-                //     })
-                //     .then((response) => {
-                //         console.log(response);
-                //     },(response) => {
-                //         console.log("error response");
-                //     })
-                //     .catch(function(response) {
-                //         //do something
-                //     });
             },
 
             handleCurrentChange(val) {
@@ -504,12 +471,6 @@
             handleRefresh(){
                 console.log("刷新事件的处理方法");
             },
-            //键盘事件
-//            keypress(event){
-//                if (event.keyCode == 13) {
-//                    console.log(this.keyWords);
-//                }
-//            },
             //续费
             handleRenewBuy() {
                 var _self = this;
