@@ -1,5 +1,5 @@
 /**
- * Created by jiangyan on 2017/3/25.
+ * Created by etianqq on 2017/3/25.
  */
 // 自己写的静态资源服务器，用于测试发布版本的项目包
 var express = require("express");

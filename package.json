@@ -1,22 +1,13 @@
 {
-  "name": "top.saas.agent.vue",
+  "name": "vue2.0-spa",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "jiangyan3391 <jiangyan3391@tops001.com>",
+  "author": "etianqq",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js --env=dev",
-    "dev-test": "node build/dev-server.js --env=test",
-    "dev-release": "node build/dev-server.js --env=release",
-    "dev-integrate": "node build/dev-server.js --env=integrate",
-    "dev-beta": "node build/dev-server.js --env=beta",
-    "dev-demo": "node build/dev-server.js --env=demo",
-    "build-dev": "node build/build.js --env=dev",
+    "dev": "node build/dev-server.js --env=test",
     "build-test": "node build/build.js --env=test",
-    "build-release": "node build/build.js --env=release",
-    "build-integrate": "node build/build.js --env=integrate",
-    "build-beta": "node build/build.js --env=beta",
-    "build-demo": "node build/build.js --env=demo"
+    "build-release": "node build/build.js --env=release"
   },
   "dependencies": {
     "axios": "^0.15.3",

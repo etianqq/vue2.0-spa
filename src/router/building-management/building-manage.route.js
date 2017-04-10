@@ -1,5 +1,5 @@
 /**
- * Created by jiangyan on 2017/3/14.
+ * Created by etianqq on 2017/3/14.
  */
 const buildingManagementComponent = resolve => {
     require(['@/components/building-management/building-management.vue'], resolve)

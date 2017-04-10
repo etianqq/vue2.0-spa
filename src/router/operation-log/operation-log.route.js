@@ -1,5 +1,5 @@
 /**
- * Created by jiangyan on 2017/3/14.
+ * Created by etianqq on 2017/3/14.
  */
 const operationLogComponent = resolve => {
   require(['@/components/operation-log/operation-log.vue'], resolve)

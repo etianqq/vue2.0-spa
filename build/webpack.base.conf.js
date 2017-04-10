@@ -8,22 +8,10 @@ var apis_url = path.join(__dirname, '../src/service/config/apiconfig.js')
 var host_url="";
 switch (process.env.NODE_ENV) {
   case 'test' :
-    host_url = path.join(__dirname, '../src/service/config/webconfig_test.js'); // 这里用双斜线，很重要！
+    host_url = path.join(__dirname, '../src/service/config/webconfig_test.js');
     break;
   case 'release' :
     host_url = path.join(__dirname, '../src/service/config/webconfig_release.js');
-    break;
-  case 'integrate' :
-    host_url = path.join(__dirname, '../src/service/config/webconfig_integrate.js');
-    break;
-  case 'beta' :
-    host_url = path.join(__dirname, '../src/service/config/webconfig_beta.js');
-    break;
-  case 'demo' :
-    host_url = path.join(__dirname, '../src/service/config/webconfig_demo.js');
-    break;
-  case 'dev' :
-    host_url = path.join(__dirname, '../src/service/config/webconfig_develop.js');
     break;
 }
 

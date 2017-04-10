@@ -1,5 +1,5 @@
 /**
- * Created by jiangyan on 2017/3/14.
+ * Created by etianqq on 2017/3/14.
  */
 const businessManagementComponent = resolve => {
   require(['@/components/business-management/business-management.vue'], resolve)

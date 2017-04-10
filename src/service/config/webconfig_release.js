@@ -1,3 +1,3 @@
 module.exports = {
-    host: 'http://saasapi.apitops.com'
+    host: 'http://release.api.com'
 };

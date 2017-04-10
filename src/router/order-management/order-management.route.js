@@ -1,5 +1,5 @@
 /**
- * Created by jiangyan on 2017/3/14.
+ * Created by etianqq on 2017/3/14.
  */
 const orderManagementComponent = resolve => {
   require(['@/components/order-management/order-management.vue'], resolve)

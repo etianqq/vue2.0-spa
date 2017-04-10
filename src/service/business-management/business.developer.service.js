@@ -1,11 +1,11 @@
 /**
- * Created by jiangyan on 2017/3/21.
+ * Created by etianqq on 2017/3/21.
  */
 import axios from 'axios'
 
 var businessDeveloperService = {
   getList(params){
-  
+
   	var config = {
   		url: 'broker-apply/list',
   		method: 'get',
