@@ -184,7 +184,7 @@
     .tops {
         width: 186px;
         height: 58px;
-        background: url("../assets/images/tops.png");
+        background: url("../assets/images/logo.png");
         margin: 0 auto;
     }
 
