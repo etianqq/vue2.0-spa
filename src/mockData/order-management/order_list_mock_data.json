@@ -1,0 +1,78 @@
+{
+	"Code": 0,
+	"Message": "",
+	"Data": [
+		{
+			"orderId": 1001,
+			"buildingName": "双湖星城",
+			"company": "太原市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1002,
+			"buildingName": "中和露骨成",
+			"company": "杭州市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1003,
+			"buildingName": "黑星城",
+			"company": "天津市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1004,
+			"buildingName": "太行新屋",
+			"company": "上海市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1005,
+			"buildingName": "广元泰城",
+			"company": "成都市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1006,
+			"buildingName": "万象城",
+			"company": "日照市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1007,
+			"buildingName": "紫金花园",
+			"company": "衢州市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1008,
+			"buildingName": "流星悦城",
+			"company": "广元市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		},
+		{
+			"orderId": 1009,
+			"buildingName": "双湖星城",
+			"company": "金牛市迎泽区房地产代理公司",
+			"dealCount": "123",
+			"pushCount": "185",
+			"orderCount": "122"
+		}
+	]
+}

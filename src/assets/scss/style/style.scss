@@ -1,0 +1,130 @@
+﻿html, body {
+  height: 100%;
+}
+
+body, textarea, input, button, select, keygen, legend, td, th, li, p, a {
+  font: 12px/1.14 "Microsoft YaHei", arial, \5b8b\4f53;
+  color: #666;
+  outline: 0;
+}
+label {
+    font-weight: normal!important;
+}
+h1, h2, h3, h4, h5, h6, div {
+  font-family: "Microsoft YaHei", arial, \5b8b\4f53;
+}
+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+li {
+  list-style: none;
+}
+em,i{font-style: normal;}
+ul,ol,li{padding: 0;margin: 0;}
+
+.fs14{font-size: 14px;}
+.fs16{font-size: 16px;}
+.fs18{font-size: 18px;}
+.fs20{font-size: 20px;}
+.fs24{font-size: 24px;}
+
+.mt10{margin-top: 10px;}
+.mt20{margin-top: 20px;}
+.mb10{margin-bottom: 10px;}
+.mb20{margin-bottom: 20px;}
+.ml10{margin-left: 10px;}
+.ml20{margin-left: 20px;}
+.mr10{margin-right: 10px;}
+.mr20{margin-right: 20px;}
+
+.pt10{padding-top: 10px;}
+.pt20{padding-top: 20px;}
+.pb10{padding-bottom: 10px;}
+.pb10{padding-bottom: 10px;}
+.pl10{padding-left: 10px;}
+.pl10{padding-left: 20px;}
+.pr10{padding-right: 10px;}
+.pr10{padding-right: 20px;}
+
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+
+.cur_pointer{cursor: pointer;}
+
+
+.color_black{color: #000;}
+.hidden{display: none;}
+
+.mid_line {
+  @include bg_image("mid_line.jpg", "0px 12px no-repeat");
+}
+
+.color_red {
+  color: $red
+}
+
+.color_blue {
+  color: $blue
+}
+
+.color_green {
+  color: $green !important;
+}
+
+.color_grey {
+  color: $grey
+}
+
+.color_orange {
+  color: $orange
+}
+
+.color_yellow {
+  color: $yellow
+}
+
+.color_purple {
+  color: $purple
+}
+
+.bg_red {
+  background: $red
+}
+
+.bg_blue {
+  background: $blue_dark
+}
+
+.bg_green {
+  background: $green_light
+}
+
+.bg_grey {
+  background: $grey
+}
+
+.bg_orange {
+  background: $orange_light
+}
+
+.bg_yellow {
+  background: $yellow_light
+}
+
+.bg_purple {
+  background: $purple
+}
+
+.bg_white{
+  background-color: #fff;
+}
