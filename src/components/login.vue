@@ -1,6 +1,5 @@
 <template>
     <div>
-        <a href="https://www.tops001.com/" class="know">了解销冠</a>
         <div id="home" class="jumbotron jumbotron-register">
             <div id="particles-js"></div>
             <div class="container center-vertically-holder">
@@ -19,7 +18,6 @@
                         </div>
                         <a href="javascript:;" class="btn_login" id="login" @click="login">登&nbsp;录</a>
                         <a href="javascript:;" class="js_forget forgetPassword">忘记密码？</a>
-                        <a href="javascript:;" class="js_download download">下载房产销冠APP</a>
                     </form>
                 </div>
             </div>

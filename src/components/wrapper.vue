@@ -4,7 +4,7 @@
             <div class="top-bar-content">
                 <div class="logo">
                     <router-link to="/">
-                        <img src="../assets/images/top_logo.png" alt="销冠科技">
+                        <img src="../assets/images/logo.png">
                     </router-link>
                 </div>
                 <div class="operate">
@@ -91,9 +91,7 @@
                     cursor: pointer;
 
                     img {
-                        width: 84px;
-                        height: 27px;
-                        margin-top: 14px;
+                        height: 55px;
                     }
                 }
 
